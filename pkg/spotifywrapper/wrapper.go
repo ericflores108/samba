@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/ericflores108/samba/pkg/spotify"
 	"golang.org/x/oauth2"
 )
 
@@ -33,15 +34,15 @@ type TokenInfo struct {
 
 // SpotifyClient wraps the generated client with auth
 type SpotifyClient struct {
-	client      *APIClient
+	client      *spotify.APIClient
 	oauthConfig *OAuthConfig
 	token       *oauth2.Token
 }
 
 // NewClient creates a new Spotify client with OAuth configuration
 func NewClient(clientID, clientSecret, redirectURL string, scopes []string) (*SpotifyClient, error) {
-	cfg := NewConfiguration()
-	client := NewAPIClient(cfg)
+	cfg := spotify.NewConfiguration()
+	client := spotify.NewAPIClient(cfg)
 
 	oauthConfig := &OAuthConfig{
 		ClientID:     clientID,
@@ -187,7 +188,7 @@ func (sc *SpotifyClient) GetAuthenticatedContext(ctx context.Context) (context.C
 
 	// Create a TokenSource from the token
 	tokenSource := oauth2.StaticTokenSource(sc.token)
-	return context.WithValue(ctx, ContextOAuth2, tokenSource), nil
+	return context.WithValue(ctx, spotify.ContextOAuth2, tokenSource), nil
 }
 
 // SetToken allows setting a token directly (useful for stored tokens)
@@ -201,14 +202,14 @@ func (sc *SpotifyClient) GetToken() *oauth2.Token {
 }
 
 // GetAPIClient returns the underlying API client
-func (sc *SpotifyClient) GetAPIClient() *APIClient {
+func (sc *SpotifyClient) GetAPIClient() *spotify.APIClient {
 	return sc.client
 }
 
 // Helper methods for common API operations with automatic authentication
 
 // GetCurrentUserProfile gets the current user's profile
-func (sc *SpotifyClient) GetCurrentUserProfile(ctx context.Context) (*PrivateUserObject, *http.Response, error) {
+func (sc *SpotifyClient) GetCurrentUserProfile(ctx context.Context) (*spotify.PrivateUserObject, *http.Response, error) {
 	authCtx, err := sc.GetAuthenticatedContext(ctx)
 	if err != nil {
 		return nil, nil, err
@@ -219,7 +220,7 @@ func (sc *SpotifyClient) GetCurrentUserProfile(ctx context.Context) (*PrivateUse
 }
 
 // SearchItems searches for tracks, artists, albums, etc.
-func (sc *SpotifyClient) SearchItems(ctx context.Context, q string, types []string, limit *int32, offset *int32) (*Search200Response, *http.Response, error) {
+func (sc *SpotifyClient) SearchItems(ctx context.Context, q string, types []string, limit *int32, offset *int32) (*spotify.Search200Response, *http.Response, error) {
 	authCtx, err := sc.GetAuthenticatedContext(ctx)
 	if err != nil {
 		return nil, nil, err
@@ -237,7 +238,7 @@ func (sc *SpotifyClient) SearchItems(ctx context.Context, q string, types []stri
 }
 
 // GetQueue gets the current user's playback queue
-func (sc *SpotifyClient) GetQueue(ctx context.Context) (*QueueObject, *http.Response, error) {
+func (sc *SpotifyClient) GetQueue(ctx context.Context) (*spotify.QueueObject, *http.Response, error) {
 	authCtx, err := sc.GetAuthenticatedContext(ctx)
 	if err != nil {
 		return nil, nil, err

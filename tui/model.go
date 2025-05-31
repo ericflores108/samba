@@ -13,6 +13,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 
 	spotify "github.com/ericflores108/samba/pkg/spotify"
+	spotifywrapper "github.com/ericflores108/samba/pkg/spotifywrapper"
 )
 
 const (
@@ -47,7 +48,7 @@ type authErrorMsg struct {
 type model struct {
 	state     uint
 	user      *spotify.PrivateUserObject
-	client    *spotify.SpotifyClient
+	client    *spotifywrapper.SpotifyClient
 	ctx       context.Context
 	listIndex int
 	textarea  textarea.Model
@@ -60,7 +61,7 @@ type model struct {
 	*spotify.QueueObject
 }
 
-func NewModel(client *spotify.SpotifyClient, ctx context.Context) model {
+func NewModel(client *spotifywrapper.SpotifyClient, ctx context.Context) model {
 	ti := textinput.New()
 	ti.Placeholder = "Enter authorization code here..."
 	ti.Focus()
@@ -76,7 +77,7 @@ func NewModel(client *spotify.SpotifyClient, ctx context.Context) model {
 	}
 }
 
-func NewAuthenticatedModel(user *spotify.PrivateUserObject, client *spotify.SpotifyClient, ctx context.Context) model {
+func NewAuthenticatedModel(user *spotify.PrivateUserObject, client *spotifywrapper.SpotifyClient, ctx context.Context) model {
 	// Get user's saved tracks
 	q, res, err := client.GetQueue(ctx)
 	if err != nil {
@@ -105,7 +106,7 @@ func (m model) Init() tea.Cmd {
 	return nil
 }
 
-func generateAuthURL(client *spotify.SpotifyClient) tea.Cmd {
+func generateAuthURL(client *spotifywrapper.SpotifyClient) tea.Cmd {
 	return func() tea.Msg {
 		authURL, state, err := client.GetAuthURL()
 		if err != nil {
@@ -129,7 +130,7 @@ func startCallbackServer() tea.Cmd {
 		mux.HandleFunc("/callback", func(w http.ResponseWriter, r *http.Request) {
 			code := r.URL.Query().Get("code")
 			state := r.URL.Query().Get("state")
-			
+
 			if code != "" {
 				codeChan <- code
 				stateChan <- state
@@ -159,7 +160,7 @@ func startCallbackServer() tea.Cmd {
 	}
 }
 
-func exchangeCodeForToken(client *spotify.SpotifyClient, code, state string) tea.Cmd {
+func exchangeCodeForToken(client *spotifywrapper.SpotifyClient, code, state string) tea.Cmd {
 	return func() tea.Msg {
 		if err := client.ExchangeCodeForToken(code, state); err != nil {
 			return authErrorMsg{Error: fmt.Sprintf("Failed to exchange code for token: %v", err)}

@@ -9,7 +9,7 @@ import (
 	"github.com/joho/godotenv"
 	"golang.org/x/oauth2"
 
-	spotify "github.com/ericflores108/samba/pkg/spotify"
+	spotify "github.com/ericflores108/samba/pkg/spotifywrapper"
 )
 
 func main() {
