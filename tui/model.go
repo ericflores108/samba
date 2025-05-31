@@ -13,7 +13,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 
 	spotify "github.com/ericflores108/samba/pkg/spotify"
-	sw "github.com/ericflores108/samba/pkg/sw"
+	sw "github.com/ericflores108/samba/pkg/spotifywrapper"
 )
 
 const (
