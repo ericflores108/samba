@@ -17,6 +17,52 @@ var (
 	listEnumeratorStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("99")).MarginRight(1)
 
 	linkStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("12")).Underline(true)
+
+	// Now Playing styles
+	nowPlayingBoxStyle = lipgloss.NewStyle().
+		Border(lipgloss.RoundedBorder()).
+		BorderForeground(lipgloss.Color("99")).
+		Padding(1, 2).
+		MarginBottom(1).
+		Background(lipgloss.Color("235"))
+
+	nowPlayingTitleStyle = lipgloss.NewStyle().
+		Foreground(lipgloss.Color("198")).
+		Bold(true)
+
+	nowPlayingArtistStyle = lipgloss.NewStyle().
+		Foreground(lipgloss.Color("99")).
+		Italic(true)
+
+	// Enhanced queue styles
+	queueHeaderStyle = lipgloss.NewStyle().
+		Foreground(lipgloss.Color("226")).
+		Bold(true).
+		MarginTop(1).
+		MarginBottom(1)
+
+	queueItemStyle = lipgloss.NewStyle().
+		Foreground(lipgloss.Color("255")).
+		Background(lipgloss.Color("238")).
+		Padding(0, 1).
+		MarginBottom(0)
+
+	queueItemSelectedStyle = lipgloss.NewStyle().
+		Foreground(lipgloss.Color("226")).
+		Background(lipgloss.Color("240")).
+		Padding(0, 1).
+		MarginBottom(0).
+		Bold(true)
+
+	queueEnumeratorStyle = lipgloss.NewStyle().
+		Foreground(lipgloss.Color("99")).
+		MarginRight(1).
+		Bold(true)
+
+	queueEnumeratorSelectedStyle = lipgloss.NewStyle().
+		Foreground(lipgloss.Color("226")).
+		MarginRight(1).
+		Bold(true)
 )
 
 // wrapText wraps text to fit within the given width
@@ -107,6 +153,51 @@ func (m model) View() string {
 		s += faint.Render("esc - back to list")
 		return s
 
+	case nowPlayingView:
+		if m.user != nil {
+			s += "Welcome, " + m.user.GetDisplayName() + "!\n\n"
+		}
+
+		// Display currently playing track
+		if m.currentlyPlaying != nil && m.currentlyPlaying.Item != nil {
+			var trackName, artistName string
+			if m.currentlyPlaying.Item.TrackObject != nil {
+				trackName = m.currentlyPlaying.Item.TrackObject.GetName()
+				if len(m.currentlyPlaying.Item.TrackObject.Artists) > 0 {
+					artistName = m.currentlyPlaying.Item.TrackObject.Artists[0].GetName()
+				}
+			} else if m.currentlyPlaying.Item.EpisodeObject != nil {
+				trackName = m.currentlyPlaying.Item.EpisodeObject.GetName()
+				artistName = m.currentlyPlaying.Item.EpisodeObject.Show.GetName()
+			}
+
+			if trackName != "" {
+				isPlaying := m.currentlyPlaying.GetIsPlaying()
+				playingStatus := "⏸️ PAUSED"
+				musicNote := "🎵"
+				if isPlaying {
+					playingStatus = "▶️ PLAYING"
+					musicNote = "🎶"
+				}
+
+				// Create the now playing content
+				nowPlayingContent := fmt.Sprintf("%s NOW %s\n\n%s %s\n%s %s", 
+					musicNote, playingStatus,
+					"♪", nowPlayingTitleStyle.Render(trackName),
+					"♫", nowPlayingArtistStyle.Render(artistName))
+				
+				nowPlayingBox := nowPlayingBoxStyle.Render(nowPlayingContent)
+				s += nowPlayingBox + "\n"
+			} else {
+				s += faint.Render("No track currently playing") + "\n\n"
+			}
+		} else {
+			s += faint.Render("No track currently playing") + "\n\n"
+		}
+
+		s += faint.Render("q - view queue • r - refresh • ctrl+c - quit")
+		return s
+
 	case listView:
 		if m.user != nil {
 			s += "Welcome, " + m.user.GetDisplayName() + "!\n\n"
@@ -127,16 +218,26 @@ func (m model) View() string {
 
 			if trackName != "" {
 				isPlaying := m.currentlyPlaying.GetIsPlaying()
-				playingStatus := "⏸️"
+				playingStatus := "⏸️ PAUSED"
+				musicNote := "🎵"
 				if isPlaying {
-					playingStatus = "▶️"
+					playingStatus = "▶️ PLAYING"
+					musicNote = "🎶"
 				}
 
-				nowPlayingText := fmt.Sprintf("🎵 Now Playing: %s %s - %s", playingStatus, trackName, artistName)
-				wrappedNowPlaying := wrapText(nowPlayingText, width)
-				s += wrappedNowPlaying + "\n\n"
+				// Create the now playing content
+				nowPlayingContent := fmt.Sprintf("%s NOW %s\n\n%s %s\n%s %s", 
+					musicNote, playingStatus,
+					"♪", nowPlayingTitleStyle.Render(trackName),
+					"♫", nowPlayingArtistStyle.Render(artistName))
+				
+				nowPlayingBox := nowPlayingBoxStyle.Render(nowPlayingContent)
+				s += nowPlayingBox + "\n"
 			}
 		}
+
+		// Queue header
+		s += queueHeaderStyle.Render("🎼 UPCOMING IN QUEUE") + "\n"
 
 		queue := m.GetQueue()
 		totalItems := len(queue)
@@ -170,10 +271,18 @@ func (m model) View() string {
 			wrappedTrack := wrapText(trackDisplay, width-2) // account for prefix
 			lines := strings.Split(wrappedTrack, "\n")
 
-			// First line gets the prefix, subsequent lines are indented
-			s += listEnumeratorStyle.Render(prefix) + lines[0] + "\n"
+			// First line gets the prefix, subsequent lines are indented (with faded styling)
+			if i == m.listIndex {
+				s += queueEnumeratorSelectedStyle.Render(prefix) + queueItemSelectedStyle.Render(lines[0]) + "\n"
+			} else {
+				s += queueEnumeratorStyle.Render(prefix) + queueItemStyle.Render(lines[0]) + "\n"
+			}
 			for j := 1; j < len(lines); j++ {
-				s += strings.Repeat(" ", 2) + faint.Render(lines[j]) + "\n"
+				if i == m.listIndex {
+					s += strings.Repeat(" ", 2) + queueItemSelectedStyle.Render(lines[j]) + "\n"
+				} else {
+					s += strings.Repeat(" ", 2) + queueItemStyle.Render(lines[j]) + "\n"
+				}
 			}
 			s += "\n"
 		}
@@ -182,7 +291,7 @@ func (m model) View() string {
 			totalPages := (totalItems + itemsPerPage - 1) / itemsPerPage
 			s += faint.Render("Page ") + faint.Render(fmt.Sprintf("%d", currentPage+1)) + faint.Render(" of ") + faint.Render(fmt.Sprintf("%d", totalPages)) + "\n"
 		}
-		s += faint.Render("↑↓/kj - navigate • ←→/hl - page • r - refresh • q - quit")
+		s += faint.Render("↑↓/kj - navigate • ←→/hl - page • b - back to now playing • r - refresh • q - quit")
 	}
 
 	return s

@@ -21,6 +21,7 @@ const (
 	authURLView
 	authCodeView
 	authLoadingView
+	nowPlayingView
 	listView
 	titleView
 	bodyView
@@ -101,7 +102,7 @@ func NewAuthenticatedModel(user *spotify.PrivateUserObject, client *sw.SpotifyCl
 	}
 
 	return model{
-		state:            listView,
+		state:            nowPlayingView,
 		user:             user,
 		client:           client,
 		ctx:              ctx,
@@ -229,7 +230,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 		m.currentlyPlaying = currentlyPlaying
 		
-		m.state = listView
+		m.state = nowPlayingView
 		return m, nil
 
 	case authErrorMsg:
@@ -275,11 +276,30 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				return m, tea.Quit
 			}
 
+		// Now Playing View key bindings
+		case nowPlayingView:
+			switch key {
+			case "q":
+				m.state = listView
+			case "r":
+				// Refresh currently playing info
+				currentlyPlaying, _, err := m.client.GetCurrentlyPlaying(m.ctx)
+				if err != nil {
+					log.Printf("Warning: Could not refresh currently playing track: %v", err)
+				} else {
+					m.currentlyPlaying = currentlyPlaying
+				}
+			case "ctrl+c":
+				return m, tea.Quit
+			}
+
 		// List View key bindings
 		case listView:
 			switch key {
-			case "q":
+			case "q", "ctrl+c":
 				return m, tea.Quit
+			case "b":
+				m.state = nowPlayingView
 			case "up", "k":
 				if m.listIndex > 0 {
 					m.listIndex--
@@ -304,6 +324,14 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 					if m.listIndex >= totalItems {
 						m.listIndex = totalItems - 1
 					}
+				}
+			case "r":
+				// Refresh queue info
+				q, res, err := m.client.GetQueue(m.ctx)
+				if err != nil {
+					log.Printf("Warning: Could not refresh queue: %v", err)
+				} else if res.StatusCode == http.StatusOK {
+					m.QueueObject = q
 				}
 			}
 
