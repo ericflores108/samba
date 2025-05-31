@@ -2,7 +2,11 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"net"
+	"net/http"
+	"time"
 
 	"github.com/charmbracelet/bubbles/textarea"
 	"github.com/charmbracelet/bubbles/textinput"
@@ -12,48 +16,163 @@ import (
 )
 
 const (
-	listView uint = iota
+	authWelcomeView uint = iota
+	authURLView
+	authCodeView
+	authLoadingView
+	listView
 	titleView
 	bodyView
+	itemsPerPage = 10
 )
+
+type authURLMsg struct {
+	URL   string
+	State string
+}
+
+type authCodeMsg struct {
+	Code  string
+	State string
+}
+
+type authSuccessMsg struct {
+	User *spotify.PrivateUserObject
+}
+
+type authErrorMsg struct {
+	Error string
+}
 
 type model struct {
 	state     uint
 	user      *spotify.PrivateUserObject
-	client    *spotify.APIClient
+	client    *spotify.SpotifyClient
 	ctx       context.Context
-	tracks    []spotify.SavedTrackObject
-	currTrack spotify.SavedTrackObject
 	listIndex int
 	textarea  textarea.Model
 	textinput textinput.Model
+	authURL   string
+	authState string
+	authCode  string
+	errorMsg  string
+	server    *http.Server
+	*spotify.QueueObject
 }
 
-func NewModel(user *spotify.PrivateUserObject, client *spotify.APIClient, ctx context.Context) model {
+func NewModel(client *spotify.SpotifyClient, ctx context.Context) model {
+	ti := textinput.New()
+	ti.Placeholder = "Enter authorization code here..."
+	ti.Focus()
+	ti.CharLimit = 500
+	ti.Width = 60
+
+	return model{
+		state:     authWelcomeView,
+		client:    client,
+		ctx:       ctx,
+		textarea:  textarea.New(),
+		textinput: ti,
+	}
+}
+
+func NewAuthenticatedModel(user *spotify.PrivateUserObject, client *spotify.SpotifyClient, ctx context.Context) model {
 	// Get user's saved tracks
-	tracksResp, _, err := client.LibraryAPI.GetUsersSavedTracks(ctx).Execute()
+	q, res, err := client.GetQueue(ctx)
 	if err != nil {
-		log.Fatalf("Failed to get saved tracks: %v", err)
+		log.Fatalf("client.PlayerAPI.GetQueueExecute: %v", err)
 	}
 
-	tracks := []spotify.SavedTrackObject{}
-	if tracksResp != nil && tracksResp.Items != nil {
-		tracks = *tracksResp.Items
+	if res.StatusCode != http.StatusOK {
+		log.Fatalf("client.PlayerAPI.GetQueueExecute: %d", res.StatusCode)
 	}
 
 	return model{
-		state:     listView,
-		user:      user,
-		client:    client,
-		ctx:       ctx,
-		tracks:    tracks,
-		textarea:  textarea.New(),
-		textinput: textinput.New(),
+		state:       listView,
+		user:        user,
+		client:      client,
+		ctx:         ctx,
+		textarea:    textarea.New(),
+		textinput:   textinput.New(),
+		QueueObject: q,
 	}
 }
 
 func (m model) Init() tea.Cmd {
+	if m.state == authWelcomeView {
+		return generateAuthURL(m.client)
+	}
 	return nil
+}
+
+func generateAuthURL(client *spotify.SpotifyClient) tea.Cmd {
+	return func() tea.Msg {
+		authURL, state, err := client.GetAuthURL()
+		if err != nil {
+			return authErrorMsg{Error: fmt.Sprintf("Failed to generate auth URL: %v", err)}
+		}
+		return authURLMsg{URL: authURL, State: state}
+	}
+}
+
+func startCallbackServer() tea.Cmd {
+	return func() tea.Msg {
+		listener, err := net.Listen("tcp", ":8080")
+		if err != nil {
+			return authErrorMsg{Error: fmt.Sprintf("Failed to start callback server: %v", err)}
+		}
+
+		codeChan := make(chan string, 1)
+		stateChan := make(chan string, 1)
+
+		mux := http.NewServeMux()
+		mux.HandleFunc("/callback", func(w http.ResponseWriter, r *http.Request) {
+			code := r.URL.Query().Get("code")
+			state := r.URL.Query().Get("state")
+			
+			if code != "" {
+				codeChan <- code
+				stateChan <- state
+				w.WriteHeader(http.StatusOK)
+				w.Write([]byte("Authorization successful! You can close this window and return to the terminal."))
+			} else {
+				w.WriteHeader(http.StatusBadRequest)
+				w.Write([]byte("Authorization failed: no code received"))
+			}
+		})
+
+		server := &http.Server{Handler: mux}
+		go func() {
+			server.Serve(listener)
+		}()
+
+		// Wait for the code with a timeout
+		select {
+		case code := <-codeChan:
+			state := <-stateChan
+			server.Shutdown(context.Background())
+			return authCodeMsg{Code: code, State: state}
+		case <-time.After(5 * time.Minute):
+			server.Shutdown(context.Background())
+			return authErrorMsg{Error: "Authorization timeout - please try again"}
+		}
+	}
+}
+
+func exchangeCodeForToken(client *spotify.SpotifyClient, code, state string) tea.Cmd {
+	return func() tea.Msg {
+		if err := client.ExchangeCodeForToken(code, state); err != nil {
+			return authErrorMsg{Error: fmt.Sprintf("Failed to exchange code for token: %v", err)}
+		}
+
+		// Get user profile to verify authentication
+		user, _, err := client.GetCurrentUserProfile(context.Background())
+		if err != nil {
+			return authErrorMsg{Error: fmt.Sprintf("Failed to get user profile: %v", err)}
+		}
+
+		return authSuccessMsg{User: user}
+	}
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -62,57 +181,122 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		cmd  tea.Cmd
 	)
 
-	m.textarea, cmd = m.textarea.Update(msg)
-	cmds = append(cmds, cmd)
-
-	m.textinput, cmd = m.textinput.Update(msg)
-	cmds = append(cmds, cmd)
-
 	switch msg := msg.(type) {
-	// handle key strokes
+	case authURLMsg:
+		m.authURL = msg.URL
+		m.authState = msg.State
+		m.state = authURLView
+		return m, startCallbackServer()
+
+	case authCodeMsg:
+		m.authCode = msg.Code
+		m.state = authLoadingView
+		return m, exchangeCodeForToken(m.client, msg.Code, msg.State)
+
+	case authSuccessMsg:
+		m.user = msg.User
+		// Get user's queue and transition to main app
+		q, res, err := m.client.GetQueue(m.ctx)
+		if err != nil {
+			m.errorMsg = fmt.Sprintf("Failed to get queue: %v", err)
+			return m, nil
+		}
+		if res.StatusCode != http.StatusOK {
+			m.errorMsg = fmt.Sprintf("Failed to get queue: status %d", res.StatusCode)
+			return m, nil
+		}
+		m.QueueObject = q
+		m.state = listView
+		return m, nil
+
+	case authErrorMsg:
+		m.errorMsg = msg.Error
+		return m, nil
+
 	case tea.KeyMsg:
 		key := msg.String()
 		switch m.state {
+		case authWelcomeView:
+			switch key {
+			case "q", "ctrl+c":
+				return m, tea.Quit
+			case "enter", " ":
+				return m, generateAuthURL(m.client)
+			}
+
+		case authURLView:
+			switch key {
+			case "q", "ctrl+c":
+				return m, tea.Quit
+			case "r":
+				return m, generateAuthURL(m.client)
+			}
+
+		case authCodeView:
+			m.textinput, cmd = m.textinput.Update(msg)
+			cmds = append(cmds, cmd)
+			switch key {
+			case "q", "ctrl+c":
+				return m, tea.Quit
+			case "enter":
+				if m.textinput.Value() != "" {
+					return m, exchangeCodeForToken(m.client, m.textinput.Value(), m.authState)
+				}
+			case "esc":
+				m.state = authURLView
+			}
+
+		case authLoadingView:
+			switch key {
+			case "q", "ctrl+c":
+				return m, tea.Quit
+			}
+
 		// List View key bindings
 		case listView:
 			switch key {
 			case "q":
 				return m, tea.Quit
-			case "r":
-				// Refresh tracks
-				tracksResp, _, err := m.client.LibraryAPI.GetUsersSavedTracks(m.ctx).Execute()
-				if err == nil && tracksResp != nil && tracksResp.Items != nil {
-					m.tracks = *tracksResp.Items
-				}
 			case "up", "k":
 				if m.listIndex > 0 {
 					m.listIndex--
 				}
 			case "down", "j":
-				if m.listIndex < len(m.tracks)-1 {
+				if m.listIndex < len(m.QueueObject.GetQueue())-1 {
 					m.listIndex++
 				}
-			case "enter":
-				if len(m.tracks) > 0 {
-					m.currTrack = m.tracks[m.listIndex]
-					m.state = bodyView
-					trackInfo := "Track: " + m.currTrack.Track.GetName() + "\n"
-					if len(m.currTrack.Track.Artists) > 0 {
-						trackInfo += "Artist: " + m.currTrack.Track.Artists[0].GetName() + "\n"
+			case "left", "h":
+				// Go to previous page
+				currentPage := m.listIndex / itemsPerPage
+				if currentPage > 0 {
+					m.listIndex = (currentPage - 1) * itemsPerPage
+				}
+			case "right", "l":
+				// Go to next page
+				totalItems := len(m.QueueObject.GetQueue())
+				currentPage := m.listIndex / itemsPerPage
+				totalPages := (totalItems + itemsPerPage - 1) / itemsPerPage
+				if currentPage < totalPages-1 {
+					m.listIndex = (currentPage + 1) * itemsPerPage
+					if m.listIndex >= totalItems {
+						m.listIndex = totalItems - 1
 					}
-					if m.currTrack.Track.Album != nil {
-						trackInfo += "Album: " + m.currTrack.Track.Album.GetName() + "\n"
-					}
-					m.textarea.SetValue(trackInfo)
-					m.textarea.Focus()
-					m.textarea.CursorEnd()
 				}
 			}
 
-		// No title view needed for Spotify tracks
+		// Title Input View key bindings
+		case titleView:
+			m.textinput, cmd = m.textinput.Update(msg)
+			cmds = append(cmds, cmd)
+			switch key {
+			case "esc":
+				m.state = listView
+			}
 
-		// Track info view key bindings
+		// Body Textarea key bindings
 		case bodyView:
+			m.textarea, cmd = m.textarea.Update(msg)
+			cmds = append(cmds, cmd)
 			switch key {
 			case "esc":
 				m.state = listView

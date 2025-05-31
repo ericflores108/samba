@@ -2,58 +2,77 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/joho/godotenv"
 	"golang.org/x/oauth2"
 
 	spotify "github.com/ericflores108/samba/pkg/spotify"
 )
 
 func main() {
-	// Setup OAuth2 configuration
-	config := &oauth2.Config{
-		ClientID:     os.Getenv("SPOTIFY_CLIENT_ID"),
-		ClientSecret: os.Getenv("SPOTIFY_CLIENT_SECRET"),
-		RedirectURL:  "http://localhost:8080/callback",
-		Scopes:       []string{"user-read-private", "user-read-email", "user-library-read"},
-		Endpoint: oauth2.Endpoint{
-			AuthURL:  "https://accounts.spotify.com/authorize",
-			TokenURL: "https://accounts.spotify.com/api/token",
-		},
+	// Load environment variables from .env file if not in production
+	if os.Getenv("GO_ENV") != "production" {
+		if err := godotenv.Load(); err != nil {
+			log.Println("No .env file found, using system environment variables")
+		}
 	}
 
-	if config.ClientID == "" || config.ClientSecret == "" {
+	clientID := os.Getenv("SPOTIFY_CLIENT_ID")
+	clientSecret := os.Getenv("SPOTIFY_CLIENT_SECRET")
+	redirectURL := "http://127.0.0.1:8080/callback"
+	scopes := []string{"user-read-playback-state", "user-read-currently-playing", "user-modify-playback-state", "user-read-private", "user-read-email"}
+
+	if clientID == "" || clientSecret == "" {
 		log.Fatal("Please set SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET environment variables")
 	}
 
-	// Get access token (this is a simplified version - in a real app you'd handle the OAuth flow properly)
-	token := &oauth2.Token{
-		AccessToken: os.Getenv("SPOTIFY_ACCESS_TOKEN"),
-		TokenType:   "Bearer",
-	}
-
-	if token.AccessToken == "" {
-		fmt.Println("Please set SPOTIFY_ACCESS_TOKEN environment variable")
-		fmt.Println("You can get one from: https://developer.spotify.com/console/get-current-user/")
-		os.Exit(1)
-	}
-
-	// Create Spotify API client
-	ctx := context.WithValue(context.Background(), spotify.ContextOAuth2, oauth2.StaticTokenSource(token))
-	cfg := spotify.NewConfiguration()
-	client := spotify.NewAPIClient(cfg)
-
-	// Get current user
-	user, _, err := client.UsersAPI.GetCurrentUsersProfile(ctx).Execute()
+	// Create Spotify client with OAuth wrapper
+	spotifyClient, err := spotify.NewClient(clientID, clientSecret, redirectURL, scopes)
 	if err != nil {
-		log.Fatalf("Failed to get current user: %v", err)
+		log.Fatalf("Failed to create Spotify client: %v", err)
 	}
 
-	m := NewModel(user, client, ctx)
+	ctx := context.Background()
 
+	// Check if we have a stored access token
+	accessToken := os.Getenv("SPOTIFY_ACCESS_TOKEN")
+	refreshToken := os.Getenv("SPOTIFY_REFRESH_TOKEN")
+	if accessToken != "" {
+		// Use existing token
+		token := &oauth2.Token{
+			AccessToken:  accessToken,
+			TokenType:    "Bearer",
+			RefreshToken: refreshToken,
+		}
+		spotifyClient.SetToken(token)
+
+		// Verify token works by getting user profile
+		user, _, err := spotifyClient.GetCurrentUserProfile(ctx)
+		if err != nil {
+			log.Printf("Failed to get user profile: %v", err)
+			// Token might be invalid, start interactive auth
+			m := NewModel(spotifyClient, ctx)
+			p := tea.NewProgram(m)
+			if _, err := p.Run(); err != nil {
+				log.Fatalf("p.Run: %v", err)
+			}
+			return
+		}
+
+		// Token works, go directly to main app
+		m := NewAuthenticatedModel(user, spotifyClient, ctx)
+		p := tea.NewProgram(m)
+		if _, err := p.Run(); err != nil {
+			log.Fatalf("p.Run: %v", err)
+		}
+		return
+	}
+
+	// No token available, start interactive auth flow
+	m := NewModel(spotifyClient, ctx)
 	p := tea.NewProgram(m)
 	if _, err := p.Run(); err != nil {
 		log.Fatalf("p.Run: %v", err)
