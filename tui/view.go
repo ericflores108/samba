@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strings"
 
 	"github.com/charmbracelet/lipgloss"
+	"golang.org/x/term"
 )
 
 var (
@@ -12,9 +15,51 @@ var (
 	faint = lipgloss.NewStyle().Foreground(lipgloss.Color("255")).Faint(true)
 
 	listEnumeratorStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("99")).MarginRight(1)
+
+	linkStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("12")).Underline(true)
 )
 
+// wrapText wraps text to fit within the given width
+func wrapText(text string, width int) string {
+	if width <= 0 {
+		width = 80 // default width
+	}
+
+	words := strings.Fields(text)
+	if len(words) == 0 {
+		return text
+	}
+
+	var lines []string
+	currentLine := ""
+
+	for _, word := range words {
+		if len(currentLine) == 0 {
+			currentLine = word
+		} else if len(currentLine)+1+len(word) <= width {
+			currentLine += " " + word
+		} else {
+			lines = append(lines, currentLine)
+			currentLine = word
+		}
+	}
+
+	if len(currentLine) > 0 {
+		lines = append(lines, currentLine)
+	}
+
+	return strings.Join(lines, "\n")
+}
+
 func (m model) View() string {
+	// Get terminal width for text wrapping
+	width := 80 // default width
+	if fd := int(os.Stdout.Fd()); term.IsTerminal(fd) {
+		if termWidth, _, err := term.GetSize(fd); err == nil {
+			width = termWidth - 2 // leave minimal margin
+		}
+	}
+
 	s := appNameStyle.Render("SAMBA TUI") + "\n\n"
 
 	// Show error message if present
@@ -32,10 +77,14 @@ func (m model) View() string {
 
 	case authURLView:
 		s += "🔐 Spotify Authentication\n\n"
-		s += "Please open this URL in your browser to authorize the application:\n\n"
-		s += lipgloss.NewStyle().Foreground(lipgloss.Color("12")).Render(m.authURL) + "\n\n"
-		s += "The callback server is running on http://127.0.0.1:8080/callback\n"
-		s += "After authorization, you'll be redirected automatically.\n\n"
+		s += wrapText("Please open this URL in your browser to authorize the application:", width) + "\n\n"
+
+		// Make the URL clickable and wrap it
+		wrappedURL := wrapText(m.authURL, width)
+		s += linkStyle.Render(wrappedURL) + "\n\n"
+
+		s += wrapText("The callback server is running on http://127.0.0.1:8080/callback", width) + "\n"
+		s += wrapText("After authorization, you'll be redirected automatically.", width) + "\n\n"
 		s += faint.Render("r - regenerate URL • q - quit")
 		return s
 
@@ -75,15 +124,17 @@ func (m model) View() string {
 				trackName = m.currentlyPlaying.Item.EpisodeObject.GetName()
 				artistName = m.currentlyPlaying.Item.EpisodeObject.Show.GetName()
 			}
-			
+
 			if trackName != "" {
 				isPlaying := m.currentlyPlaying.GetIsPlaying()
 				playingStatus := "⏸️"
 				if isPlaying {
 					playingStatus = "▶️"
 				}
-				
-				s += fmt.Sprintf("🎵 Now Playing: %s %s - %s\n\n", playingStatus, trackName, faint.Render(artistName))
+
+				nowPlayingText := fmt.Sprintf("🎵 Now Playing: %s %s - %s", playingStatus, trackName, artistName)
+				wrappedNowPlaying := wrapText(nowPlayingText, width)
+				s += wrappedNowPlaying + "\n\n"
 			}
 		}
 
@@ -114,7 +165,17 @@ func (m model) View() string {
 				artistName = item.EpisodeObject.Show.GetName()
 			}
 
-			s += listEnumeratorStyle.Render(prefix) + itemName + " | " + faint.Render(artistName) + "\n\n"
+			// Wrap long track names and artist names
+			trackDisplay := itemName + " | " + artistName
+			wrappedTrack := wrapText(trackDisplay, width-2) // account for prefix
+			lines := strings.Split(wrappedTrack, "\n")
+
+			// First line gets the prefix, subsequent lines are indented
+			s += listEnumeratorStyle.Render(prefix) + lines[0] + "\n"
+			for j := 1; j < len(lines); j++ {
+				s += strings.Repeat(" ", 2) + faint.Render(lines[j]) + "\n"
+			}
+			s += "\n"
 		}
 
 		if totalItems > itemsPerPage {
