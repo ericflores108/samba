@@ -177,8 +177,8 @@ import (
 func main() {
 	id := "4aawyAB9vmqN3uQ7FjRGTy" // string | 
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -209,8 +209,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -254,8 +254,8 @@ func main() {
 	id := "0TnOYISbd1XYRBk9myaseg" // string | 
 	includeGroups := "single,appears_on" // string |  (optional)
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 
  **includeGroups** | **string** |  | 
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -397,8 +397,8 @@ import (
 )
 
 func main() {
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -423,8 +423,8 @@ Other parameters are passed through a pointer to a apiGetNewReleasesRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -465,8 +465,8 @@ import (
 )
 
 func main() {
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 	market := "ES" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -492,8 +492,8 @@ Other parameters are passed through a pointer to a apiGetUsersSavedAlbumsRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
  **market** | **string** |  | 
 
 ### Return type

@@ -22,13 +22,13 @@ Name | Type | Description | Notes
 **Publisher** | **string** | The publisher of the audiobook.  | 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.  | 
-**TotalChapters** | **int32** | The number of chapters in this audiobook.  | 
+**TotalChapters** | **int64** | The number of chapters in this audiobook.  | 
 
 ## Methods
 
 ### NewAudiobookBase
 
-`func NewAudiobookBase(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int32, ) *AudiobookBase`
+`func NewAudiobookBase(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int64, ) *AudiobookBase`
 
 NewAudiobookBase instantiates a new AudiobookBase object
 This constructor will assign default values to properties that have it defined,
@@ -410,20 +410,20 @@ SetUri sets Uri field to given value.
 
 ### GetTotalChapters
 
-`func (o *AudiobookBase) GetTotalChapters() int32`
+`func (o *AudiobookBase) GetTotalChapters() int64`
 
 GetTotalChapters returns the TotalChapters field if non-nil, zero value otherwise.
 
 ### GetTotalChaptersOk
 
-`func (o *AudiobookBase) GetTotalChaptersOk() (*int32, bool)`
+`func (o *AudiobookBase) GetTotalChaptersOk() (*int64, bool)`
 
 GetTotalChaptersOk returns a tuple with the TotalChapters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalChapters
 
-`func (o *AudiobookBase) SetTotalChapters(v int32)`
+`func (o *AudiobookBase) SetTotalChapters(v int64)`
 
 SetTotalChapters sets TotalChapters field to given value.
 

@@ -24,15 +24,15 @@ type PagingPlaylistObject struct {
 	// A link to the Web API endpoint returning the full result of the request 
 	Href string `json:"href"`
 	// The maximum number of items in the response (as set in the query or by default). 
-	Limit int32 `json:"limit"`
+	Limit int64 `json:"limit"`
 	// URL to the next page of items. ( `null` if none) 
 	Next NullableString `json:"next"`
 	// The offset of the items returned (as set in the query or by default) 
-	Offset int32 `json:"offset"`
+	Offset int64 `json:"offset"`
 	// URL to the previous page of items. ( `null` if none) 
 	Previous NullableString `json:"previous"`
 	// The total number of items available to return. 
-	Total int32 `json:"total"`
+	Total int64 `json:"total"`
 	Items []SimplifiedPlaylistObject `json:"items"`
 }
 
@@ -42,7 +42,7 @@ type _PagingPlaylistObject PagingPlaylistObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPagingPlaylistObject(href string, limit int32, next NullableString, offset int32, previous NullableString, total int32, items []SimplifiedPlaylistObject) *PagingPlaylistObject {
+func NewPagingPlaylistObject(href string, limit int64, next NullableString, offset int64, previous NullableString, total int64, items []SimplifiedPlaylistObject) *PagingPlaylistObject {
 	this := PagingPlaylistObject{}
 	this.Href = href
 	this.Limit = limit
@@ -87,9 +87,9 @@ func (o *PagingPlaylistObject) SetHref(v string) {
 }
 
 // GetLimit returns the Limit field value
-func (o *PagingPlaylistObject) GetLimit() int32 {
+func (o *PagingPlaylistObject) GetLimit() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -98,7 +98,7 @@ func (o *PagingPlaylistObject) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *PagingPlaylistObject) GetLimitOk() (*int32, bool) {
+func (o *PagingPlaylistObject) GetLimitOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -106,7 +106,7 @@ func (o *PagingPlaylistObject) GetLimitOk() (*int32, bool) {
 }
 
 // SetLimit sets field value
-func (o *PagingPlaylistObject) SetLimit(v int32) {
+func (o *PagingPlaylistObject) SetLimit(v int64) {
 	o.Limit = v
 }
 
@@ -137,9 +137,9 @@ func (o *PagingPlaylistObject) SetNext(v string) {
 }
 
 // GetOffset returns the Offset field value
-func (o *PagingPlaylistObject) GetOffset() int32 {
+func (o *PagingPlaylistObject) GetOffset() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -148,7 +148,7 @@ func (o *PagingPlaylistObject) GetOffset() int32 {
 
 // GetOffsetOk returns a tuple with the Offset field value
 // and a boolean to check if the value has been set.
-func (o *PagingPlaylistObject) GetOffsetOk() (*int32, bool) {
+func (o *PagingPlaylistObject) GetOffsetOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *PagingPlaylistObject) GetOffsetOk() (*int32, bool) {
 }
 
 // SetOffset sets field value
-func (o *PagingPlaylistObject) SetOffset(v int32) {
+func (o *PagingPlaylistObject) SetOffset(v int64) {
 	o.Offset = v
 }
 
@@ -187,9 +187,9 @@ func (o *PagingPlaylistObject) SetPrevious(v string) {
 }
 
 // GetTotal returns the Total field value
-func (o *PagingPlaylistObject) GetTotal() int32 {
+func (o *PagingPlaylistObject) GetTotal() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -198,7 +198,7 @@ func (o *PagingPlaylistObject) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
-func (o *PagingPlaylistObject) GetTotalOk() (*int32, bool) {
+func (o *PagingPlaylistObject) GetTotalOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -206,7 +206,7 @@ func (o *PagingPlaylistObject) GetTotalOk() (*int32, bool) {
 }
 
 // SetTotal sets field value
-func (o *PagingPlaylistObject) SetTotal(v int32) {
+func (o *PagingPlaylistObject) SetTotal(v int64) {
 	o.Total = v
 }
 

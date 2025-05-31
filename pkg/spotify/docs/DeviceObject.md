@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IsRestricted** | Pointer to **bool** | Whether controlling this device is restricted. At present if this is \&quot;true\&quot; then no Web API commands will be accepted by this device. | [optional] 
 **Name** | Pointer to **string** | A human-readable name for the device. Some devices have a name that the user can configure (e.g. \\\&quot;Loudest speaker\\\&quot;) and some devices have a generic name associated with the manufacturer or device model. | [optional] 
 **Type** | Pointer to **string** | Device type, such as \&quot;computer\&quot;, \&quot;smartphone\&quot; or \&quot;speaker\&quot;. | [optional] 
-**VolumePercent** | Pointer to **NullableInt32** | The current volume in percent. | [optional] 
+**VolumePercent** | Pointer to **NullableInt64** | The current volume in percent. | [optional] 
 **SupportsVolume** | Pointer to **bool** | If this device can be used to set the volume. | [optional] 
 
 ## Methods
@@ -194,20 +194,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetVolumePercent
 
-`func (o *DeviceObject) GetVolumePercent() int32`
+`func (o *DeviceObject) GetVolumePercent() int64`
 
 GetVolumePercent returns the VolumePercent field if non-nil, zero value otherwise.
 
 ### GetVolumePercentOk
 
-`func (o *DeviceObject) GetVolumePercentOk() (*int32, bool)`
+`func (o *DeviceObject) GetVolumePercentOk() (*int64, bool)`
 
 GetVolumePercentOk returns a tuple with the VolumePercent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVolumePercent
 
-`func (o *DeviceObject) SetVolumePercent(v int32)`
+`func (o *DeviceObject) SetVolumePercent(v int64)`
 
 SetVolumePercent sets VolumePercent field to given value.
 

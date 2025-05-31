@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AfterFilteringSize** | Pointer to **int32** | The number of tracks available after min\\_\\* and max\\_\\* filters have been applied.  | [optional] 
-**AfterRelinkingSize** | Pointer to **int32** | The number of tracks available after relinking for regional availability.  | [optional] 
+**AfterFilteringSize** | Pointer to **int64** | The number of tracks available after min\\_\\* and max\\_\\* filters have been applied.  | [optional] 
+**AfterRelinkingSize** | Pointer to **int64** | The number of tracks available after relinking for regional availability.  | [optional] 
 **Href** | Pointer to **string** | A link to the full track or artist data for this seed. For tracks this will be a link to a Track Object. For artists a link to an Artist Object. For genre seeds, this value will be &#x60;null&#x60;.  | [optional] 
 **Id** | Pointer to **string** | The id used to select this seed. This will be the same as the string used in the &#x60;seed_artists&#x60;, &#x60;seed_tracks&#x60; or &#x60;seed_genres&#x60; parameter.  | [optional] 
-**InitialPoolSize** | Pointer to **int32** | The number of recommended tracks available for this seed.  | [optional] 
+**InitialPoolSize** | Pointer to **int64** | The number of recommended tracks available for this seed.  | [optional] 
 **Type** | Pointer to **string** | The entity type of this seed. One of &#x60;artist&#x60;, &#x60;track&#x60; or &#x60;genre&#x60;.  | [optional] 
 
 ## Methods
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAfterFilteringSize
 
-`func (o *RecommendationSeedObject) GetAfterFilteringSize() int32`
+`func (o *RecommendationSeedObject) GetAfterFilteringSize() int64`
 
 GetAfterFilteringSize returns the AfterFilteringSize field if non-nil, zero value otherwise.
 
 ### GetAfterFilteringSizeOk
 
-`func (o *RecommendationSeedObject) GetAfterFilteringSizeOk() (*int32, bool)`
+`func (o *RecommendationSeedObject) GetAfterFilteringSizeOk() (*int64, bool)`
 
 GetAfterFilteringSizeOk returns a tuple with the AfterFilteringSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAfterFilteringSize
 
-`func (o *RecommendationSeedObject) SetAfterFilteringSize(v int32)`
+`func (o *RecommendationSeedObject) SetAfterFilteringSize(v int64)`
 
 SetAfterFilteringSize sets AfterFilteringSize field to given value.
 
@@ -57,20 +57,20 @@ HasAfterFilteringSize returns a boolean if a field has been set.
 
 ### GetAfterRelinkingSize
 
-`func (o *RecommendationSeedObject) GetAfterRelinkingSize() int32`
+`func (o *RecommendationSeedObject) GetAfterRelinkingSize() int64`
 
 GetAfterRelinkingSize returns the AfterRelinkingSize field if non-nil, zero value otherwise.
 
 ### GetAfterRelinkingSizeOk
 
-`func (o *RecommendationSeedObject) GetAfterRelinkingSizeOk() (*int32, bool)`
+`func (o *RecommendationSeedObject) GetAfterRelinkingSizeOk() (*int64, bool)`
 
 GetAfterRelinkingSizeOk returns a tuple with the AfterRelinkingSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAfterRelinkingSize
 
-`func (o *RecommendationSeedObject) SetAfterRelinkingSize(v int32)`
+`func (o *RecommendationSeedObject) SetAfterRelinkingSize(v int64)`
 
 SetAfterRelinkingSize sets AfterRelinkingSize field to given value.
 
@@ -132,20 +132,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetInitialPoolSize
 
-`func (o *RecommendationSeedObject) GetInitialPoolSize() int32`
+`func (o *RecommendationSeedObject) GetInitialPoolSize() int64`
 
 GetInitialPoolSize returns the InitialPoolSize field if non-nil, zero value otherwise.
 
 ### GetInitialPoolSizeOk
 
-`func (o *RecommendationSeedObject) GetInitialPoolSizeOk() (*int32, bool)`
+`func (o *RecommendationSeedObject) GetInitialPoolSizeOk() (*int64, bool)`
 
 GetInitialPoolSizeOk returns a tuple with the InitialPoolSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInitialPoolSize
 
-`func (o *RecommendationSeedObject) SetInitialPoolSize(v int32)`
+`func (o *RecommendationSeedObject) SetInitialPoolSize(v int64)`
 
 SetInitialPoolSize sets InitialPoolSize field to given value.
 

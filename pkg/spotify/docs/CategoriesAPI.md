@@ -32,8 +32,8 @@ import (
 
 func main() {
 	categoryId := "dinner" // string | 
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -63,8 +63,8 @@ Other parameters are passed through a pointer to a apiGetACategoriesPlaylistsReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -178,8 +178,8 @@ import (
 
 func main() {
 	locale := "sv_SE" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -205,8 +205,8 @@ Other parameters are passed through a pointer to a apiGetCategoriesRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locale** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 

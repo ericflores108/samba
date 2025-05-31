@@ -22,7 +22,7 @@ type AddTracksToPlaylistRequest struct {
 	// A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For example: `{\"uris\": [\"spotify:track:4iV5W9uYEdYUVa79Axb7Rh\",\"spotify:track:1301WleyT98MSxVHPZCA6M\", \"spotify:episode:512ojhOuo1ktJprKbVcKyQ\"]}`<br/>A maximum of 100 items can be added in one request. _**Note**: if the `uris` parameter is present in the query string, any URIs listed here in the body will be ignored._ 
 	Uris []string `json:"uris,omitempty"`
 	// The position to insert the items, a zero-based index. For example, to insert the items in the first position: `position=0` ; to insert the items in the third position: `position=2`. If omitted, the items will be appended to the playlist. Items are added in the order they appear in the uris array. For example: `{\"uris\": [\"spotify:track:4iV5W9uYEdYUVa79Axb7Rh\",\"spotify:track:1301WleyT98MSxVHPZCA6M\"], \"position\": 3}` 
-	Position *int32 `json:"position,omitempty"`
+	Position *int64 `json:"position,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,9 +78,9 @@ func (o *AddTracksToPlaylistRequest) SetUris(v []string) {
 }
 
 // GetPosition returns the Position field value if set, zero value otherwise.
-func (o *AddTracksToPlaylistRequest) GetPosition() int32 {
+func (o *AddTracksToPlaylistRequest) GetPosition() int64 {
 	if o == nil || IsNil(o.Position) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Position
@@ -88,7 +88,7 @@ func (o *AddTracksToPlaylistRequest) GetPosition() int32 {
 
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddTracksToPlaylistRequest) GetPositionOk() (*int32, bool) {
+func (o *AddTracksToPlaylistRequest) GetPositionOk() (*int64, bool) {
 	if o == nil || IsNil(o.Position) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *AddTracksToPlaylistRequest) HasPosition() bool {
 	return false
 }
 
-// SetPosition gets a reference to the given int32 and assigns it to the Position field.
-func (o *AddTracksToPlaylistRequest) SetPosition(v int32) {
+// SetPosition gets a reference to the given int64 and assigns it to the Position field.
+func (o *AddTracksToPlaylistRequest) SetPosition(v int64) {
 	o.Position = &v
 }
 

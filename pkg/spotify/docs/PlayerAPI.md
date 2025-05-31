@@ -299,9 +299,9 @@ import (
 )
 
 func main() {
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	after := int32(1484811043508) // int32 |  (optional)
-	before := int32(56) // int32 |  (optional)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	after := int64(1484811043508) // int64 |  (optional)
+	before := int64(56) // int64 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -326,9 +326,9 @@ Other parameters are passed through a pointer to a apiGetRecentlyPlayedRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 20]
- **after** | **int32** |  | 
- **before** | **int32** |  | 
+ **limit** | **int64** |  | [default to 20]
+ **after** | **int64** |  | 
+ **before** | **int64** |  | 
 
 ### Return type
 
@@ -501,7 +501,7 @@ import (
 )
 
 func main() {
-	positionMs := int32(25000) // int32 | 
+	positionMs := int64(25000) // int64 | 
 	deviceId := "0d1841b0976bae2a3a310dd74c0f3df354899bc8" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -525,7 +525,7 @@ Other parameters are passed through a pointer to a apiSeekToPositionInCurrentlyP
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **positionMs** | **int32** |  | 
+ **positionMs** | **int64** |  | 
  **deviceId** | **string** |  | 
 
 ### Return type
@@ -633,7 +633,7 @@ import (
 )
 
 func main() {
-	volumePercent := int32(50) // int32 | 
+	volumePercent := int64(50) // int64 | 
 	deviceId := "0d1841b0976bae2a3a310dd74c0f3df354899bc8" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -657,7 +657,7 @@ Other parameters are passed through a pointer to a apiSetVolumeForUsersPlaybackR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **volumePercent** | **int32** |  | 
+ **volumePercent** | **int64** |  | 
  **deviceId** | **string** |  | 
 
 ### Return type

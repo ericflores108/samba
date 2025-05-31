@@ -1739,16 +1739,16 @@ func (a *LibraryAPIService) FollowArtistsUsersExecute(r LibraryAPIFollowArtistsU
 type LibraryAPIGetAListOfCurrentUsersPlaylistsRequest struct {
 	ctx context.Context
 	ApiService LibraryAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r LibraryAPIGetAListOfCurrentUsersPlaylistsRequest) Limit(limit int32) LibraryAPIGetAListOfCurrentUsersPlaylistsRequest {
+func (r LibraryAPIGetAListOfCurrentUsersPlaylistsRequest) Limit(limit int64) LibraryAPIGetAListOfCurrentUsersPlaylistsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r LibraryAPIGetAListOfCurrentUsersPlaylistsRequest) Offset(offset int32) LibraryAPIGetAListOfCurrentUsersPlaylistsRequest {
+func (r LibraryAPIGetAListOfCurrentUsersPlaylistsRequest) Offset(offset int64) LibraryAPIGetAListOfCurrentUsersPlaylistsRequest {
 	r.offset = &offset
 	return r
 }
@@ -1798,13 +1798,13 @@ func (a *LibraryAPIService) GetAListOfCurrentUsersPlaylistsExecute(r LibraryAPIG
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1898,7 +1898,7 @@ type LibraryAPIGetFollowedRequest struct {
 	ApiService LibraryAPI
 	type_ *string
 	after *string
-	limit *int32
+	limit *int64
 }
 
 func (r LibraryAPIGetFollowedRequest) Type_(type_ string) LibraryAPIGetFollowedRequest {
@@ -1911,7 +1911,7 @@ func (r LibraryAPIGetFollowedRequest) After(after string) LibraryAPIGetFollowedR
 	return r
 }
 
-func (r LibraryAPIGetFollowedRequest) Limit(limit int32) LibraryAPIGetFollowedRequest {
+func (r LibraryAPIGetFollowedRequest) Limit(limit int64) LibraryAPIGetFollowedRequest {
 	r.limit = &limit
 	return r
 }
@@ -1967,7 +1967,7 @@ func (a *LibraryAPIService) GetFollowedExecute(r LibraryAPIGetFollowedRequest) (
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2059,17 +2059,17 @@ func (a *LibraryAPIService) GetFollowedExecute(r LibraryAPIGetFollowedRequest) (
 type LibraryAPIGetUsersSavedAlbumsRequest struct {
 	ctx context.Context
 	ApiService LibraryAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 	market *string
 }
 
-func (r LibraryAPIGetUsersSavedAlbumsRequest) Limit(limit int32) LibraryAPIGetUsersSavedAlbumsRequest {
+func (r LibraryAPIGetUsersSavedAlbumsRequest) Limit(limit int64) LibraryAPIGetUsersSavedAlbumsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r LibraryAPIGetUsersSavedAlbumsRequest) Offset(offset int32) LibraryAPIGetUsersSavedAlbumsRequest {
+func (r LibraryAPIGetUsersSavedAlbumsRequest) Offset(offset int64) LibraryAPIGetUsersSavedAlbumsRequest {
 	r.offset = &offset
 	return r
 }
@@ -2123,13 +2123,13 @@ func (a *LibraryAPIService) GetUsersSavedAlbumsExecute(r LibraryAPIGetUsersSaved
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	if r.market != nil {
@@ -2224,16 +2224,16 @@ func (a *LibraryAPIService) GetUsersSavedAlbumsExecute(r LibraryAPIGetUsersSaved
 type LibraryAPIGetUsersSavedAudiobooksRequest struct {
 	ctx context.Context
 	ApiService LibraryAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r LibraryAPIGetUsersSavedAudiobooksRequest) Limit(limit int32) LibraryAPIGetUsersSavedAudiobooksRequest {
+func (r LibraryAPIGetUsersSavedAudiobooksRequest) Limit(limit int64) LibraryAPIGetUsersSavedAudiobooksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r LibraryAPIGetUsersSavedAudiobooksRequest) Offset(offset int32) LibraryAPIGetUsersSavedAudiobooksRequest {
+func (r LibraryAPIGetUsersSavedAudiobooksRequest) Offset(offset int64) LibraryAPIGetUsersSavedAudiobooksRequest {
 	r.offset = &offset
 	return r
 }
@@ -2282,13 +2282,13 @@ func (a *LibraryAPIService) GetUsersSavedAudiobooksExecute(r LibraryAPIGetUsersS
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2381,8 +2381,8 @@ type LibraryAPIGetUsersSavedEpisodesRequest struct {
 	ctx context.Context
 	ApiService LibraryAPI
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r LibraryAPIGetUsersSavedEpisodesRequest) Market(market string) LibraryAPIGetUsersSavedEpisodesRequest {
@@ -2390,12 +2390,12 @@ func (r LibraryAPIGetUsersSavedEpisodesRequest) Market(market string) LibraryAPI
 	return r
 }
 
-func (r LibraryAPIGetUsersSavedEpisodesRequest) Limit(limit int32) LibraryAPIGetUsersSavedEpisodesRequest {
+func (r LibraryAPIGetUsersSavedEpisodesRequest) Limit(limit int64) LibraryAPIGetUsersSavedEpisodesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r LibraryAPIGetUsersSavedEpisodesRequest) Offset(offset int32) LibraryAPIGetUsersSavedEpisodesRequest {
+func (r LibraryAPIGetUsersSavedEpisodesRequest) Offset(offset int64) LibraryAPIGetUsersSavedEpisodesRequest {
 	r.offset = &offset
 	return r
 }
@@ -2448,13 +2448,13 @@ func (a *LibraryAPIService) GetUsersSavedEpisodesExecute(r LibraryAPIGetUsersSav
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2546,16 +2546,16 @@ func (a *LibraryAPIService) GetUsersSavedEpisodesExecute(r LibraryAPIGetUsersSav
 type LibraryAPIGetUsersSavedShowsRequest struct {
 	ctx context.Context
 	ApiService LibraryAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r LibraryAPIGetUsersSavedShowsRequest) Limit(limit int32) LibraryAPIGetUsersSavedShowsRequest {
+func (r LibraryAPIGetUsersSavedShowsRequest) Limit(limit int64) LibraryAPIGetUsersSavedShowsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r LibraryAPIGetUsersSavedShowsRequest) Offset(offset int32) LibraryAPIGetUsersSavedShowsRequest {
+func (r LibraryAPIGetUsersSavedShowsRequest) Offset(offset int64) LibraryAPIGetUsersSavedShowsRequest {
 	r.offset = &offset
 	return r
 }
@@ -2604,13 +2604,13 @@ func (a *LibraryAPIService) GetUsersSavedShowsExecute(r LibraryAPIGetUsersSavedS
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2704,8 +2704,8 @@ type LibraryAPIGetUsersSavedTracksRequest struct {
 	ctx context.Context
 	ApiService LibraryAPI
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r LibraryAPIGetUsersSavedTracksRequest) Market(market string) LibraryAPIGetUsersSavedTracksRequest {
@@ -2713,12 +2713,12 @@ func (r LibraryAPIGetUsersSavedTracksRequest) Market(market string) LibraryAPIGe
 	return r
 }
 
-func (r LibraryAPIGetUsersSavedTracksRequest) Limit(limit int32) LibraryAPIGetUsersSavedTracksRequest {
+func (r LibraryAPIGetUsersSavedTracksRequest) Limit(limit int64) LibraryAPIGetUsersSavedTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r LibraryAPIGetUsersSavedTracksRequest) Offset(offset int32) LibraryAPIGetUsersSavedTracksRequest {
+func (r LibraryAPIGetUsersSavedTracksRequest) Offset(offset int64) LibraryAPIGetUsersSavedTracksRequest {
 	r.offset = &offset
 	return r
 }
@@ -2770,13 +2770,13 @@ func (a *LibraryAPIService) GetUsersSavedTracksExecute(r LibraryAPIGetUsersSaved
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2870,8 +2870,8 @@ type LibraryAPIGetUsersTopArtistsAndTracksRequest struct {
 	ApiService LibraryAPI
 	type_ string
 	timeRange *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r LibraryAPIGetUsersTopArtistsAndTracksRequest) TimeRange(timeRange string) LibraryAPIGetUsersTopArtistsAndTracksRequest {
@@ -2879,12 +2879,12 @@ func (r LibraryAPIGetUsersTopArtistsAndTracksRequest) TimeRange(timeRange string
 	return r
 }
 
-func (r LibraryAPIGetUsersTopArtistsAndTracksRequest) Limit(limit int32) LibraryAPIGetUsersTopArtistsAndTracksRequest {
+func (r LibraryAPIGetUsersTopArtistsAndTracksRequest) Limit(limit int64) LibraryAPIGetUsersTopArtistsAndTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r LibraryAPIGetUsersTopArtistsAndTracksRequest) Offset(offset int32) LibraryAPIGetUsersTopArtistsAndTracksRequest {
+func (r LibraryAPIGetUsersTopArtistsAndTracksRequest) Offset(offset int64) LibraryAPIGetUsersTopArtistsAndTracksRequest {
 	r.offset = &offset
 	return r
 }
@@ -2942,13 +2942,13 @@ func (a *LibraryAPIService) GetUsersTopArtistsAndTracksExecute(r LibraryAPIGetUs
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header

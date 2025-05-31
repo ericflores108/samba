@@ -34,7 +34,7 @@ type ArtistObject struct {
 	// The name of the artist. 
 	Name *string `json:"name,omitempty"`
 	// The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist's popularity is calculated from the popularity of all the artist's tracks. 
-	Popularity *int32 `json:"popularity,omitempty"`
+	Popularity *int64 `json:"popularity,omitempty"`
 	// The object type. 
 	Type *string `json:"type,omitempty"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist. 
@@ -283,9 +283,9 @@ func (o *ArtistObject) SetName(v string) {
 }
 
 // GetPopularity returns the Popularity field value if set, zero value otherwise.
-func (o *ArtistObject) GetPopularity() int32 {
+func (o *ArtistObject) GetPopularity() int64 {
 	if o == nil || IsNil(o.Popularity) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Popularity
@@ -293,7 +293,7 @@ func (o *ArtistObject) GetPopularity() int32 {
 
 // GetPopularityOk returns a tuple with the Popularity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ArtistObject) GetPopularityOk() (*int32, bool) {
+func (o *ArtistObject) GetPopularityOk() (*int64, bool) {
 	if o == nil || IsNil(o.Popularity) {
 		return nil, false
 	}
@@ -309,8 +309,8 @@ func (o *ArtistObject) HasPopularity() bool {
 	return false
 }
 
-// SetPopularity gets a reference to the given int32 and assigns it to the Popularity field.
-func (o *ArtistObject) SetPopularity(v int32) {
+// SetPopularity gets a reference to the given int64 and assigns it to the Popularity field.
+func (o *ArtistObject) SetPopularity(v int64) {
 	o.Popularity = &v
 }
 

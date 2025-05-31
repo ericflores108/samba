@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AudioPreviewUrl** | **NullableString** | A URL to a 30 second preview (MP3 format) of the episode. &#x60;null&#x60; if not available.  | 
 **Description** | **string** | A description of the episode. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
 **HtmlDescription** | **string** | A description of the episode. This field may contain HTML tags.  | 
-**DurationMs** | **int32** | The episode length in milliseconds.  | 
+**DurationMs** | **int64** | The episode length in milliseconds.  | 
 **Explicit** | **bool** | Whether or not the episode has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
 **ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this episode.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the episode.  | 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewSimplifiedEpisodeObject
 
-`func NewSimplifiedEpisodeObject(audioPreviewUrl NullableString, description string, htmlDescription string, durationMs int32, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *SimplifiedEpisodeObject`
+`func NewSimplifiedEpisodeObject(audioPreviewUrl NullableString, description string, htmlDescription string, durationMs int64, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *SimplifiedEpisodeObject`
 
 NewSimplifiedEpisodeObject instantiates a new SimplifiedEpisodeObject object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetHtmlDescription sets HtmlDescription field to given value.
 
 ### GetDurationMs
 
-`func (o *SimplifiedEpisodeObject) GetDurationMs() int32`
+`func (o *SimplifiedEpisodeObject) GetDurationMs() int64`
 
 GetDurationMs returns the DurationMs field if non-nil, zero value otherwise.
 
 ### GetDurationMsOk
 
-`func (o *SimplifiedEpisodeObject) GetDurationMsOk() (*int32, bool)`
+`func (o *SimplifiedEpisodeObject) GetDurationMsOk() (*int64, bool)`
 
 GetDurationMsOk returns a tuple with the DurationMs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDurationMs
 
-`func (o *SimplifiedEpisodeObject) SetDurationMs(v int32)`
+`func (o *SimplifiedEpisodeObject) SetDurationMs(v int64)`
 
 SetDurationMs sets DurationMs field to given value.
 

@@ -26,9 +26,9 @@ type AudioAnalysisObjectMeta struct {
 	// A detailed status code for this track. If analysis data is missing, this code may explain why.
 	DetailedStatus *string `json:"detailed_status,omitempty"`
 	// The return code of the analyzer process. 0 if successful, 1 if any errors occurred.
-	StatusCode *int32 `json:"status_code,omitempty"`
+	StatusCode *int64 `json:"status_code,omitempty"`
 	// The Unix timestamp (in seconds) at which this track was analyzed.
-	Timestamp *int32 `json:"timestamp,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty"`
 	// The amount of time taken to analyze this track.
 	AnalysisTime *float32 `json:"analysis_time,omitempty"`
 	// The method used to read the track's audio data.
@@ -149,9 +149,9 @@ func (o *AudioAnalysisObjectMeta) SetDetailedStatus(v string) {
 }
 
 // GetStatusCode returns the StatusCode field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectMeta) GetStatusCode() int32 {
+func (o *AudioAnalysisObjectMeta) GetStatusCode() int64 {
 	if o == nil || IsNil(o.StatusCode) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.StatusCode
@@ -159,7 +159,7 @@ func (o *AudioAnalysisObjectMeta) GetStatusCode() int32 {
 
 // GetStatusCodeOk returns a tuple with the StatusCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectMeta) GetStatusCodeOk() (*int32, bool) {
+func (o *AudioAnalysisObjectMeta) GetStatusCodeOk() (*int64, bool) {
 	if o == nil || IsNil(o.StatusCode) {
 		return nil, false
 	}
@@ -175,15 +175,15 @@ func (o *AudioAnalysisObjectMeta) HasStatusCode() bool {
 	return false
 }
 
-// SetStatusCode gets a reference to the given int32 and assigns it to the StatusCode field.
-func (o *AudioAnalysisObjectMeta) SetStatusCode(v int32) {
+// SetStatusCode gets a reference to the given int64 and assigns it to the StatusCode field.
+func (o *AudioAnalysisObjectMeta) SetStatusCode(v int64) {
 	o.StatusCode = &v
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectMeta) GetTimestamp() int32 {
+func (o *AudioAnalysisObjectMeta) GetTimestamp() int64 {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Timestamp
@@ -191,7 +191,7 @@ func (o *AudioAnalysisObjectMeta) GetTimestamp() int32 {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectMeta) GetTimestampOk() (*int32, bool) {
+func (o *AudioAnalysisObjectMeta) GetTimestampOk() (*int64, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -207,8 +207,8 @@ func (o *AudioAnalysisObjectMeta) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given int32 and assigns it to the Timestamp field.
-func (o *AudioAnalysisObjectMeta) SetTimestamp(v int32) {
+// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
+func (o *AudioAnalysisObjectMeta) SetTimestamp(v int64) {
 	o.Timestamp = &v
 }
 

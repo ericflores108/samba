@@ -22,13 +22,13 @@ Name | Type | Description | Notes
 **Publisher** | **string** | The publisher of the audiobook.  | 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.  | 
-**TotalChapters** | **int32** | The number of chapters in this audiobook.  | 
+**TotalChapters** | **int64** | The number of chapters in this audiobook.  | 
 
 ## Methods
 
 ### NewSimplifiedAudiobookObject
 
-`func NewSimplifiedAudiobookObject(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int32, ) *SimplifiedAudiobookObject`
+`func NewSimplifiedAudiobookObject(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int64, ) *SimplifiedAudiobookObject`
 
 NewSimplifiedAudiobookObject instantiates a new SimplifiedAudiobookObject object
 This constructor will assign default values to properties that have it defined,
@@ -410,20 +410,20 @@ SetUri sets Uri field to given value.
 
 ### GetTotalChapters
 
-`func (o *SimplifiedAudiobookObject) GetTotalChapters() int32`
+`func (o *SimplifiedAudiobookObject) GetTotalChapters() int64`
 
 GetTotalChapters returns the TotalChapters field if non-nil, zero value otherwise.
 
 ### GetTotalChaptersOk
 
-`func (o *SimplifiedAudiobookObject) GetTotalChaptersOk() (*int32, bool)`
+`func (o *SimplifiedAudiobookObject) GetTotalChaptersOk() (*int64, bool)`
 
 GetTotalChaptersOk returns a tuple with the TotalChapters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalChapters
 
-`func (o *SimplifiedAudiobookObject) SetTotalChapters(v int32)`
+`func (o *SimplifiedAudiobookObject) SetTotalChapters(v int64)`
 
 SetTotalChapters sets TotalChapters field to given value.
 

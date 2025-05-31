@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** | A link to the Web API endpoint where full details of the playlist&#39;s tracks can be retrieved.  | [optional] 
-**Total** | Pointer to **int32** | Number of tracks in the playlist.  | [optional] 
+**Total** | Pointer to **int64** | Number of tracks in the playlist.  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasHref returns a boolean if a field has been set.
 
 ### GetTotal
 
-`func (o *PlaylistTracksRefObject) GetTotal() int32`
+`func (o *PlaylistTracksRefObject) GetTotal() int64`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *PlaylistTracksRefObject) GetTotalOk() (*int32, bool)`
+`func (o *PlaylistTracksRefObject) GetTotalOk() (*int64, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *PlaylistTracksRefObject) SetTotal(v int32)`
+`func (o *PlaylistTracksRefObject) SetTotal(v int64)`
 
 SetTotal sets Total field to given value.
 

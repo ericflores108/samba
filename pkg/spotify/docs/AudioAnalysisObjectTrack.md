@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NumSamples** | Pointer to **int32** | The exact number of audio samples analyzed from this track. See also &#x60;analysis_sample_rate&#x60;. | [optional] 
+**NumSamples** | Pointer to **int64** | The exact number of audio samples analyzed from this track. See also &#x60;analysis_sample_rate&#x60;. | [optional] 
 **Duration** | Pointer to **float32** | Length of the track in seconds. | [optional] 
 **SampleMd5** | Pointer to **string** | This field will always contain the empty string. | [optional] 
-**OffsetSeconds** | Pointer to **int32** | An offset to the start of the region of the track that was analyzed. (As the entire track is analyzed, this should always be 0.) | [optional] 
-**WindowSeconds** | Pointer to **int32** | The length of the region of the track was analyzed, if a subset of the track was analyzed. (As the entire track is analyzed, this should always be 0.) | [optional] 
-**AnalysisSampleRate** | Pointer to **int32** | The sample rate used to decode and analyze this track. May differ from the actual sample rate of this track available on Spotify. | [optional] 
-**AnalysisChannels** | Pointer to **int32** | The number of channels used for analysis. If 1, all channels are summed together to mono before analysis. | [optional] 
+**OffsetSeconds** | Pointer to **int64** | An offset to the start of the region of the track that was analyzed. (As the entire track is analyzed, this should always be 0.) | [optional] 
+**WindowSeconds** | Pointer to **int64** | The length of the region of the track was analyzed, if a subset of the track was analyzed. (As the entire track is analyzed, this should always be 0.) | [optional] 
+**AnalysisSampleRate** | Pointer to **int64** | The sample rate used to decode and analyze this track. May differ from the actual sample rate of this track available on Spotify. | [optional] 
+**AnalysisChannels** | Pointer to **int64** | The number of channels used for analysis. If 1, all channels are summed together to mono before analysis. | [optional] 
 **EndOfFadeIn** | Pointer to **float32** | The time, in seconds, at which the track&#39;s fade-in period ends. If the track has no fade-in, this will be 0.0. | [optional] 
 **StartOfFadeOut** | Pointer to **float32** | The time, in seconds, at which the track&#39;s fade-out period starts. If the track has no fade-out, this should match the track&#39;s length. | [optional] 
 **Loudness** | Pointer to **float32** | The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typically range between -60 and 0 db.  | [optional] 
 **Tempo** | Pointer to **float32** | The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.  | [optional] 
 **TempoConfidence** | Pointer to **float32** | The confidence, from 0.0 to 1.0, of the reliability of the &#x60;tempo&#x60;. | [optional] 
-**TimeSignature** | Pointer to **int32** | An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \&quot;3/4\&quot;, to \&quot;7/4\&quot;. | [optional] 
+**TimeSignature** | Pointer to **int64** | An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \&quot;3/4\&quot;, to \&quot;7/4\&quot;. | [optional] 
 **TimeSignatureConfidence** | Pointer to **float32** | The confidence, from 0.0 to 1.0, of the reliability of the &#x60;time_signature&#x60;. | [optional] 
-**Key** | Pointer to **int32** | The key the track is in. Integers map to pitches using standard [Pitch Class notation](https://en.wikipedia.org/wiki/Pitch_class). E.g. 0 &#x3D; C, 1 &#x3D; C♯/D♭, 2 &#x3D; D, and so on. If no key was detected, the value is -1.  | [optional] 
+**Key** | Pointer to **int64** | The key the track is in. Integers map to pitches using standard [Pitch Class notation](https://en.wikipedia.org/wiki/Pitch_class). E.g. 0 &#x3D; C, 1 &#x3D; C♯/D♭, 2 &#x3D; D, and so on. If no key was detected, the value is -1.  | [optional] 
 **KeyConfidence** | Pointer to **float32** | The confidence, from 0.0 to 1.0, of the reliability of the &#x60;key&#x60;. | [optional] 
-**Mode** | Pointer to **int32** | Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.  | [optional] 
+**Mode** | Pointer to **int64** | Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.  | [optional] 
 **ModeConfidence** | Pointer to **float32** | The confidence, from 0.0 to 1.0, of the reliability of the &#x60;mode&#x60;. | [optional] 
 **Codestring** | Pointer to **string** | An [Echo Nest Musical Fingerprint (ENMFP)](https://academiccommons.columbia.edu/doi/10.7916/D8Q248M4) codestring for this track. | [optional] 
 **CodeVersion** | Pointer to **float32** | A version number for the Echo Nest Musical Fingerprint format used in the codestring field. | [optional] 
@@ -52,20 +52,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetNumSamples
 
-`func (o *AudioAnalysisObjectTrack) GetNumSamples() int32`
+`func (o *AudioAnalysisObjectTrack) GetNumSamples() int64`
 
 GetNumSamples returns the NumSamples field if non-nil, zero value otherwise.
 
 ### GetNumSamplesOk
 
-`func (o *AudioAnalysisObjectTrack) GetNumSamplesOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectTrack) GetNumSamplesOk() (*int64, bool)`
 
 GetNumSamplesOk returns a tuple with the NumSamples field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNumSamples
 
-`func (o *AudioAnalysisObjectTrack) SetNumSamples(v int32)`
+`func (o *AudioAnalysisObjectTrack) SetNumSamples(v int64)`
 
 SetNumSamples sets NumSamples field to given value.
 
@@ -127,20 +127,20 @@ HasSampleMd5 returns a boolean if a field has been set.
 
 ### GetOffsetSeconds
 
-`func (o *AudioAnalysisObjectTrack) GetOffsetSeconds() int32`
+`func (o *AudioAnalysisObjectTrack) GetOffsetSeconds() int64`
 
 GetOffsetSeconds returns the OffsetSeconds field if non-nil, zero value otherwise.
 
 ### GetOffsetSecondsOk
 
-`func (o *AudioAnalysisObjectTrack) GetOffsetSecondsOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectTrack) GetOffsetSecondsOk() (*int64, bool)`
 
 GetOffsetSecondsOk returns a tuple with the OffsetSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOffsetSeconds
 
-`func (o *AudioAnalysisObjectTrack) SetOffsetSeconds(v int32)`
+`func (o *AudioAnalysisObjectTrack) SetOffsetSeconds(v int64)`
 
 SetOffsetSeconds sets OffsetSeconds field to given value.
 
@@ -152,20 +152,20 @@ HasOffsetSeconds returns a boolean if a field has been set.
 
 ### GetWindowSeconds
 
-`func (o *AudioAnalysisObjectTrack) GetWindowSeconds() int32`
+`func (o *AudioAnalysisObjectTrack) GetWindowSeconds() int64`
 
 GetWindowSeconds returns the WindowSeconds field if non-nil, zero value otherwise.
 
 ### GetWindowSecondsOk
 
-`func (o *AudioAnalysisObjectTrack) GetWindowSecondsOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectTrack) GetWindowSecondsOk() (*int64, bool)`
 
 GetWindowSecondsOk returns a tuple with the WindowSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWindowSeconds
 
-`func (o *AudioAnalysisObjectTrack) SetWindowSeconds(v int32)`
+`func (o *AudioAnalysisObjectTrack) SetWindowSeconds(v int64)`
 
 SetWindowSeconds sets WindowSeconds field to given value.
 
@@ -177,20 +177,20 @@ HasWindowSeconds returns a boolean if a field has been set.
 
 ### GetAnalysisSampleRate
 
-`func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRate() int32`
+`func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRate() int64`
 
 GetAnalysisSampleRate returns the AnalysisSampleRate field if non-nil, zero value otherwise.
 
 ### GetAnalysisSampleRateOk
 
-`func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRateOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRateOk() (*int64, bool)`
 
 GetAnalysisSampleRateOk returns a tuple with the AnalysisSampleRate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnalysisSampleRate
 
-`func (o *AudioAnalysisObjectTrack) SetAnalysisSampleRate(v int32)`
+`func (o *AudioAnalysisObjectTrack) SetAnalysisSampleRate(v int64)`
 
 SetAnalysisSampleRate sets AnalysisSampleRate field to given value.
 
@@ -202,20 +202,20 @@ HasAnalysisSampleRate returns a boolean if a field has been set.
 
 ### GetAnalysisChannels
 
-`func (o *AudioAnalysisObjectTrack) GetAnalysisChannels() int32`
+`func (o *AudioAnalysisObjectTrack) GetAnalysisChannels() int64`
 
 GetAnalysisChannels returns the AnalysisChannels field if non-nil, zero value otherwise.
 
 ### GetAnalysisChannelsOk
 
-`func (o *AudioAnalysisObjectTrack) GetAnalysisChannelsOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectTrack) GetAnalysisChannelsOk() (*int64, bool)`
 
 GetAnalysisChannelsOk returns a tuple with the AnalysisChannels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnalysisChannels
 
-`func (o *AudioAnalysisObjectTrack) SetAnalysisChannels(v int32)`
+`func (o *AudioAnalysisObjectTrack) SetAnalysisChannels(v int64)`
 
 SetAnalysisChannels sets AnalysisChannels field to given value.
 
@@ -352,20 +352,20 @@ HasTempoConfidence returns a boolean if a field has been set.
 
 ### GetTimeSignature
 
-`func (o *AudioAnalysisObjectTrack) GetTimeSignature() int32`
+`func (o *AudioAnalysisObjectTrack) GetTimeSignature() int64`
 
 GetTimeSignature returns the TimeSignature field if non-nil, zero value otherwise.
 
 ### GetTimeSignatureOk
 
-`func (o *AudioAnalysisObjectTrack) GetTimeSignatureOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectTrack) GetTimeSignatureOk() (*int64, bool)`
 
 GetTimeSignatureOk returns a tuple with the TimeSignature field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeSignature
 
-`func (o *AudioAnalysisObjectTrack) SetTimeSignature(v int32)`
+`func (o *AudioAnalysisObjectTrack) SetTimeSignature(v int64)`
 
 SetTimeSignature sets TimeSignature field to given value.
 
@@ -402,20 +402,20 @@ HasTimeSignatureConfidence returns a boolean if a field has been set.
 
 ### GetKey
 
-`func (o *AudioAnalysisObjectTrack) GetKey() int32`
+`func (o *AudioAnalysisObjectTrack) GetKey() int64`
 
 GetKey returns the Key field if non-nil, zero value otherwise.
 
 ### GetKeyOk
 
-`func (o *AudioAnalysisObjectTrack) GetKeyOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectTrack) GetKeyOk() (*int64, bool)`
 
 GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKey
 
-`func (o *AudioAnalysisObjectTrack) SetKey(v int32)`
+`func (o *AudioAnalysisObjectTrack) SetKey(v int64)`
 
 SetKey sets Key field to given value.
 
@@ -452,20 +452,20 @@ HasKeyConfidence returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *AudioAnalysisObjectTrack) GetMode() int32`
+`func (o *AudioAnalysisObjectTrack) GetMode() int64`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *AudioAnalysisObjectTrack) GetModeOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectTrack) GetModeOk() (*int64, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *AudioAnalysisObjectTrack) SetMode(v int32)`
+`func (o *AudioAnalysisObjectTrack) SetMode(v int64)`
 
 SetMode sets Mode field to given value.
 

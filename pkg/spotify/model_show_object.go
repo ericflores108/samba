@@ -54,7 +54,7 @@ type ShowObject struct {
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show. 
 	Uri string `json:"uri"`
 	// The total number of episodes in the show. 
-	TotalEpisodes int32 `json:"total_episodes"`
+	TotalEpisodes int64 `json:"total_episodes"`
 	// The episodes of the show. 
 	Episodes map[string]interface{} `json:"episodes"`
 }
@@ -65,7 +65,7 @@ type _ShowObject ShowObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewShowObject(availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, languages []string, mediaType string, name string, publisher string, type_ string, uri string, totalEpisodes int32, episodes map[string]interface{}) *ShowObject {
+func NewShowObject(availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, languages []string, mediaType string, name string, publisher string, type_ string, uri string, totalEpisodes int64, episodes map[string]interface{}) *ShowObject {
 	this := ShowObject{}
 	this.AvailableMarkets = availableMarkets
 	this.Copyrights = copyrights
@@ -481,9 +481,9 @@ func (o *ShowObject) SetUri(v string) {
 }
 
 // GetTotalEpisodes returns the TotalEpisodes field value
-func (o *ShowObject) GetTotalEpisodes() int32 {
+func (o *ShowObject) GetTotalEpisodes() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -492,7 +492,7 @@ func (o *ShowObject) GetTotalEpisodes() int32 {
 
 // GetTotalEpisodesOk returns a tuple with the TotalEpisodes field value
 // and a boolean to check if the value has been set.
-func (o *ShowObject) GetTotalEpisodesOk() (*int32, bool) {
+func (o *ShowObject) GetTotalEpisodesOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -500,7 +500,7 @@ func (o *ShowObject) GetTotalEpisodesOk() (*int32, bool) {
 }
 
 // SetTotalEpisodes sets field value
-func (o *ShowObject) SetTotalEpisodes(v int32) {
+func (o *ShowObject) SetTotalEpisodes(v int64) {
 	o.TotalEpisodes = v
 }
 

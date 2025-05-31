@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Album** | Pointer to [**SimplifiedAlbumObject**](SimplifiedAlbumObject.md) | The album on which the track appears. The album object includes a link in &#x60;href&#x60; to full information about the album.  | [optional] 
 **Artists** | Pointer to [**[]SimplifiedArtistObject**](SimplifiedArtistObject.md) | The artists who performed the track. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | [optional] 
 **AvailableMarkets** | Pointer to **[]string** | A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.  | [optional] 
-**DiscNumber** | Pointer to **int32** | The disc number (usually &#x60;1&#x60; unless the album consists of more than one disc).  | [optional] 
-**DurationMs** | **int32** | The episode length in milliseconds.  | 
+**DiscNumber** | Pointer to **int64** | The disc number (usually &#x60;1&#x60; unless the album consists of more than one disc).  | [optional] 
+**DurationMs** | **int64** | The episode length in milliseconds.  | 
 **Explicit** | **bool** | Whether or not the episode has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
 **ExternalIds** | Pointer to [**ExternalIdObject**](ExternalIdObject.md) | Known external IDs for the track.  | [optional] 
 **ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this episode.  | 
@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 **LinkedFrom** | Pointer to **map[string]interface{}** | Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied, and the requested track has been replaced with different track. The track in the &#x60;linked_from&#x60; object contains information about the originally requested track.  | [optional] 
 **Restrictions** | Pointer to [**EpisodeRestrictionObject**](EpisodeRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 **Name** | **string** | The name of the episode.  | 
-**Popularity** | Pointer to **int32** | The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.&lt;br/&gt;The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.&lt;br/&gt;Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._  | [optional] 
+**Popularity** | Pointer to **int64** | The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.&lt;br/&gt;The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.&lt;br/&gt;Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._  | [optional] 
 **PreviewUrl** | Pointer to **NullableString** | A link to a 30 second preview (MP3 format) of the track. Can be &#x60;null&#x60;  | [optional] 
-**TrackNumber** | Pointer to **int32** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
+**TrackNumber** | Pointer to **int64** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
 **Type** | **string** | The object type: \&quot;track\&quot;.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
 **IsLocal** | Pointer to **bool** | Whether or not the track is from a local file.  | [optional] 
@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewQueueObjectQueueInner
 
-`func NewQueueObjectQueueInner(durationMs int32, explicit bool, externalUrls ExternalUrlObject, href string, id string, isPlayable bool, name string, type_ string, uri string, audioPreviewUrl NullableString, description string, htmlDescription string, images []ImageObject, isExternallyHosted bool, languages []string, releaseDate string, releaseDatePrecision string, show SimplifiedShowObject, ) *QueueObjectQueueInner`
+`func NewQueueObjectQueueInner(durationMs int64, explicit bool, externalUrls ExternalUrlObject, href string, id string, isPlayable bool, name string, type_ string, uri string, audioPreviewUrl NullableString, description string, htmlDescription string, images []ImageObject, isExternallyHosted bool, languages []string, releaseDate string, releaseDatePrecision string, show SimplifiedShowObject, ) *QueueObjectQueueInner`
 
 NewQueueObjectQueueInner instantiates a new QueueObjectQueueInner object
 This constructor will assign default values to properties that have it defined,
@@ -132,20 +132,20 @@ HasAvailableMarkets returns a boolean if a field has been set.
 
 ### GetDiscNumber
 
-`func (o *QueueObjectQueueInner) GetDiscNumber() int32`
+`func (o *QueueObjectQueueInner) GetDiscNumber() int64`
 
 GetDiscNumber returns the DiscNumber field if non-nil, zero value otherwise.
 
 ### GetDiscNumberOk
 
-`func (o *QueueObjectQueueInner) GetDiscNumberOk() (*int32, bool)`
+`func (o *QueueObjectQueueInner) GetDiscNumberOk() (*int64, bool)`
 
 GetDiscNumberOk returns a tuple with the DiscNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscNumber
 
-`func (o *QueueObjectQueueInner) SetDiscNumber(v int32)`
+`func (o *QueueObjectQueueInner) SetDiscNumber(v int64)`
 
 SetDiscNumber sets DiscNumber field to given value.
 
@@ -157,20 +157,20 @@ HasDiscNumber returns a boolean if a field has been set.
 
 ### GetDurationMs
 
-`func (o *QueueObjectQueueInner) GetDurationMs() int32`
+`func (o *QueueObjectQueueInner) GetDurationMs() int64`
 
 GetDurationMs returns the DurationMs field if non-nil, zero value otherwise.
 
 ### GetDurationMsOk
 
-`func (o *QueueObjectQueueInner) GetDurationMsOk() (*int32, bool)`
+`func (o *QueueObjectQueueInner) GetDurationMsOk() (*int64, bool)`
 
 GetDurationMsOk returns a tuple with the DurationMs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDurationMs
 
-`func (o *QueueObjectQueueInner) SetDurationMs(v int32)`
+`func (o *QueueObjectQueueInner) SetDurationMs(v int64)`
 
 SetDurationMs sets DurationMs field to given value.
 
@@ -372,20 +372,20 @@ SetName sets Name field to given value.
 
 ### GetPopularity
 
-`func (o *QueueObjectQueueInner) GetPopularity() int32`
+`func (o *QueueObjectQueueInner) GetPopularity() int64`
 
 GetPopularity returns the Popularity field if non-nil, zero value otherwise.
 
 ### GetPopularityOk
 
-`func (o *QueueObjectQueueInner) GetPopularityOk() (*int32, bool)`
+`func (o *QueueObjectQueueInner) GetPopularityOk() (*int64, bool)`
 
 GetPopularityOk returns a tuple with the Popularity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPopularity
 
-`func (o *QueueObjectQueueInner) SetPopularity(v int32)`
+`func (o *QueueObjectQueueInner) SetPopularity(v int64)`
 
 SetPopularity sets Popularity field to given value.
 
@@ -432,20 +432,20 @@ HasPreviewUrl returns a boolean if a field has been set.
 UnsetPreviewUrl ensures that no value is present for PreviewUrl, not even an explicit nil
 ### GetTrackNumber
 
-`func (o *QueueObjectQueueInner) GetTrackNumber() int32`
+`func (o *QueueObjectQueueInner) GetTrackNumber() int64`
 
 GetTrackNumber returns the TrackNumber field if non-nil, zero value otherwise.
 
 ### GetTrackNumberOk
 
-`func (o *QueueObjectQueueInner) GetTrackNumberOk() (*int32, bool)`
+`func (o *QueueObjectQueueInner) GetTrackNumberOk() (*int64, bool)`
 
 GetTrackNumberOk returns a tuple with the TrackNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackNumber
 
-`func (o *QueueObjectQueueInner) SetTrackNumber(v int32)`
+`func (o *QueueObjectQueueInner) SetTrackNumber(v int64)`
 
 SetTrackNumber sets TrackNumber field to given value.
 

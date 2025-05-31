@@ -22,13 +22,13 @@ type CursorPagingPlayHistoryObject struct {
 	// A link to the Web API endpoint returning the full result of the request.
 	Href *string `json:"href,omitempty"`
 	// The maximum number of items in the response (as set in the query or by default).
-	Limit *int32 `json:"limit,omitempty"`
+	Limit *int64 `json:"limit,omitempty"`
 	// URL to the next page of items. ( `null` if none)
 	Next *string `json:"next,omitempty"`
 	// The cursors used to find the next set of items.
 	Cursors *CursorObject `json:"cursors,omitempty"`
 	// The total number of items available to return.
-	Total *int32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 	Items []PlayHistoryObject `json:"items,omitempty"`
 }
 
@@ -82,9 +82,9 @@ func (o *CursorPagingPlayHistoryObject) SetHref(v string) {
 }
 
 // GetLimit returns the Limit field value if set, zero value otherwise.
-func (o *CursorPagingPlayHistoryObject) GetLimit() int32 {
+func (o *CursorPagingPlayHistoryObject) GetLimit() int64 {
 	if o == nil || IsNil(o.Limit) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Limit
@@ -92,7 +92,7 @@ func (o *CursorPagingPlayHistoryObject) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CursorPagingPlayHistoryObject) GetLimitOk() (*int32, bool) {
+func (o *CursorPagingPlayHistoryObject) GetLimitOk() (*int64, bool) {
 	if o == nil || IsNil(o.Limit) {
 		return nil, false
 	}
@@ -108,8 +108,8 @@ func (o *CursorPagingPlayHistoryObject) HasLimit() bool {
 	return false
 }
 
-// SetLimit gets a reference to the given int32 and assigns it to the Limit field.
-func (o *CursorPagingPlayHistoryObject) SetLimit(v int32) {
+// SetLimit gets a reference to the given int64 and assigns it to the Limit field.
+func (o *CursorPagingPlayHistoryObject) SetLimit(v int64) {
 	o.Limit = &v
 }
 
@@ -178,9 +178,9 @@ func (o *CursorPagingPlayHistoryObject) SetCursors(v CursorObject) {
 }
 
 // GetTotal returns the Total field value if set, zero value otherwise.
-func (o *CursorPagingPlayHistoryObject) GetTotal() int32 {
+func (o *CursorPagingPlayHistoryObject) GetTotal() int64 {
 	if o == nil || IsNil(o.Total) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Total
@@ -188,7 +188,7 @@ func (o *CursorPagingPlayHistoryObject) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CursorPagingPlayHistoryObject) GetTotalOk() (*int32, bool) {
+func (o *CursorPagingPlayHistoryObject) GetTotalOk() (*int64, bool) {
 	if o == nil || IsNil(o.Total) {
 		return nil, false
 	}
@@ -204,8 +204,8 @@ func (o *CursorPagingPlayHistoryObject) HasTotal() bool {
 	return false
 }
 
-// SetTotal gets a reference to the given int32 and assigns it to the Total field.
-func (o *CursorPagingPlayHistoryObject) SetTotal(v int32) {
+// SetTotal gets a reference to the given int64 and assigns it to the Total field.
+func (o *CursorPagingPlayHistoryObject) SetTotal(v int64) {
 	o.Total = &v
 }
 

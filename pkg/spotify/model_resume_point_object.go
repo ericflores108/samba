@@ -22,7 +22,7 @@ type ResumePointObject struct {
 	// Whether or not the episode has been fully played by the user. 
 	FullyPlayed *bool `json:"fully_played,omitempty"`
 	// The user's most recent position in the episode in milliseconds. 
-	ResumePositionMs *int32 `json:"resume_position_ms,omitempty"`
+	ResumePositionMs *int64 `json:"resume_position_ms,omitempty"`
 }
 
 // NewResumePointObject instantiates a new ResumePointObject object
@@ -75,9 +75,9 @@ func (o *ResumePointObject) SetFullyPlayed(v bool) {
 }
 
 // GetResumePositionMs returns the ResumePositionMs field value if set, zero value otherwise.
-func (o *ResumePointObject) GetResumePositionMs() int32 {
+func (o *ResumePointObject) GetResumePositionMs() int64 {
 	if o == nil || IsNil(o.ResumePositionMs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ResumePositionMs
@@ -85,7 +85,7 @@ func (o *ResumePointObject) GetResumePositionMs() int32 {
 
 // GetResumePositionMsOk returns a tuple with the ResumePositionMs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResumePointObject) GetResumePositionMsOk() (*int32, bool) {
+func (o *ResumePointObject) GetResumePositionMsOk() (*int64, bool) {
 	if o == nil || IsNil(o.ResumePositionMs) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *ResumePointObject) HasResumePositionMs() bool {
 	return false
 }
 
-// SetResumePositionMs gets a reference to the given int32 and assigns it to the ResumePositionMs field.
-func (o *ResumePointObject) SetResumePositionMs(v int32) {
+// SetResumePositionMs gets a reference to the given int64 and assigns it to the ResumePositionMs field.
+func (o *ResumePointObject) SetResumePositionMs(v int64) {
 	o.ResumePositionMs = &v
 }
 

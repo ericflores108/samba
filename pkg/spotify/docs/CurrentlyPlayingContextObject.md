@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **RepeatState** | Pointer to **string** | off, track, context | [optional] 
 **ShuffleState** | Pointer to **bool** | If shuffle is on or off. | [optional] 
 **Context** | Pointer to [**ContextObject**](ContextObject.md) | A Context Object. Can be &#x60;null&#x60;. | [optional] 
-**Timestamp** | Pointer to **int32** | Unix Millisecond Timestamp when playback state was last changed (play, pause, skip, scrub, new song, etc.). | [optional] 
-**ProgressMs** | Pointer to **int32** | Progress into the currently playing track or episode. Can be &#x60;null&#x60;. | [optional] 
+**Timestamp** | Pointer to **int64** | Unix Millisecond Timestamp when playback state was last changed (play, pause, skip, scrub, new song, etc.). | [optional] 
+**ProgressMs** | Pointer to **int64** | Progress into the currently playing track or episode. Can be &#x60;null&#x60;. | [optional] 
 **IsPlaying** | Pointer to **bool** | If something is currently playing, return &#x60;true&#x60;. | [optional] 
 **Item** | Pointer to [**QueueObjectCurrentlyPlaying**](QueueObjectCurrentlyPlaying.md) |  | [optional] 
 **CurrentlyPlayingType** | Pointer to **string** | The object type of the currently playing item. Can be one of &#x60;track&#x60;, &#x60;episode&#x60;, &#x60;ad&#x60; or &#x60;unknown&#x60;.  | [optional] 
@@ -136,20 +136,20 @@ HasContext returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *CurrentlyPlayingContextObject) GetTimestamp() int32`
+`func (o *CurrentlyPlayingContextObject) GetTimestamp() int64`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *CurrentlyPlayingContextObject) GetTimestampOk() (*int32, bool)`
+`func (o *CurrentlyPlayingContextObject) GetTimestampOk() (*int64, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *CurrentlyPlayingContextObject) SetTimestamp(v int32)`
+`func (o *CurrentlyPlayingContextObject) SetTimestamp(v int64)`
 
 SetTimestamp sets Timestamp field to given value.
 
@@ -161,20 +161,20 @@ HasTimestamp returns a boolean if a field has been set.
 
 ### GetProgressMs
 
-`func (o *CurrentlyPlayingContextObject) GetProgressMs() int32`
+`func (o *CurrentlyPlayingContextObject) GetProgressMs() int64`
 
 GetProgressMs returns the ProgressMs field if non-nil, zero value otherwise.
 
 ### GetProgressMsOk
 
-`func (o *CurrentlyPlayingContextObject) GetProgressMsOk() (*int32, bool)`
+`func (o *CurrentlyPlayingContextObject) GetProgressMsOk() (*int64, bool)`
 
 GetProgressMsOk returns a tuple with the ProgressMs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProgressMs
 
-`func (o *CurrentlyPlayingContextObject) SetProgressMs(v int32)`
+`func (o *CurrentlyPlayingContextObject) SetProgressMs(v int64)`
 
 SetProgressMs sets ProgressMs field to given value.
 

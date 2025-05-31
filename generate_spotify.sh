@@ -49,8 +49,9 @@ openapi-generator generate \
   --package-name "$PACKAGE_NAME" \
   --git-user-id "ericflores108" \
   --git-repo-id "samba" \
-  --additional-properties=enumClassPrefix=true,structPrefix=true,generateInterfaces=true \
-  --skip-validate-spec
+  --skip-validate-spec \
+  --type-mappings=integer=int64 \
+  --additional-properties=enumClassPrefix=true,structPrefix=true,generateInterfaces=true
 
 # Clean up unnecessary files
 echo -e "${GREEN}Cleaning up...${NC}"

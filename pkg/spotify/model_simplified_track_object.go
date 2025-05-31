@@ -24,9 +24,9 @@ type SimplifiedTrackObject struct {
 	// A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code. 
 	AvailableMarkets []string `json:"available_markets,omitempty"`
 	// The disc number (usually `1` unless the album consists of more than one disc).
-	DiscNumber *int32 `json:"disc_number,omitempty"`
+	DiscNumber *int64 `json:"disc_number,omitempty"`
 	// The track length in milliseconds.
-	DurationMs *int32 `json:"duration_ms,omitempty"`
+	DurationMs *int64 `json:"duration_ms,omitempty"`
 	// Whether or not the track has explicit lyrics ( `true` = yes it does; `false` = no it does not OR unknown).
 	Explicit *bool `json:"explicit,omitempty"`
 	// External URLs for this track. 
@@ -47,7 +47,7 @@ type SimplifiedTrackObject struct {
 	// Deprecated
 	PreviewUrl NullableString `json:"preview_url,omitempty"`
 	// The number of the track. If an album has several discs, the track number is the number on the specified disc. 
-	TrackNumber *int32 `json:"track_number,omitempty"`
+	TrackNumber *int64 `json:"track_number,omitempty"`
 	// The object type: \"track\". 
 	Type *string `json:"type,omitempty"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
@@ -138,9 +138,9 @@ func (o *SimplifiedTrackObject) SetAvailableMarkets(v []string) {
 }
 
 // GetDiscNumber returns the DiscNumber field value if set, zero value otherwise.
-func (o *SimplifiedTrackObject) GetDiscNumber() int32 {
+func (o *SimplifiedTrackObject) GetDiscNumber() int64 {
 	if o == nil || IsNil(o.DiscNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DiscNumber
@@ -148,7 +148,7 @@ func (o *SimplifiedTrackObject) GetDiscNumber() int32 {
 
 // GetDiscNumberOk returns a tuple with the DiscNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SimplifiedTrackObject) GetDiscNumberOk() (*int32, bool) {
+func (o *SimplifiedTrackObject) GetDiscNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.DiscNumber) {
 		return nil, false
 	}
@@ -164,15 +164,15 @@ func (o *SimplifiedTrackObject) HasDiscNumber() bool {
 	return false
 }
 
-// SetDiscNumber gets a reference to the given int32 and assigns it to the DiscNumber field.
-func (o *SimplifiedTrackObject) SetDiscNumber(v int32) {
+// SetDiscNumber gets a reference to the given int64 and assigns it to the DiscNumber field.
+func (o *SimplifiedTrackObject) SetDiscNumber(v int64) {
 	o.DiscNumber = &v
 }
 
 // GetDurationMs returns the DurationMs field value if set, zero value otherwise.
-func (o *SimplifiedTrackObject) GetDurationMs() int32 {
+func (o *SimplifiedTrackObject) GetDurationMs() int64 {
 	if o == nil || IsNil(o.DurationMs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DurationMs
@@ -180,7 +180,7 @@ func (o *SimplifiedTrackObject) GetDurationMs() int32 {
 
 // GetDurationMsOk returns a tuple with the DurationMs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SimplifiedTrackObject) GetDurationMsOk() (*int32, bool) {
+func (o *SimplifiedTrackObject) GetDurationMsOk() (*int64, bool) {
 	if o == nil || IsNil(o.DurationMs) {
 		return nil, false
 	}
@@ -196,8 +196,8 @@ func (o *SimplifiedTrackObject) HasDurationMs() bool {
 	return false
 }
 
-// SetDurationMs gets a reference to the given int32 and assigns it to the DurationMs field.
-func (o *SimplifiedTrackObject) SetDurationMs(v int32) {
+// SetDurationMs gets a reference to the given int64 and assigns it to the DurationMs field.
+func (o *SimplifiedTrackObject) SetDurationMs(v int64) {
 	o.DurationMs = &v
 }
 
@@ -503,9 +503,9 @@ func (o *SimplifiedTrackObject) UnsetPreviewUrl() {
 }
 
 // GetTrackNumber returns the TrackNumber field value if set, zero value otherwise.
-func (o *SimplifiedTrackObject) GetTrackNumber() int32 {
+func (o *SimplifiedTrackObject) GetTrackNumber() int64 {
 	if o == nil || IsNil(o.TrackNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TrackNumber
@@ -513,7 +513,7 @@ func (o *SimplifiedTrackObject) GetTrackNumber() int32 {
 
 // GetTrackNumberOk returns a tuple with the TrackNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SimplifiedTrackObject) GetTrackNumberOk() (*int32, bool) {
+func (o *SimplifiedTrackObject) GetTrackNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.TrackNumber) {
 		return nil, false
 	}
@@ -529,8 +529,8 @@ func (o *SimplifiedTrackObject) HasTrackNumber() bool {
 	return false
 }
 
-// SetTrackNumber gets a reference to the given int32 and assigns it to the TrackNumber field.
-func (o *SimplifiedTrackObject) SetTrackNumber(v int32) {
+// SetTrackNumber gets a reference to the given int64 and assigns it to the TrackNumber field.
+func (o *SimplifiedTrackObject) SetTrackNumber(v int64) {
 	o.TrackNumber = &v
 }
 

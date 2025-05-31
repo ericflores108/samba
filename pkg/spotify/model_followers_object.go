@@ -22,7 +22,7 @@ type FollowersObject struct {
 	// This will always be set to null, as the Web API does not support it at the moment. 
 	Href NullableString `json:"href,omitempty"`
 	// The total number of followers. 
-	Total *int32 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // NewFollowersObject instantiates a new FollowersObject object
@@ -85,9 +85,9 @@ func (o *FollowersObject) UnsetHref() {
 }
 
 // GetTotal returns the Total field value if set, zero value otherwise.
-func (o *FollowersObject) GetTotal() int32 {
+func (o *FollowersObject) GetTotal() int64 {
 	if o == nil || IsNil(o.Total) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Total
@@ -95,7 +95,7 @@ func (o *FollowersObject) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FollowersObject) GetTotalOk() (*int32, bool) {
+func (o *FollowersObject) GetTotalOk() (*int64, bool) {
 	if o == nil || IsNil(o.Total) {
 		return nil, false
 	}
@@ -111,8 +111,8 @@ func (o *FollowersObject) HasTotal() bool {
 	return false
 }
 
-// SetTotal gets a reference to the given int32 and assigns it to the Total field.
-func (o *FollowersObject) SetTotal(v int32) {
+// SetTotal gets a reference to the given int64 and assigns it to the Total field.
+func (o *FollowersObject) SetTotal(v int64) {
 	o.Total = &v
 }
 

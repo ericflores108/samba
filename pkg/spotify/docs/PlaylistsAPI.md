@@ -45,7 +45,7 @@ import (
 
 func main() {
 	playlistId := "3cEYpjA9oz9GiPac4AsH4n" // string | 
-	position := int32(0) // int32 |  (optional)
+	position := int64(0) // int64 |  (optional)
 	uris := "spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M" // string |  (optional)
 	addTracksToPlaylistRequest := *openapiclient.NewAddTracksToPlaylistRequest() // AddTracksToPlaylistRequest |  (optional)
 
@@ -77,7 +77,7 @@ Other parameters are passed through a pointer to a apiAddTracksToPlaylistRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **position** | **int32** |  | 
+ **position** | **int64** |  | 
  **uris** | **string** |  | 
  **addTracksToPlaylistRequest** | [**AddTracksToPlaylistRequest**](AddTracksToPlaylistRequest.md) |  | 
 
@@ -405,8 +405,8 @@ import (
 
 func main() {
 	categoryId := "dinner" // string | 
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -436,8 +436,8 @@ Other parameters are passed through a pointer to a apiGetACategoriesPlaylistsReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -478,8 +478,8 @@ import (
 )
 
 func main() {
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -504,8 +504,8 @@ Other parameters are passed through a pointer to a apiGetAListOfCurrentUsersPlay
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -547,8 +547,8 @@ import (
 
 func main() {
 	locale := "sv_SE" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -574,8 +574,8 @@ Other parameters are passed through a pointer to a apiGetFeaturedPlaylistsReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **locale** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -617,8 +617,8 @@ import (
 
 func main() {
 	userId := "smedjan" // string | 
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -648,8 +648,8 @@ Other parameters are passed through a pointer to a apiGetListUsersPlaylistsReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -839,8 +839,8 @@ func main() {
 	playlistId := "3cEYpjA9oz9GiPac4AsH4n" // string | 
 	market := "ES" // string |  (optional)
 	fields := "items(added_by.id,track(name,href,album(name,href)))" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 	additionalTypes := "additionalTypes_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -873,8 +873,8 @@ Name | Type | Description  | Notes
 
  **market** | **string** |  | 
  **fields** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
  **additionalTypes** | **string** |  | 
 
 ### Return type

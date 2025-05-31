@@ -24,9 +24,9 @@ type ImageObject struct {
 	// The source URL of the image. 
 	Url string `json:"url"`
 	// The image height in pixels. 
-	Height NullableInt32 `json:"height"`
+	Height NullableInt64 `json:"height"`
 	// The image width in pixels. 
-	Width NullableInt32 `json:"width"`
+	Width NullableInt64 `json:"width"`
 }
 
 type _ImageObject ImageObject
@@ -35,7 +35,7 @@ type _ImageObject ImageObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImageObject(url string, height NullableInt32, width NullableInt32) *ImageObject {
+func NewImageObject(url string, height NullableInt64, width NullableInt64) *ImageObject {
 	this := ImageObject{}
 	this.Url = url
 	this.Height = height
@@ -76,10 +76,10 @@ func (o *ImageObject) SetUrl(v string) {
 }
 
 // GetHeight returns the Height field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *ImageObject) GetHeight() int32 {
+// If the value is explicit nil, the zero value for int64 will be returned
+func (o *ImageObject) GetHeight() int64 {
 	if o == nil || o.Height.Get() == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -89,7 +89,7 @@ func (o *ImageObject) GetHeight() int32 {
 // GetHeightOk returns a tuple with the Height field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImageObject) GetHeightOk() (*int32, bool) {
+func (o *ImageObject) GetHeightOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,15 +97,15 @@ func (o *ImageObject) GetHeightOk() (*int32, bool) {
 }
 
 // SetHeight sets field value
-func (o *ImageObject) SetHeight(v int32) {
+func (o *ImageObject) SetHeight(v int64) {
 	o.Height.Set(&v)
 }
 
 // GetWidth returns the Width field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *ImageObject) GetWidth() int32 {
+// If the value is explicit nil, the zero value for int64 will be returned
+func (o *ImageObject) GetWidth() int64 {
 	if o == nil || o.Width.Get() == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *ImageObject) GetWidth() int32 {
 // GetWidthOk returns a tuple with the Width field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImageObject) GetWidthOk() (*int32, bool) {
+func (o *ImageObject) GetWidthOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *ImageObject) GetWidthOk() (*int32, bool) {
 }
 
 // SetWidth sets field value
-func (o *ImageObject) SetWidth(v int32) {
+func (o *ImageObject) SetWidth(v int64) {
 	o.Width.Set(&v)
 }
 

@@ -28,9 +28,9 @@ type CurrentlyPlayingContextObject struct {
 	// A Context Object. Can be `null`.
 	Context *ContextObject `json:"context,omitempty"`
 	// Unix Millisecond Timestamp when playback state was last changed (play, pause, skip, scrub, new song, etc.).
-	Timestamp *int32 `json:"timestamp,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty"`
 	// Progress into the currently playing track or episode. Can be `null`.
-	ProgressMs *int32 `json:"progress_ms,omitempty"`
+	ProgressMs *int64 `json:"progress_ms,omitempty"`
 	// If something is currently playing, return `true`.
 	IsPlaying *bool `json:"is_playing,omitempty"`
 	Item *QueueObjectCurrentlyPlaying `json:"item,omitempty"`
@@ -186,9 +186,9 @@ func (o *CurrentlyPlayingContextObject) SetContext(v ContextObject) {
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *CurrentlyPlayingContextObject) GetTimestamp() int32 {
+func (o *CurrentlyPlayingContextObject) GetTimestamp() int64 {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Timestamp
@@ -196,7 +196,7 @@ func (o *CurrentlyPlayingContextObject) GetTimestamp() int32 {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentlyPlayingContextObject) GetTimestampOk() (*int32, bool) {
+func (o *CurrentlyPlayingContextObject) GetTimestampOk() (*int64, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -212,15 +212,15 @@ func (o *CurrentlyPlayingContextObject) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given int32 and assigns it to the Timestamp field.
-func (o *CurrentlyPlayingContextObject) SetTimestamp(v int32) {
+// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
+func (o *CurrentlyPlayingContextObject) SetTimestamp(v int64) {
 	o.Timestamp = &v
 }
 
 // GetProgressMs returns the ProgressMs field value if set, zero value otherwise.
-func (o *CurrentlyPlayingContextObject) GetProgressMs() int32 {
+func (o *CurrentlyPlayingContextObject) GetProgressMs() int64 {
 	if o == nil || IsNil(o.ProgressMs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ProgressMs
@@ -228,7 +228,7 @@ func (o *CurrentlyPlayingContextObject) GetProgressMs() int32 {
 
 // GetProgressMsOk returns a tuple with the ProgressMs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentlyPlayingContextObject) GetProgressMsOk() (*int32, bool) {
+func (o *CurrentlyPlayingContextObject) GetProgressMsOk() (*int64, bool) {
 	if o == nil || IsNil(o.ProgressMs) {
 		return nil, false
 	}
@@ -244,8 +244,8 @@ func (o *CurrentlyPlayingContextObject) HasProgressMs() bool {
 	return false
 }
 
-// SetProgressMs gets a reference to the given int32 and assigns it to the ProgressMs field.
-func (o *CurrentlyPlayingContextObject) SetProgressMs(v int32) {
+// SetProgressMs gets a reference to the given int64 and assigns it to the ProgressMs field.
+func (o *CurrentlyPlayingContextObject) SetProgressMs(v int64) {
 	o.ProgressMs = &v
 }
 

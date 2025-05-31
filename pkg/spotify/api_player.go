@@ -798,22 +798,22 @@ func (a *PlayerAPIService) GetQueueExecute(r PlayerAPIGetQueueRequest) (*QueueOb
 type PlayerAPIGetRecentlyPlayedRequest struct {
 	ctx context.Context
 	ApiService PlayerAPI
-	limit *int32
-	after *int32
-	before *int32
+	limit *int64
+	after *int64
+	before *int64
 }
 
-func (r PlayerAPIGetRecentlyPlayedRequest) Limit(limit int32) PlayerAPIGetRecentlyPlayedRequest {
+func (r PlayerAPIGetRecentlyPlayedRequest) Limit(limit int64) PlayerAPIGetRecentlyPlayedRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r PlayerAPIGetRecentlyPlayedRequest) After(after int32) PlayerAPIGetRecentlyPlayedRequest {
+func (r PlayerAPIGetRecentlyPlayedRequest) After(after int64) PlayerAPIGetRecentlyPlayedRequest {
 	r.after = &after
 	return r
 }
 
-func (r PlayerAPIGetRecentlyPlayedRequest) Before(before int32) PlayerAPIGetRecentlyPlayedRequest {
+func (r PlayerAPIGetRecentlyPlayedRequest) Before(before int64) PlayerAPIGetRecentlyPlayedRequest {
 	r.before = &before
 	return r
 }
@@ -863,7 +863,7 @@ func (a *PlayerAPIService) GetRecentlyPlayedExecute(r PlayerAPIGetRecentlyPlayed
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.after != nil {
@@ -1241,11 +1241,11 @@ func (a *PlayerAPIService) PauseAUsersPlaybackExecute(r PlayerAPIPauseAUsersPlay
 type PlayerAPISeekToPositionInCurrentlyPlayingTrackRequest struct {
 	ctx context.Context
 	ApiService PlayerAPI
-	positionMs *int32
+	positionMs *int64
 	deviceId *string
 }
 
-func (r PlayerAPISeekToPositionInCurrentlyPlayingTrackRequest) PositionMs(positionMs int32) PlayerAPISeekToPositionInCurrentlyPlayingTrackRequest {
+func (r PlayerAPISeekToPositionInCurrentlyPlayingTrackRequest) PositionMs(positionMs int64) PlayerAPISeekToPositionInCurrentlyPlayingTrackRequest {
 	r.positionMs = &positionMs
 	return r
 }
@@ -1521,11 +1521,11 @@ func (a *PlayerAPIService) SetRepeatModeOnUsersPlaybackExecute(r PlayerAPISetRep
 type PlayerAPISetVolumeForUsersPlaybackRequest struct {
 	ctx context.Context
 	ApiService PlayerAPI
-	volumePercent *int32
+	volumePercent *int64
 	deviceId *string
 }
 
-func (r PlayerAPISetVolumeForUsersPlaybackRequest) VolumePercent(volumePercent int32) PlayerAPISetVolumeForUsersPlaybackRequest {
+func (r PlayerAPISetVolumeForUsersPlaybackRequest) VolumePercent(volumePercent int64) PlayerAPISetVolumeForUsersPlaybackRequest {
 	r.volumePercent = &volumePercent
 	return r
 }

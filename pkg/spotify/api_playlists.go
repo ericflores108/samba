@@ -296,12 +296,12 @@ type PlaylistsAPIAddTracksToPlaylistRequest struct {
 	ctx context.Context
 	ApiService PlaylistsAPI
 	playlistId string
-	position *int32
+	position *int64
 	uris *string
 	addTracksToPlaylistRequest *AddTracksToPlaylistRequest
 }
 
-func (r PlaylistsAPIAddTracksToPlaylistRequest) Position(position int32) PlaylistsAPIAddTracksToPlaylistRequest {
+func (r PlaylistsAPIAddTracksToPlaylistRequest) Position(position int64) PlaylistsAPIAddTracksToPlaylistRequest {
 	r.position = &position
 	return r
 }
@@ -1016,16 +1016,16 @@ type PlaylistsAPIGetACategoriesPlaylistsRequest struct {
 	ctx context.Context
 	ApiService PlaylistsAPI
 	categoryId string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r PlaylistsAPIGetACategoriesPlaylistsRequest) Limit(limit int32) PlaylistsAPIGetACategoriesPlaylistsRequest {
+func (r PlaylistsAPIGetACategoriesPlaylistsRequest) Limit(limit int64) PlaylistsAPIGetACategoriesPlaylistsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r PlaylistsAPIGetACategoriesPlaylistsRequest) Offset(offset int32) PlaylistsAPIGetACategoriesPlaylistsRequest {
+func (r PlaylistsAPIGetACategoriesPlaylistsRequest) Offset(offset int64) PlaylistsAPIGetACategoriesPlaylistsRequest {
 	r.offset = &offset
 	return r
 }
@@ -1080,13 +1080,13 @@ func (a *PlaylistsAPIService) GetACategoriesPlaylistsExecute(r PlaylistsAPIGetAC
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1178,16 +1178,16 @@ func (a *PlaylistsAPIService) GetACategoriesPlaylistsExecute(r PlaylistsAPIGetAC
 type PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest struct {
 	ctx context.Context
 	ApiService PlaylistsAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest) Limit(limit int32) PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest {
+func (r PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest) Limit(limit int64) PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest) Offset(offset int32) PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest {
+func (r PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest) Offset(offset int64) PlaylistsAPIGetAListOfCurrentUsersPlaylistsRequest {
 	r.offset = &offset
 	return r
 }
@@ -1237,13 +1237,13 @@ func (a *PlaylistsAPIService) GetAListOfCurrentUsersPlaylistsExecute(r Playlists
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1336,8 +1336,8 @@ type PlaylistsAPIGetFeaturedPlaylistsRequest struct {
 	ctx context.Context
 	ApiService PlaylistsAPI
 	locale *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r PlaylistsAPIGetFeaturedPlaylistsRequest) Locale(locale string) PlaylistsAPIGetFeaturedPlaylistsRequest {
@@ -1345,12 +1345,12 @@ func (r PlaylistsAPIGetFeaturedPlaylistsRequest) Locale(locale string) Playlists
 	return r
 }
 
-func (r PlaylistsAPIGetFeaturedPlaylistsRequest) Limit(limit int32) PlaylistsAPIGetFeaturedPlaylistsRequest {
+func (r PlaylistsAPIGetFeaturedPlaylistsRequest) Limit(limit int64) PlaylistsAPIGetFeaturedPlaylistsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r PlaylistsAPIGetFeaturedPlaylistsRequest) Offset(offset int32) PlaylistsAPIGetFeaturedPlaylistsRequest {
+func (r PlaylistsAPIGetFeaturedPlaylistsRequest) Offset(offset int64) PlaylistsAPIGetFeaturedPlaylistsRequest {
 	r.offset = &offset
 	return r
 }
@@ -1405,13 +1405,13 @@ func (a *PlaylistsAPIService) GetFeaturedPlaylistsExecute(r PlaylistsAPIGetFeatu
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1504,16 +1504,16 @@ type PlaylistsAPIGetListUsersPlaylistsRequest struct {
 	ctx context.Context
 	ApiService PlaylistsAPI
 	userId string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r PlaylistsAPIGetListUsersPlaylistsRequest) Limit(limit int32) PlaylistsAPIGetListUsersPlaylistsRequest {
+func (r PlaylistsAPIGetListUsersPlaylistsRequest) Limit(limit int64) PlaylistsAPIGetListUsersPlaylistsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r PlaylistsAPIGetListUsersPlaylistsRequest) Offset(offset int32) PlaylistsAPIGetListUsersPlaylistsRequest {
+func (r PlaylistsAPIGetListUsersPlaylistsRequest) Offset(offset int64) PlaylistsAPIGetListUsersPlaylistsRequest {
 	r.offset = &offset
 	return r
 }
@@ -1565,13 +1565,13 @@ func (a *PlaylistsAPIService) GetListUsersPlaylistsExecute(r PlaylistsAPIGetList
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1965,8 +1965,8 @@ type PlaylistsAPIGetPlaylistsTracksRequest struct {
 	playlistId string
 	market *string
 	fields *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 	additionalTypes *string
 }
 
@@ -1980,12 +1980,12 @@ func (r PlaylistsAPIGetPlaylistsTracksRequest) Fields(fields string) PlaylistsAP
 	return r
 }
 
-func (r PlaylistsAPIGetPlaylistsTracksRequest) Limit(limit int32) PlaylistsAPIGetPlaylistsTracksRequest {
+func (r PlaylistsAPIGetPlaylistsTracksRequest) Limit(limit int64) PlaylistsAPIGetPlaylistsTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r PlaylistsAPIGetPlaylistsTracksRequest) Offset(offset int32) PlaylistsAPIGetPlaylistsTracksRequest {
+func (r PlaylistsAPIGetPlaylistsTracksRequest) Offset(offset int64) PlaylistsAPIGetPlaylistsTracksRequest {
 	r.offset = &offset
 	return r
 }
@@ -2048,13 +2048,13 @@ func (a *PlaylistsAPIService) GetPlaylistsTracksExecute(r PlaylistsAPIGetPlaylis
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	if r.additionalTypes != nil {

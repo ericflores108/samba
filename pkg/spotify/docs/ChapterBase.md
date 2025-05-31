@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AudioPreviewUrl** | **NullableString** | A URL to a 30 second preview (MP3 format) of the chapter. &#x60;null&#x60; if not available.  | 
 **AvailableMarkets** | Pointer to **[]string** | A list of the countries in which the chapter can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.  | [optional] 
-**ChapterNumber** | **int32** | The number of the chapter  | 
+**ChapterNumber** | **int64** | The number of the chapter  | 
 **Description** | **string** | A description of the chapter. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
 **HtmlDescription** | **string** | A description of the chapter. This field may contain HTML tags.  | 
-**DurationMs** | **int32** | The chapter length in milliseconds.  | 
+**DurationMs** | **int64** | The chapter length in milliseconds.  | 
 **Explicit** | **bool** | Whether or not the chapter has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
 **ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this chapter.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the chapter.  | 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewChapterBase
 
-`func NewChapterBase(audioPreviewUrl NullableString, chapterNumber int32, description string, htmlDescription string, durationMs int32, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *ChapterBase`
+`func NewChapterBase(audioPreviewUrl NullableString, chapterNumber int64, description string, htmlDescription string, durationMs int64, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *ChapterBase`
 
 NewChapterBase instantiates a new ChapterBase object
 This constructor will assign default values to properties that have it defined,
@@ -101,20 +101,20 @@ HasAvailableMarkets returns a boolean if a field has been set.
 
 ### GetChapterNumber
 
-`func (o *ChapterBase) GetChapterNumber() int32`
+`func (o *ChapterBase) GetChapterNumber() int64`
 
 GetChapterNumber returns the ChapterNumber field if non-nil, zero value otherwise.
 
 ### GetChapterNumberOk
 
-`func (o *ChapterBase) GetChapterNumberOk() (*int32, bool)`
+`func (o *ChapterBase) GetChapterNumberOk() (*int64, bool)`
 
 GetChapterNumberOk returns a tuple with the ChapterNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChapterNumber
 
-`func (o *ChapterBase) SetChapterNumber(v int32)`
+`func (o *ChapterBase) SetChapterNumber(v int64)`
 
 SetChapterNumber sets ChapterNumber field to given value.
 
@@ -161,20 +161,20 @@ SetHtmlDescription sets HtmlDescription field to given value.
 
 ### GetDurationMs
 
-`func (o *ChapterBase) GetDurationMs() int32`
+`func (o *ChapterBase) GetDurationMs() int64`
 
 GetDurationMs returns the DurationMs field if non-nil, zero value otherwise.
 
 ### GetDurationMsOk
 
-`func (o *ChapterBase) GetDurationMsOk() (*int32, bool)`
+`func (o *ChapterBase) GetDurationMsOk() (*int64, bool)`
 
 GetDurationMsOk returns a tuple with the DurationMs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDurationMs
 
-`func (o *ChapterBase) SetDurationMs(v int32)`
+`func (o *ChapterBase) SetDurationMs(v int64)`
 
 SetDurationMs sets DurationMs field to given value.
 

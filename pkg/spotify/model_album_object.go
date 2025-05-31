@@ -24,7 +24,7 @@ type AlbumObject struct {
 	// The type of the album. 
 	AlbumType string `json:"album_type"`
 	// The number of tracks in the album.
-	TotalTracks int32 `json:"total_tracks"`
+	TotalTracks int64 `json:"total_tracks"`
 	// The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._ 
 	AvailableMarkets []string `json:"available_markets"`
 	// Known external URLs for this album. 
@@ -61,7 +61,7 @@ type AlbumObject struct {
 	// The label associated with the album. 
 	Label string `json:"label"`
 	// The popularity of the album. The value will be between 0 and 100, with 100 being the most popular. 
-	Popularity int32 `json:"popularity"`
+	Popularity int64 `json:"popularity"`
 }
 
 type _AlbumObject AlbumObject
@@ -70,7 +70,7 @@ type _AlbumObject AlbumObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlbumObject(albumType string, totalTracks int32, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, artists []SimplifiedArtistObject, tracks PagingSimplifiedTrackObject, copyrights []CopyrightObject, externalIds ExternalIdObject, genres []string, label string, popularity int32) *AlbumObject {
+func NewAlbumObject(albumType string, totalTracks int64, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, artists []SimplifiedArtistObject, tracks PagingSimplifiedTrackObject, copyrights []CopyrightObject, externalIds ExternalIdObject, genres []string, label string, popularity int64) *AlbumObject {
 	this := AlbumObject{}
 	this.AlbumType = albumType
 	this.TotalTracks = totalTracks
@@ -127,9 +127,9 @@ func (o *AlbumObject) SetAlbumType(v string) {
 }
 
 // GetTotalTracks returns the TotalTracks field value
-func (o *AlbumObject) GetTotalTracks() int32 {
+func (o *AlbumObject) GetTotalTracks() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -138,7 +138,7 @@ func (o *AlbumObject) GetTotalTracks() int32 {
 
 // GetTotalTracksOk returns a tuple with the TotalTracks field value
 // and a boolean to check if the value has been set.
-func (o *AlbumObject) GetTotalTracksOk() (*int32, bool) {
+func (o *AlbumObject) GetTotalTracksOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,7 +146,7 @@ func (o *AlbumObject) GetTotalTracksOk() (*int32, bool) {
 }
 
 // SetTotalTracks sets field value
-func (o *AlbumObject) SetTotalTracks(v int32) {
+func (o *AlbumObject) SetTotalTracks(v int64) {
 	o.TotalTracks = v
 }
 
@@ -570,9 +570,9 @@ func (o *AlbumObject) SetLabel(v string) {
 }
 
 // GetPopularity returns the Popularity field value
-func (o *AlbumObject) GetPopularity() int32 {
+func (o *AlbumObject) GetPopularity() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -581,7 +581,7 @@ func (o *AlbumObject) GetPopularity() int32 {
 
 // GetPopularityOk returns a tuple with the Popularity field value
 // and a boolean to check if the value has been set.
-func (o *AlbumObject) GetPopularityOk() (*int32, bool) {
+func (o *AlbumObject) GetPopularityOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -589,7 +589,7 @@ func (o *AlbumObject) GetPopularityOk() (*int32, bool) {
 }
 
 // SetPopularity sets field value
-func (o *AlbumObject) SetPopularity(v int32) {
+func (o *AlbumObject) SetPopularity(v int64) {
 	o.Popularity = v
 }
 

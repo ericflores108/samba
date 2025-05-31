@@ -609,8 +609,8 @@ type ArtistsAPIGetAnArtistsAlbumsRequest struct {
 	id string
 	includeGroups *string
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r ArtistsAPIGetAnArtistsAlbumsRequest) IncludeGroups(includeGroups string) ArtistsAPIGetAnArtistsAlbumsRequest {
@@ -623,12 +623,12 @@ func (r ArtistsAPIGetAnArtistsAlbumsRequest) Market(market string) ArtistsAPIGet
 	return r
 }
 
-func (r ArtistsAPIGetAnArtistsAlbumsRequest) Limit(limit int32) ArtistsAPIGetAnArtistsAlbumsRequest {
+func (r ArtistsAPIGetAnArtistsAlbumsRequest) Limit(limit int64) ArtistsAPIGetAnArtistsAlbumsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ArtistsAPIGetAnArtistsAlbumsRequest) Offset(offset int32) ArtistsAPIGetAnArtistsAlbumsRequest {
+func (r ArtistsAPIGetAnArtistsAlbumsRequest) Offset(offset int64) ArtistsAPIGetAnArtistsAlbumsRequest {
 	r.offset = &offset
 	return r
 }
@@ -686,13 +686,13 @@ func (a *ArtistsAPIService) GetAnArtistsAlbumsExecute(r ArtistsAPIGetAnArtistsAl
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1070,7 +1070,7 @@ type ArtistsAPIGetFollowedRequest struct {
 	ApiService ArtistsAPI
 	type_ *string
 	after *string
-	limit *int32
+	limit *int64
 }
 
 func (r ArtistsAPIGetFollowedRequest) Type_(type_ string) ArtistsAPIGetFollowedRequest {
@@ -1083,7 +1083,7 @@ func (r ArtistsAPIGetFollowedRequest) After(after string) ArtistsAPIGetFollowedR
 	return r
 }
 
-func (r ArtistsAPIGetFollowedRequest) Limit(limit int32) ArtistsAPIGetFollowedRequest {
+func (r ArtistsAPIGetFollowedRequest) Limit(limit int64) ArtistsAPIGetFollowedRequest {
 	r.limit = &limit
 	return r
 }
@@ -1139,7 +1139,7 @@ func (a *ArtistsAPIService) GetFollowedExecute(r ArtistsAPIGetFollowedRequest) (
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	// to determine the Content-Type header

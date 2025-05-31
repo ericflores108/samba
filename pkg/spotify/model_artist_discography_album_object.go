@@ -24,7 +24,7 @@ type ArtistDiscographyAlbumObject struct {
 	// The type of the album. 
 	AlbumType string `json:"album_type"`
 	// The number of tracks in the album.
-	TotalTracks int32 `json:"total_tracks"`
+	TotalTracks int64 `json:"total_tracks"`
 	// The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._ 
 	AvailableMarkets []string `json:"available_markets"`
 	// Known external URLs for this album. 
@@ -59,7 +59,7 @@ type _ArtistDiscographyAlbumObject ArtistDiscographyAlbumObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArtistDiscographyAlbumObject(albumType string, totalTracks int32, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, artists []SimplifiedArtistObject, albumGroup string) *ArtistDiscographyAlbumObject {
+func NewArtistDiscographyAlbumObject(albumType string, totalTracks int64, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, artists []SimplifiedArtistObject, albumGroup string) *ArtistDiscographyAlbumObject {
 	this := ArtistDiscographyAlbumObject{}
 	this.AlbumType = albumType
 	this.TotalTracks = totalTracks
@@ -111,9 +111,9 @@ func (o *ArtistDiscographyAlbumObject) SetAlbumType(v string) {
 }
 
 // GetTotalTracks returns the TotalTracks field value
-func (o *ArtistDiscographyAlbumObject) GetTotalTracks() int32 {
+func (o *ArtistDiscographyAlbumObject) GetTotalTracks() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -122,7 +122,7 @@ func (o *ArtistDiscographyAlbumObject) GetTotalTracks() int32 {
 
 // GetTotalTracksOk returns a tuple with the TotalTracks field value
 // and a boolean to check if the value has been set.
-func (o *ArtistDiscographyAlbumObject) GetTotalTracksOk() (*int32, bool) {
+func (o *ArtistDiscographyAlbumObject) GetTotalTracksOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *ArtistDiscographyAlbumObject) GetTotalTracksOk() (*int32, bool) {
 }
 
 // SetTotalTracks sets field value
-func (o *ArtistDiscographyAlbumObject) SetTotalTracks(v int32) {
+func (o *ArtistDiscographyAlbumObject) SetTotalTracks(v int64) {
 	o.TotalTracks = v
 }
 

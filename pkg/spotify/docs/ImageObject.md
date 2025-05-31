@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** | The source URL of the image.  | 
-**Height** | **NullableInt32** | The image height in pixels.  | 
-**Width** | **NullableInt32** | The image width in pixels.  | 
+**Height** | **NullableInt64** | The image height in pixels.  | 
+**Width** | **NullableInt64** | The image width in pixels.  | 
 
 ## Methods
 
 ### NewImageObject
 
-`func NewImageObject(url string, height NullableInt32, width NullableInt32, ) *ImageObject`
+`func NewImageObject(url string, height NullableInt64, width NullableInt64, ) *ImageObject`
 
 NewImageObject instantiates a new ImageObject object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetUrl sets Url field to given value.
 
 ### GetHeight
 
-`func (o *ImageObject) GetHeight() int32`
+`func (o *ImageObject) GetHeight() int64`
 
 GetHeight returns the Height field if non-nil, zero value otherwise.
 
 ### GetHeightOk
 
-`func (o *ImageObject) GetHeightOk() (*int32, bool)`
+`func (o *ImageObject) GetHeightOk() (*int64, bool)`
 
 GetHeightOk returns a tuple with the Height field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeight
 
-`func (o *ImageObject) SetHeight(v int32)`
+`func (o *ImageObject) SetHeight(v int64)`
 
 SetHeight sets Height field to given value.
 
@@ -79,20 +79,20 @@ SetHeight sets Height field to given value.
 UnsetHeight ensures that no value is present for Height, not even an explicit nil
 ### GetWidth
 
-`func (o *ImageObject) GetWidth() int32`
+`func (o *ImageObject) GetWidth() int64`
 
 GetWidth returns the Width field if non-nil, zero value otherwise.
 
 ### GetWidthOk
 
-`func (o *ImageObject) GetWidthOk() (*int32, bool)`
+`func (o *ImageObject) GetWidthOk() (*int64, bool)`
 
 GetWidthOk returns a tuple with the Width field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWidth
 
-`func (o *ImageObject) SetWidth(v int32)`
+`func (o *ImageObject) SetWidth(v int64)`
 
 SetWidth sets Width field to given value.
 

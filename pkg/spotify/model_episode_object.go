@@ -29,7 +29,7 @@ type EpisodeObject struct {
 	// A description of the episode. This field may contain HTML tags. 
 	HtmlDescription string `json:"html_description"`
 	// The episode length in milliseconds. 
-	DurationMs int32 `json:"duration_ms"`
+	DurationMs int64 `json:"duration_ms"`
 	// Whether or not the episode has explicit content (true = yes it does; false = no it does not OR unknown). 
 	Explicit bool `json:"explicit"`
 	// External URLs for this episode. 
@@ -73,7 +73,7 @@ type _EpisodeObject EpisodeObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEpisodeObject(audioPreviewUrl NullableString, description string, htmlDescription string, durationMs int32, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, show SimplifiedShowObject) *EpisodeObject {
+func NewEpisodeObject(audioPreviewUrl NullableString, description string, htmlDescription string, durationMs int64, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, show SimplifiedShowObject) *EpisodeObject {
 	this := EpisodeObject{}
 	this.AudioPreviewUrl = audioPreviewUrl
 	this.Description = description
@@ -182,9 +182,9 @@ func (o *EpisodeObject) SetHtmlDescription(v string) {
 }
 
 // GetDurationMs returns the DurationMs field value
-func (o *EpisodeObject) GetDurationMs() int32 {
+func (o *EpisodeObject) GetDurationMs() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -193,7 +193,7 @@ func (o *EpisodeObject) GetDurationMs() int32 {
 
 // GetDurationMsOk returns a tuple with the DurationMs field value
 // and a boolean to check if the value has been set.
-func (o *EpisodeObject) GetDurationMsOk() (*int32, bool) {
+func (o *EpisodeObject) GetDurationMsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -201,7 +201,7 @@ func (o *EpisodeObject) GetDurationMsOk() (*int32, bool) {
 }
 
 // SetDurationMs sets field value
-func (o *EpisodeObject) SetDurationMs(v int32) {
+func (o *EpisodeObject) SetDurationMs(v int64) {
 	o.DurationMs = v
 }
 

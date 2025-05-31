@@ -425,8 +425,8 @@ type ShowsAPIGetAShowsEpisodesRequest struct {
 	ApiService ShowsAPI
 	id string
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r ShowsAPIGetAShowsEpisodesRequest) Market(market string) ShowsAPIGetAShowsEpisodesRequest {
@@ -434,12 +434,12 @@ func (r ShowsAPIGetAShowsEpisodesRequest) Market(market string) ShowsAPIGetAShow
 	return r
 }
 
-func (r ShowsAPIGetAShowsEpisodesRequest) Limit(limit int32) ShowsAPIGetAShowsEpisodesRequest {
+func (r ShowsAPIGetAShowsEpisodesRequest) Limit(limit int64) ShowsAPIGetAShowsEpisodesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ShowsAPIGetAShowsEpisodesRequest) Offset(offset int32) ShowsAPIGetAShowsEpisodesRequest {
+func (r ShowsAPIGetAShowsEpisodesRequest) Offset(offset int64) ShowsAPIGetAShowsEpisodesRequest {
 	r.offset = &offset
 	return r
 }
@@ -494,13 +494,13 @@ func (a *ShowsAPIService) GetAShowsEpisodesExecute(r ShowsAPIGetAShowsEpisodesRe
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -743,16 +743,16 @@ func (a *ShowsAPIService) GetMultipleShowsExecute(r ShowsAPIGetMultipleShowsRequ
 type ShowsAPIGetUsersSavedShowsRequest struct {
 	ctx context.Context
 	ApiService ShowsAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r ShowsAPIGetUsersSavedShowsRequest) Limit(limit int32) ShowsAPIGetUsersSavedShowsRequest {
+func (r ShowsAPIGetUsersSavedShowsRequest) Limit(limit int64) ShowsAPIGetUsersSavedShowsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ShowsAPIGetUsersSavedShowsRequest) Offset(offset int32) ShowsAPIGetUsersSavedShowsRequest {
+func (r ShowsAPIGetUsersSavedShowsRequest) Offset(offset int64) ShowsAPIGetUsersSavedShowsRequest {
 	r.offset = &offset
 	return r
 }
@@ -801,13 +801,13 @@ func (a *ShowsAPIService) GetUsersSavedShowsExecute(r ShowsAPIGetUsersSavedShows
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header

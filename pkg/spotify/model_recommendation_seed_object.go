@@ -20,15 +20,15 @@ var _ MappedNullable = &RecommendationSeedObject{}
 // RecommendationSeedObject struct for RecommendationSeedObject
 type RecommendationSeedObject struct {
 	// The number of tracks available after min\\_\\* and max\\_\\* filters have been applied. 
-	AfterFilteringSize *int32 `json:"afterFilteringSize,omitempty"`
+	AfterFilteringSize *int64 `json:"afterFilteringSize,omitempty"`
 	// The number of tracks available after relinking for regional availability. 
-	AfterRelinkingSize *int32 `json:"afterRelinkingSize,omitempty"`
+	AfterRelinkingSize *int64 `json:"afterRelinkingSize,omitempty"`
 	// A link to the full track or artist data for this seed. For tracks this will be a link to a Track Object. For artists a link to an Artist Object. For genre seeds, this value will be `null`. 
 	Href *string `json:"href,omitempty"`
 	// The id used to select this seed. This will be the same as the string used in the `seed_artists`, `seed_tracks` or `seed_genres` parameter. 
 	Id *string `json:"id,omitempty"`
 	// The number of recommended tracks available for this seed. 
-	InitialPoolSize *int32 `json:"initialPoolSize,omitempty"`
+	InitialPoolSize *int64 `json:"initialPoolSize,omitempty"`
 	// The entity type of this seed. One of `artist`, `track` or `genre`. 
 	Type *string `json:"type,omitempty"`
 }
@@ -51,9 +51,9 @@ func NewRecommendationSeedObjectWithDefaults() *RecommendationSeedObject {
 }
 
 // GetAfterFilteringSize returns the AfterFilteringSize field value if set, zero value otherwise.
-func (o *RecommendationSeedObject) GetAfterFilteringSize() int32 {
+func (o *RecommendationSeedObject) GetAfterFilteringSize() int64 {
 	if o == nil || IsNil(o.AfterFilteringSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AfterFilteringSize
@@ -61,7 +61,7 @@ func (o *RecommendationSeedObject) GetAfterFilteringSize() int32 {
 
 // GetAfterFilteringSizeOk returns a tuple with the AfterFilteringSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecommendationSeedObject) GetAfterFilteringSizeOk() (*int32, bool) {
+func (o *RecommendationSeedObject) GetAfterFilteringSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.AfterFilteringSize) {
 		return nil, false
 	}
@@ -77,15 +77,15 @@ func (o *RecommendationSeedObject) HasAfterFilteringSize() bool {
 	return false
 }
 
-// SetAfterFilteringSize gets a reference to the given int32 and assigns it to the AfterFilteringSize field.
-func (o *RecommendationSeedObject) SetAfterFilteringSize(v int32) {
+// SetAfterFilteringSize gets a reference to the given int64 and assigns it to the AfterFilteringSize field.
+func (o *RecommendationSeedObject) SetAfterFilteringSize(v int64) {
 	o.AfterFilteringSize = &v
 }
 
 // GetAfterRelinkingSize returns the AfterRelinkingSize field value if set, zero value otherwise.
-func (o *RecommendationSeedObject) GetAfterRelinkingSize() int32 {
+func (o *RecommendationSeedObject) GetAfterRelinkingSize() int64 {
 	if o == nil || IsNil(o.AfterRelinkingSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AfterRelinkingSize
@@ -93,7 +93,7 @@ func (o *RecommendationSeedObject) GetAfterRelinkingSize() int32 {
 
 // GetAfterRelinkingSizeOk returns a tuple with the AfterRelinkingSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecommendationSeedObject) GetAfterRelinkingSizeOk() (*int32, bool) {
+func (o *RecommendationSeedObject) GetAfterRelinkingSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.AfterRelinkingSize) {
 		return nil, false
 	}
@@ -109,8 +109,8 @@ func (o *RecommendationSeedObject) HasAfterRelinkingSize() bool {
 	return false
 }
 
-// SetAfterRelinkingSize gets a reference to the given int32 and assigns it to the AfterRelinkingSize field.
-func (o *RecommendationSeedObject) SetAfterRelinkingSize(v int32) {
+// SetAfterRelinkingSize gets a reference to the given int64 and assigns it to the AfterRelinkingSize field.
+func (o *RecommendationSeedObject) SetAfterRelinkingSize(v int64) {
 	o.AfterRelinkingSize = &v
 }
 
@@ -179,9 +179,9 @@ func (o *RecommendationSeedObject) SetId(v string) {
 }
 
 // GetInitialPoolSize returns the InitialPoolSize field value if set, zero value otherwise.
-func (o *RecommendationSeedObject) GetInitialPoolSize() int32 {
+func (o *RecommendationSeedObject) GetInitialPoolSize() int64 {
 	if o == nil || IsNil(o.InitialPoolSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.InitialPoolSize
@@ -189,7 +189,7 @@ func (o *RecommendationSeedObject) GetInitialPoolSize() int32 {
 
 // GetInitialPoolSizeOk returns a tuple with the InitialPoolSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecommendationSeedObject) GetInitialPoolSizeOk() (*int32, bool) {
+func (o *RecommendationSeedObject) GetInitialPoolSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.InitialPoolSize) {
 		return nil, false
 	}
@@ -205,8 +205,8 @@ func (o *RecommendationSeedObject) HasInitialPoolSize() bool {
 	return false
 }
 
-// SetInitialPoolSize gets a reference to the given int32 and assigns it to the InitialPoolSize field.
-func (o *RecommendationSeedObject) SetInitialPoolSize(v int32) {
+// SetInitialPoolSize gets a reference to the given int64 and assigns it to the InitialPoolSize field.
+func (o *RecommendationSeedObject) SetInitialPoolSize(v int64) {
 	o.InitialPoolSize = &v
 }
 

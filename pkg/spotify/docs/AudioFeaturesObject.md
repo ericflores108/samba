@@ -7,17 +7,17 @@ Name | Type | Description | Notes
 **Acousticness** | Pointer to **float32** | A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.  | [optional] 
 **AnalysisUrl** | Pointer to **string** | A URL to access the full audio analysis of this track. An access token is required to access this data.  | [optional] 
 **Danceability** | Pointer to **float32** | Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.  | [optional] 
-**DurationMs** | Pointer to **int32** | The duration of the track in milliseconds.  | [optional] 
+**DurationMs** | Pointer to **int64** | The duration of the track in milliseconds.  | [optional] 
 **Energy** | Pointer to **float32** | Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.  | [optional] 
 **Id** | Pointer to **string** | The Spotify ID for the track.  | [optional] 
 **Instrumentalness** | Pointer to **float32** | Predicts whether a track contains no vocals. \&quot;Ooh\&quot; and \&quot;aah\&quot; sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly \&quot;vocal\&quot;. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.  | [optional] 
-**Key** | Pointer to **int32** | The key the track is in. Integers map to pitches using standard [Pitch Class notation](https://en.wikipedia.org/wiki/Pitch_class). E.g. 0 &#x3D; C, 1 &#x3D; C♯/D♭, 2 &#x3D; D, and so on. If no key was detected, the value is -1.  | [optional] 
+**Key** | Pointer to **int64** | The key the track is in. Integers map to pitches using standard [Pitch Class notation](https://en.wikipedia.org/wiki/Pitch_class). E.g. 0 &#x3D; C, 1 &#x3D; C♯/D♭, 2 &#x3D; D, and so on. If no key was detected, the value is -1.  | [optional] 
 **Liveness** | Pointer to **float32** | Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.  | [optional] 
 **Loudness** | Pointer to **float32** | The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typically range between -60 and 0 db.  | [optional] 
-**Mode** | Pointer to **int32** | Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.  | [optional] 
+**Mode** | Pointer to **int64** | Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.  | [optional] 
 **Speechiness** | Pointer to **float32** | Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.  | [optional] 
 **Tempo** | Pointer to **float32** | The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.  | [optional] 
-**TimeSignature** | Pointer to **int32** | An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \&quot;3/4\&quot;, to \&quot;7/4\&quot;. | [optional] 
+**TimeSignature** | Pointer to **int64** | An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \&quot;3/4\&quot;, to \&quot;7/4\&quot;. | [optional] 
 **TrackHref** | Pointer to **string** | A link to the Web API endpoint providing full details of the track.  | [optional] 
 **Type** | Pointer to **string** | The object type.  | [optional] 
 **Uri** | Pointer to **string** | The Spotify URI for the track.  | [optional] 
@@ -119,20 +119,20 @@ HasDanceability returns a boolean if a field has been set.
 
 ### GetDurationMs
 
-`func (o *AudioFeaturesObject) GetDurationMs() int32`
+`func (o *AudioFeaturesObject) GetDurationMs() int64`
 
 GetDurationMs returns the DurationMs field if non-nil, zero value otherwise.
 
 ### GetDurationMsOk
 
-`func (o *AudioFeaturesObject) GetDurationMsOk() (*int32, bool)`
+`func (o *AudioFeaturesObject) GetDurationMsOk() (*int64, bool)`
 
 GetDurationMsOk returns a tuple with the DurationMs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDurationMs
 
-`func (o *AudioFeaturesObject) SetDurationMs(v int32)`
+`func (o *AudioFeaturesObject) SetDurationMs(v int64)`
 
 SetDurationMs sets DurationMs field to given value.
 
@@ -219,20 +219,20 @@ HasInstrumentalness returns a boolean if a field has been set.
 
 ### GetKey
 
-`func (o *AudioFeaturesObject) GetKey() int32`
+`func (o *AudioFeaturesObject) GetKey() int64`
 
 GetKey returns the Key field if non-nil, zero value otherwise.
 
 ### GetKeyOk
 
-`func (o *AudioFeaturesObject) GetKeyOk() (*int32, bool)`
+`func (o *AudioFeaturesObject) GetKeyOk() (*int64, bool)`
 
 GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKey
 
-`func (o *AudioFeaturesObject) SetKey(v int32)`
+`func (o *AudioFeaturesObject) SetKey(v int64)`
 
 SetKey sets Key field to given value.
 
@@ -294,20 +294,20 @@ HasLoudness returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *AudioFeaturesObject) GetMode() int32`
+`func (o *AudioFeaturesObject) GetMode() int64`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *AudioFeaturesObject) GetModeOk() (*int32, bool)`
+`func (o *AudioFeaturesObject) GetModeOk() (*int64, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *AudioFeaturesObject) SetMode(v int32)`
+`func (o *AudioFeaturesObject) SetMode(v int64)`
 
 SetMode sets Mode field to given value.
 
@@ -369,20 +369,20 @@ HasTempo returns a boolean if a field has been set.
 
 ### GetTimeSignature
 
-`func (o *AudioFeaturesObject) GetTimeSignature() int32`
+`func (o *AudioFeaturesObject) GetTimeSignature() int64`
 
 GetTimeSignature returns the TimeSignature field if non-nil, zero value otherwise.
 
 ### GetTimeSignatureOk
 
-`func (o *AudioFeaturesObject) GetTimeSignatureOk() (*int32, bool)`
+`func (o *AudioFeaturesObject) GetTimeSignatureOk() (*int64, bool)`
 
 GetTimeSignatureOk returns a tuple with the TimeSignature field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeSignature
 
-`func (o *AudioFeaturesObject) SetTimeSignature(v int32)`
+`func (o *AudioFeaturesObject) SetTimeSignature(v int64)`
 
 SetTimeSignature sets TimeSignature field to given value.
 

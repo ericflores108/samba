@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Artists** | Pointer to [**[]SimplifiedArtistObject**](SimplifiedArtistObject.md) | The artists who performed the track. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist. | [optional] 
 **AvailableMarkets** | Pointer to **[]string** | A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.  | [optional] 
-**DiscNumber** | Pointer to **int32** | The disc number (usually &#x60;1&#x60; unless the album consists of more than one disc). | [optional] 
-**DurationMs** | Pointer to **int32** | The track length in milliseconds. | [optional] 
+**DiscNumber** | Pointer to **int64** | The disc number (usually &#x60;1&#x60; unless the album consists of more than one disc). | [optional] 
+**DurationMs** | Pointer to **int64** | The track length in milliseconds. | [optional] 
 **Explicit** | Pointer to **bool** | Whether or not the track has explicit lyrics ( &#x60;true&#x60; &#x3D; yes it does; &#x60;false&#x60; &#x3D; no it does not OR unknown). | [optional] 
 **ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this track.  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the track. | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Restrictions** | Pointer to [**TrackRestrictionObject**](TrackRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 **Name** | Pointer to **string** | The name of the track. | [optional] 
 **PreviewUrl** | Pointer to **NullableString** | A URL to a 30 second preview (MP3 format) of the track.  | [optional] 
-**TrackNumber** | Pointer to **int32** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
+**TrackNumber** | Pointer to **int64** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;track\&quot;.  | [optional] 
 **Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
 **IsLocal** | Pointer to **bool** | Whether or not the track is from a local file.  | [optional] 
@@ -93,20 +93,20 @@ HasAvailableMarkets returns a boolean if a field has been set.
 
 ### GetDiscNumber
 
-`func (o *SimplifiedTrackObject) GetDiscNumber() int32`
+`func (o *SimplifiedTrackObject) GetDiscNumber() int64`
 
 GetDiscNumber returns the DiscNumber field if non-nil, zero value otherwise.
 
 ### GetDiscNumberOk
 
-`func (o *SimplifiedTrackObject) GetDiscNumberOk() (*int32, bool)`
+`func (o *SimplifiedTrackObject) GetDiscNumberOk() (*int64, bool)`
 
 GetDiscNumberOk returns a tuple with the DiscNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscNumber
 
-`func (o *SimplifiedTrackObject) SetDiscNumber(v int32)`
+`func (o *SimplifiedTrackObject) SetDiscNumber(v int64)`
 
 SetDiscNumber sets DiscNumber field to given value.
 
@@ -118,20 +118,20 @@ HasDiscNumber returns a boolean if a field has been set.
 
 ### GetDurationMs
 
-`func (o *SimplifiedTrackObject) GetDurationMs() int32`
+`func (o *SimplifiedTrackObject) GetDurationMs() int64`
 
 GetDurationMs returns the DurationMs field if non-nil, zero value otherwise.
 
 ### GetDurationMsOk
 
-`func (o *SimplifiedTrackObject) GetDurationMsOk() (*int32, bool)`
+`func (o *SimplifiedTrackObject) GetDurationMsOk() (*int64, bool)`
 
 GetDurationMsOk returns a tuple with the DurationMs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDurationMs
 
-`func (o *SimplifiedTrackObject) SetDurationMs(v int32)`
+`func (o *SimplifiedTrackObject) SetDurationMs(v int64)`
 
 SetDurationMs sets DurationMs field to given value.
 
@@ -378,20 +378,20 @@ HasPreviewUrl returns a boolean if a field has been set.
 UnsetPreviewUrl ensures that no value is present for PreviewUrl, not even an explicit nil
 ### GetTrackNumber
 
-`func (o *SimplifiedTrackObject) GetTrackNumber() int32`
+`func (o *SimplifiedTrackObject) GetTrackNumber() int64`
 
 GetTrackNumber returns the TrackNumber field if non-nil, zero value otherwise.
 
 ### GetTrackNumberOk
 
-`func (o *SimplifiedTrackObject) GetTrackNumberOk() (*int32, bool)`
+`func (o *SimplifiedTrackObject) GetTrackNumberOk() (*int64, bool)`
 
 GetTrackNumberOk returns a tuple with the TrackNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackNumber
 
-`func (o *SimplifiedTrackObject) SetTrackNumber(v int32)`
+`func (o *SimplifiedTrackObject) SetTrackNumber(v int64)`
 
 SetTrackNumber sets TrackNumber field to given value.
 

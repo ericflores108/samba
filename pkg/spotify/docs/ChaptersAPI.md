@@ -105,8 +105,8 @@ import (
 func main() {
 	id := "7iHfbu1YPACw6oZPAFJtqe" // string | 
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -137,8 +137,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 

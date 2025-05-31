@@ -20,13 +20,13 @@ Name | Type | Description | Notes
 **Publisher** | **string** | The publisher of the show.  | 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show.  | 
-**TotalEpisodes** | **int32** | The total number of episodes in the show.  | 
+**TotalEpisodes** | **int64** | The total number of episodes in the show.  | 
 
 ## Methods
 
 ### NewShowBase
 
-`func NewShowBase(availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, languages []string, mediaType string, name string, publisher string, type_ string, uri string, totalEpisodes int32, ) *ShowBase`
+`func NewShowBase(availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, languages []string, mediaType string, name string, publisher string, type_ string, uri string, totalEpisodes int64, ) *ShowBase`
 
 NewShowBase instantiates a new ShowBase object
 This constructor will assign default values to properties that have it defined,
@@ -363,20 +363,20 @@ SetUri sets Uri field to given value.
 
 ### GetTotalEpisodes
 
-`func (o *ShowBase) GetTotalEpisodes() int32`
+`func (o *ShowBase) GetTotalEpisodes() int64`
 
 GetTotalEpisodes returns the TotalEpisodes field if non-nil, zero value otherwise.
 
 ### GetTotalEpisodesOk
 
-`func (o *ShowBase) GetTotalEpisodesOk() (*int32, bool)`
+`func (o *ShowBase) GetTotalEpisodesOk() (*int64, bool)`
 
 GetTotalEpisodesOk returns a tuple with the TotalEpisodes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalEpisodes
 
-`func (o *ShowBase) SetTotalEpisodes(v int32)`
+`func (o *ShowBase) SetTotalEpisodes(v int64)`
 
 SetTotalEpisodes sets TotalEpisodes field to given value.
 

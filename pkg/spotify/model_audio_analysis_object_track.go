@@ -20,19 +20,19 @@ var _ MappedNullable = &AudioAnalysisObjectTrack{}
 // AudioAnalysisObjectTrack struct for AudioAnalysisObjectTrack
 type AudioAnalysisObjectTrack struct {
 	// The exact number of audio samples analyzed from this track. See also `analysis_sample_rate`.
-	NumSamples *int32 `json:"num_samples,omitempty"`
+	NumSamples *int64 `json:"num_samples,omitempty"`
 	// Length of the track in seconds.
 	Duration *float32 `json:"duration,omitempty"`
 	// This field will always contain the empty string.
 	SampleMd5 *string `json:"sample_md5,omitempty"`
 	// An offset to the start of the region of the track that was analyzed. (As the entire track is analyzed, this should always be 0.)
-	OffsetSeconds *int32 `json:"offset_seconds,omitempty"`
+	OffsetSeconds *int64 `json:"offset_seconds,omitempty"`
 	// The length of the region of the track was analyzed, if a subset of the track was analyzed. (As the entire track is analyzed, this should always be 0.)
-	WindowSeconds *int32 `json:"window_seconds,omitempty"`
+	WindowSeconds *int64 `json:"window_seconds,omitempty"`
 	// The sample rate used to decode and analyze this track. May differ from the actual sample rate of this track available on Spotify.
-	AnalysisSampleRate *int32 `json:"analysis_sample_rate,omitempty"`
+	AnalysisSampleRate *int64 `json:"analysis_sample_rate,omitempty"`
 	// The number of channels used for analysis. If 1, all channels are summed together to mono before analysis.
-	AnalysisChannels *int32 `json:"analysis_channels,omitempty"`
+	AnalysisChannels *int64 `json:"analysis_channels,omitempty"`
 	// The time, in seconds, at which the track's fade-in period ends. If the track has no fade-in, this will be 0.0.
 	EndOfFadeIn *float32 `json:"end_of_fade_in,omitempty"`
 	// The time, in seconds, at which the track's fade-out period starts. If the track has no fade-out, this should match the track's length.
@@ -44,15 +44,15 @@ type AudioAnalysisObjectTrack struct {
 	// The confidence, from 0.0 to 1.0, of the reliability of the `tempo`.
 	TempoConfidence *float32 `json:"tempo_confidence,omitempty"`
 	// An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \"3/4\", to \"7/4\".
-	TimeSignature *int32 `json:"time_signature,omitempty"`
+	TimeSignature *int64 `json:"time_signature,omitempty"`
 	// The confidence, from 0.0 to 1.0, of the reliability of the `time_signature`.
 	TimeSignatureConfidence *float32 `json:"time_signature_confidence,omitempty"`
 	// The key the track is in. Integers map to pitches using standard [Pitch Class notation](https://en.wikipedia.org/wiki/Pitch_class). E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on. If no key was detected, the value is -1. 
-	Key *int32 `json:"key,omitempty"`
+	Key *int64 `json:"key,omitempty"`
 	// The confidence, from 0.0 to 1.0, of the reliability of the `key`.
 	KeyConfidence *float32 `json:"key_confidence,omitempty"`
 	// Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0. 
-	Mode *int32 `json:"mode,omitempty"`
+	Mode *int64 `json:"mode,omitempty"`
 	// The confidence, from 0.0 to 1.0, of the reliability of the `mode`.
 	ModeConfidence *float32 `json:"mode_confidence,omitempty"`
 	// An [Echo Nest Musical Fingerprint (ENMFP)](https://academiccommons.columbia.edu/doi/10.7916/D8Q248M4) codestring for this track.
@@ -91,9 +91,9 @@ func NewAudioAnalysisObjectTrackWithDefaults() *AudioAnalysisObjectTrack {
 }
 
 // GetNumSamples returns the NumSamples field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectTrack) GetNumSamples() int32 {
+func (o *AudioAnalysisObjectTrack) GetNumSamples() int64 {
 	if o == nil || IsNil(o.NumSamples) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NumSamples
@@ -101,7 +101,7 @@ func (o *AudioAnalysisObjectTrack) GetNumSamples() int32 {
 
 // GetNumSamplesOk returns a tuple with the NumSamples field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectTrack) GetNumSamplesOk() (*int32, bool) {
+func (o *AudioAnalysisObjectTrack) GetNumSamplesOk() (*int64, bool) {
 	if o == nil || IsNil(o.NumSamples) {
 		return nil, false
 	}
@@ -117,8 +117,8 @@ func (o *AudioAnalysisObjectTrack) HasNumSamples() bool {
 	return false
 }
 
-// SetNumSamples gets a reference to the given int32 and assigns it to the NumSamples field.
-func (o *AudioAnalysisObjectTrack) SetNumSamples(v int32) {
+// SetNumSamples gets a reference to the given int64 and assigns it to the NumSamples field.
+func (o *AudioAnalysisObjectTrack) SetNumSamples(v int64) {
 	o.NumSamples = &v
 }
 
@@ -187,9 +187,9 @@ func (o *AudioAnalysisObjectTrack) SetSampleMd5(v string) {
 }
 
 // GetOffsetSeconds returns the OffsetSeconds field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectTrack) GetOffsetSeconds() int32 {
+func (o *AudioAnalysisObjectTrack) GetOffsetSeconds() int64 {
 	if o == nil || IsNil(o.OffsetSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.OffsetSeconds
@@ -197,7 +197,7 @@ func (o *AudioAnalysisObjectTrack) GetOffsetSeconds() int32 {
 
 // GetOffsetSecondsOk returns a tuple with the OffsetSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectTrack) GetOffsetSecondsOk() (*int32, bool) {
+func (o *AudioAnalysisObjectTrack) GetOffsetSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.OffsetSeconds) {
 		return nil, false
 	}
@@ -213,15 +213,15 @@ func (o *AudioAnalysisObjectTrack) HasOffsetSeconds() bool {
 	return false
 }
 
-// SetOffsetSeconds gets a reference to the given int32 and assigns it to the OffsetSeconds field.
-func (o *AudioAnalysisObjectTrack) SetOffsetSeconds(v int32) {
+// SetOffsetSeconds gets a reference to the given int64 and assigns it to the OffsetSeconds field.
+func (o *AudioAnalysisObjectTrack) SetOffsetSeconds(v int64) {
 	o.OffsetSeconds = &v
 }
 
 // GetWindowSeconds returns the WindowSeconds field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectTrack) GetWindowSeconds() int32 {
+func (o *AudioAnalysisObjectTrack) GetWindowSeconds() int64 {
 	if o == nil || IsNil(o.WindowSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.WindowSeconds
@@ -229,7 +229,7 @@ func (o *AudioAnalysisObjectTrack) GetWindowSeconds() int32 {
 
 // GetWindowSecondsOk returns a tuple with the WindowSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectTrack) GetWindowSecondsOk() (*int32, bool) {
+func (o *AudioAnalysisObjectTrack) GetWindowSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.WindowSeconds) {
 		return nil, false
 	}
@@ -245,15 +245,15 @@ func (o *AudioAnalysisObjectTrack) HasWindowSeconds() bool {
 	return false
 }
 
-// SetWindowSeconds gets a reference to the given int32 and assigns it to the WindowSeconds field.
-func (o *AudioAnalysisObjectTrack) SetWindowSeconds(v int32) {
+// SetWindowSeconds gets a reference to the given int64 and assigns it to the WindowSeconds field.
+func (o *AudioAnalysisObjectTrack) SetWindowSeconds(v int64) {
 	o.WindowSeconds = &v
 }
 
 // GetAnalysisSampleRate returns the AnalysisSampleRate field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRate() int32 {
+func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRate() int64 {
 	if o == nil || IsNil(o.AnalysisSampleRate) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AnalysisSampleRate
@@ -261,7 +261,7 @@ func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRate() int32 {
 
 // GetAnalysisSampleRateOk returns a tuple with the AnalysisSampleRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRateOk() (*int32, bool) {
+func (o *AudioAnalysisObjectTrack) GetAnalysisSampleRateOk() (*int64, bool) {
 	if o == nil || IsNil(o.AnalysisSampleRate) {
 		return nil, false
 	}
@@ -277,15 +277,15 @@ func (o *AudioAnalysisObjectTrack) HasAnalysisSampleRate() bool {
 	return false
 }
 
-// SetAnalysisSampleRate gets a reference to the given int32 and assigns it to the AnalysisSampleRate field.
-func (o *AudioAnalysisObjectTrack) SetAnalysisSampleRate(v int32) {
+// SetAnalysisSampleRate gets a reference to the given int64 and assigns it to the AnalysisSampleRate field.
+func (o *AudioAnalysisObjectTrack) SetAnalysisSampleRate(v int64) {
 	o.AnalysisSampleRate = &v
 }
 
 // GetAnalysisChannels returns the AnalysisChannels field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectTrack) GetAnalysisChannels() int32 {
+func (o *AudioAnalysisObjectTrack) GetAnalysisChannels() int64 {
 	if o == nil || IsNil(o.AnalysisChannels) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AnalysisChannels
@@ -293,7 +293,7 @@ func (o *AudioAnalysisObjectTrack) GetAnalysisChannels() int32 {
 
 // GetAnalysisChannelsOk returns a tuple with the AnalysisChannels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectTrack) GetAnalysisChannelsOk() (*int32, bool) {
+func (o *AudioAnalysisObjectTrack) GetAnalysisChannelsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AnalysisChannels) {
 		return nil, false
 	}
@@ -309,8 +309,8 @@ func (o *AudioAnalysisObjectTrack) HasAnalysisChannels() bool {
 	return false
 }
 
-// SetAnalysisChannels gets a reference to the given int32 and assigns it to the AnalysisChannels field.
-func (o *AudioAnalysisObjectTrack) SetAnalysisChannels(v int32) {
+// SetAnalysisChannels gets a reference to the given int64 and assigns it to the AnalysisChannels field.
+func (o *AudioAnalysisObjectTrack) SetAnalysisChannels(v int64) {
 	o.AnalysisChannels = &v
 }
 
@@ -475,9 +475,9 @@ func (o *AudioAnalysisObjectTrack) SetTempoConfidence(v float32) {
 }
 
 // GetTimeSignature returns the TimeSignature field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectTrack) GetTimeSignature() int32 {
+func (o *AudioAnalysisObjectTrack) GetTimeSignature() int64 {
 	if o == nil || IsNil(o.TimeSignature) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TimeSignature
@@ -485,7 +485,7 @@ func (o *AudioAnalysisObjectTrack) GetTimeSignature() int32 {
 
 // GetTimeSignatureOk returns a tuple with the TimeSignature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectTrack) GetTimeSignatureOk() (*int32, bool) {
+func (o *AudioAnalysisObjectTrack) GetTimeSignatureOk() (*int64, bool) {
 	if o == nil || IsNil(o.TimeSignature) {
 		return nil, false
 	}
@@ -501,8 +501,8 @@ func (o *AudioAnalysisObjectTrack) HasTimeSignature() bool {
 	return false
 }
 
-// SetTimeSignature gets a reference to the given int32 and assigns it to the TimeSignature field.
-func (o *AudioAnalysisObjectTrack) SetTimeSignature(v int32) {
+// SetTimeSignature gets a reference to the given int64 and assigns it to the TimeSignature field.
+func (o *AudioAnalysisObjectTrack) SetTimeSignature(v int64) {
 	o.TimeSignature = &v
 }
 
@@ -539,9 +539,9 @@ func (o *AudioAnalysisObjectTrack) SetTimeSignatureConfidence(v float32) {
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectTrack) GetKey() int32 {
+func (o *AudioAnalysisObjectTrack) GetKey() int64 {
 	if o == nil || IsNil(o.Key) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Key
@@ -549,7 +549,7 @@ func (o *AudioAnalysisObjectTrack) GetKey() int32 {
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectTrack) GetKeyOk() (*int32, bool) {
+func (o *AudioAnalysisObjectTrack) GetKeyOk() (*int64, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
@@ -565,8 +565,8 @@ func (o *AudioAnalysisObjectTrack) HasKey() bool {
 	return false
 }
 
-// SetKey gets a reference to the given int32 and assigns it to the Key field.
-func (o *AudioAnalysisObjectTrack) SetKey(v int32) {
+// SetKey gets a reference to the given int64 and assigns it to the Key field.
+func (o *AudioAnalysisObjectTrack) SetKey(v int64) {
 	o.Key = &v
 }
 
@@ -603,9 +603,9 @@ func (o *AudioAnalysisObjectTrack) SetKeyConfidence(v float32) {
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *AudioAnalysisObjectTrack) GetMode() int32 {
+func (o *AudioAnalysisObjectTrack) GetMode() int64 {
 	if o == nil || IsNil(o.Mode) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Mode
@@ -613,7 +613,7 @@ func (o *AudioAnalysisObjectTrack) GetMode() int32 {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioAnalysisObjectTrack) GetModeOk() (*int32, bool) {
+func (o *AudioAnalysisObjectTrack) GetModeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
@@ -629,8 +629,8 @@ func (o *AudioAnalysisObjectTrack) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given int32 and assigns it to the Mode field.
-func (o *AudioAnalysisObjectTrack) SetMode(v int32) {
+// SetMode gets a reference to the given int64 and assigns it to the Mode field.
+func (o *AudioAnalysisObjectTrack) SetMode(v int64) {
 	o.Mode = &v
 }
 

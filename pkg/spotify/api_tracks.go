@@ -316,12 +316,12 @@ type TracksAPIAddTracksToPlaylistRequest struct {
 	ctx context.Context
 	ApiService TracksAPI
 	playlistId string
-	position *int32
+	position *int64
 	uris *string
 	addTracksToPlaylistRequest *AddTracksToPlaylistRequest
 }
 
-func (r TracksAPIAddTracksToPlaylistRequest) Position(position int32) TracksAPIAddTracksToPlaylistRequest {
+func (r TracksAPIAddTracksToPlaylistRequest) Position(position int64) TracksAPIAddTracksToPlaylistRequest {
 	r.position = &position
 	return r
 }
@@ -621,8 +621,8 @@ type TracksAPIGetAnAlbumsTracksRequest struct {
 	ApiService TracksAPI
 	id string
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r TracksAPIGetAnAlbumsTracksRequest) Market(market string) TracksAPIGetAnAlbumsTracksRequest {
@@ -630,12 +630,12 @@ func (r TracksAPIGetAnAlbumsTracksRequest) Market(market string) TracksAPIGetAnA
 	return r
 }
 
-func (r TracksAPIGetAnAlbumsTracksRequest) Limit(limit int32) TracksAPIGetAnAlbumsTracksRequest {
+func (r TracksAPIGetAnAlbumsTracksRequest) Limit(limit int64) TracksAPIGetAnAlbumsTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r TracksAPIGetAnAlbumsTracksRequest) Offset(offset int32) TracksAPIGetAnAlbumsTracksRequest {
+func (r TracksAPIGetAnAlbumsTracksRequest) Offset(offset int64) TracksAPIGetAnAlbumsTracksRequest {
 	r.offset = &offset
 	return r
 }
@@ -691,13 +691,13 @@ func (a *TracksAPIService) GetAnAlbumsTracksExecute(r TracksAPIGetAnAlbumsTracks
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1216,8 +1216,8 @@ type TracksAPIGetPlaylistsTracksRequest struct {
 	playlistId string
 	market *string
 	fields *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 	additionalTypes *string
 }
 
@@ -1231,12 +1231,12 @@ func (r TracksAPIGetPlaylistsTracksRequest) Fields(fields string) TracksAPIGetPl
 	return r
 }
 
-func (r TracksAPIGetPlaylistsTracksRequest) Limit(limit int32) TracksAPIGetPlaylistsTracksRequest {
+func (r TracksAPIGetPlaylistsTracksRequest) Limit(limit int64) TracksAPIGetPlaylistsTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r TracksAPIGetPlaylistsTracksRequest) Offset(offset int32) TracksAPIGetPlaylistsTracksRequest {
+func (r TracksAPIGetPlaylistsTracksRequest) Offset(offset int64) TracksAPIGetPlaylistsTracksRequest {
 	r.offset = &offset
 	return r
 }
@@ -1299,13 +1299,13 @@ func (a *TracksAPIService) GetPlaylistsTracksExecute(r TracksAPIGetPlaylistsTrac
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	if r.additionalTypes != nil {
@@ -1403,7 +1403,7 @@ type TracksAPIGetRecommendationsRequest struct {
 	seedArtists *string
 	seedGenres *string
 	seedTracks *string
-	limit *int32
+	limit *int64
 	market *string
 	minAcousticness *float32
 	maxAcousticness *float32
@@ -1411,39 +1411,39 @@ type TracksAPIGetRecommendationsRequest struct {
 	minDanceability *float32
 	maxDanceability *float32
 	targetDanceability *float32
-	minDurationMs *int32
-	maxDurationMs *int32
-	targetDurationMs *int32
+	minDurationMs *int64
+	maxDurationMs *int64
+	targetDurationMs *int64
 	minEnergy *float32
 	maxEnergy *float32
 	targetEnergy *float32
 	minInstrumentalness *float32
 	maxInstrumentalness *float32
 	targetInstrumentalness *float32
-	minKey *int32
-	maxKey *int32
-	targetKey *int32
+	minKey *int64
+	maxKey *int64
+	targetKey *int64
 	minLiveness *float32
 	maxLiveness *float32
 	targetLiveness *float32
 	minLoudness *float32
 	maxLoudness *float32
 	targetLoudness *float32
-	minMode *int32
-	maxMode *int32
-	targetMode *int32
-	minPopularity *int32
-	maxPopularity *int32
-	targetPopularity *int32
+	minMode *int64
+	maxMode *int64
+	targetMode *int64
+	minPopularity *int64
+	maxPopularity *int64
+	targetPopularity *int64
 	minSpeechiness *float32
 	maxSpeechiness *float32
 	targetSpeechiness *float32
 	minTempo *float32
 	maxTempo *float32
 	targetTempo *float32
-	minTimeSignature *int32
-	maxTimeSignature *int32
-	targetTimeSignature *int32
+	minTimeSignature *int64
+	maxTimeSignature *int64
+	targetTimeSignature *int64
 	minValence *float32
 	maxValence *float32
 	targetValence *float32
@@ -1464,7 +1464,7 @@ func (r TracksAPIGetRecommendationsRequest) SeedTracks(seedTracks string) Tracks
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) Limit(limit int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) Limit(limit int64) TracksAPIGetRecommendationsRequest {
 	r.limit = &limit
 	return r
 }
@@ -1504,17 +1504,17 @@ func (r TracksAPIGetRecommendationsRequest) TargetDanceability(targetDanceabilit
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MinDurationMs(minDurationMs int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MinDurationMs(minDurationMs int64) TracksAPIGetRecommendationsRequest {
 	r.minDurationMs = &minDurationMs
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MaxDurationMs(maxDurationMs int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MaxDurationMs(maxDurationMs int64) TracksAPIGetRecommendationsRequest {
 	r.maxDurationMs = &maxDurationMs
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) TargetDurationMs(targetDurationMs int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) TargetDurationMs(targetDurationMs int64) TracksAPIGetRecommendationsRequest {
 	r.targetDurationMs = &targetDurationMs
 	return r
 }
@@ -1549,17 +1549,17 @@ func (r TracksAPIGetRecommendationsRequest) TargetInstrumentalness(targetInstrum
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MinKey(minKey int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MinKey(minKey int64) TracksAPIGetRecommendationsRequest {
 	r.minKey = &minKey
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MaxKey(maxKey int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MaxKey(maxKey int64) TracksAPIGetRecommendationsRequest {
 	r.maxKey = &maxKey
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) TargetKey(targetKey int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) TargetKey(targetKey int64) TracksAPIGetRecommendationsRequest {
 	r.targetKey = &targetKey
 	return r
 }
@@ -1594,32 +1594,32 @@ func (r TracksAPIGetRecommendationsRequest) TargetLoudness(targetLoudness float3
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MinMode(minMode int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MinMode(minMode int64) TracksAPIGetRecommendationsRequest {
 	r.minMode = &minMode
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MaxMode(maxMode int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MaxMode(maxMode int64) TracksAPIGetRecommendationsRequest {
 	r.maxMode = &maxMode
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) TargetMode(targetMode int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) TargetMode(targetMode int64) TracksAPIGetRecommendationsRequest {
 	r.targetMode = &targetMode
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MinPopularity(minPopularity int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MinPopularity(minPopularity int64) TracksAPIGetRecommendationsRequest {
 	r.minPopularity = &minPopularity
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MaxPopularity(maxPopularity int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MaxPopularity(maxPopularity int64) TracksAPIGetRecommendationsRequest {
 	r.maxPopularity = &maxPopularity
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) TargetPopularity(targetPopularity int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) TargetPopularity(targetPopularity int64) TracksAPIGetRecommendationsRequest {
 	r.targetPopularity = &targetPopularity
 	return r
 }
@@ -1654,17 +1654,17 @@ func (r TracksAPIGetRecommendationsRequest) TargetTempo(targetTempo float32) Tra
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MinTimeSignature(minTimeSignature int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MinTimeSignature(minTimeSignature int64) TracksAPIGetRecommendationsRequest {
 	r.minTimeSignature = &minTimeSignature
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) MaxTimeSignature(maxTimeSignature int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) MaxTimeSignature(maxTimeSignature int64) TracksAPIGetRecommendationsRequest {
 	r.maxTimeSignature = &maxTimeSignature
 	return r
 }
 
-func (r TracksAPIGetRecommendationsRequest) TargetTimeSignature(targetTimeSignature int32) TracksAPIGetRecommendationsRequest {
+func (r TracksAPIGetRecommendationsRequest) TargetTimeSignature(targetTimeSignature int64) TracksAPIGetRecommendationsRequest {
 	r.targetTimeSignature = &targetTimeSignature
 	return r
 }
@@ -1742,7 +1742,7 @@ func (a *TracksAPIService) GetRecommendationsExecute(r TracksAPIGetRecommendatio
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.market != nil {
@@ -2409,8 +2409,8 @@ type TracksAPIGetUsersSavedTracksRequest struct {
 	ctx context.Context
 	ApiService TracksAPI
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r TracksAPIGetUsersSavedTracksRequest) Market(market string) TracksAPIGetUsersSavedTracksRequest {
@@ -2418,12 +2418,12 @@ func (r TracksAPIGetUsersSavedTracksRequest) Market(market string) TracksAPIGetU
 	return r
 }
 
-func (r TracksAPIGetUsersSavedTracksRequest) Limit(limit int32) TracksAPIGetUsersSavedTracksRequest {
+func (r TracksAPIGetUsersSavedTracksRequest) Limit(limit int64) TracksAPIGetUsersSavedTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r TracksAPIGetUsersSavedTracksRequest) Offset(offset int32) TracksAPIGetUsersSavedTracksRequest {
+func (r TracksAPIGetUsersSavedTracksRequest) Offset(offset int64) TracksAPIGetUsersSavedTracksRequest {
 	r.offset = &offset
 	return r
 }
@@ -2475,13 +2475,13 @@ func (a *TracksAPIService) GetUsersSavedTracksExecute(r TracksAPIGetUsersSavedTr
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2575,8 +2575,8 @@ type TracksAPIGetUsersTopArtistsAndTracksRequest struct {
 	ApiService TracksAPI
 	type_ string
 	timeRange *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r TracksAPIGetUsersTopArtistsAndTracksRequest) TimeRange(timeRange string) TracksAPIGetUsersTopArtistsAndTracksRequest {
@@ -2584,12 +2584,12 @@ func (r TracksAPIGetUsersTopArtistsAndTracksRequest) TimeRange(timeRange string)
 	return r
 }
 
-func (r TracksAPIGetUsersTopArtistsAndTracksRequest) Limit(limit int32) TracksAPIGetUsersTopArtistsAndTracksRequest {
+func (r TracksAPIGetUsersTopArtistsAndTracksRequest) Limit(limit int64) TracksAPIGetUsersTopArtistsAndTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r TracksAPIGetUsersTopArtistsAndTracksRequest) Offset(offset int32) TracksAPIGetUsersTopArtistsAndTracksRequest {
+func (r TracksAPIGetUsersTopArtistsAndTracksRequest) Offset(offset int64) TracksAPIGetUsersTopArtistsAndTracksRequest {
 	r.offset = &offset
 	return r
 }
@@ -2647,13 +2647,13 @@ func (a *TracksAPIService) GetUsersTopArtistsAndTracksExecute(r TracksAPIGetUser
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header

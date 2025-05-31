@@ -47,8 +47,8 @@ type SearchAPISearchRequest struct {
 	q *string
 	type_ *[]string
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 	includeExternal *string
 }
 
@@ -67,12 +67,12 @@ func (r SearchAPISearchRequest) Market(market string) SearchAPISearchRequest {
 	return r
 }
 
-func (r SearchAPISearchRequest) Limit(limit int32) SearchAPISearchRequest {
+func (r SearchAPISearchRequest) Limit(limit int64) SearchAPISearchRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r SearchAPISearchRequest) Offset(offset int32) SearchAPISearchRequest {
+func (r SearchAPISearchRequest) Offset(offset int64) SearchAPISearchRequest {
 	r.offset = &offset
 	return r
 }
@@ -138,13 +138,13 @@ func (a *SearchAPIService) SearchExecute(r SearchAPISearchRequest) (*Search200Re
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	if r.includeExternal != nil {

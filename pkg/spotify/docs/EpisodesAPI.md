@@ -103,8 +103,8 @@ import (
 func main() {
 	id := "38bS44xjbVVZ3No3ByF1dJ" // string | 
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -135,8 +135,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -318,8 +318,8 @@ import (
 
 func main() {
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -345,8 +345,8 @@ Other parameters are passed through a pointer to a apiGetUsersSavedEpisodesReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Album** | Pointer to [**SimplifiedAlbumObject**](SimplifiedAlbumObject.md) | The album on which the track appears. The album object includes a link in &#x60;href&#x60; to full information about the album.  | [optional] 
 **Artists** | Pointer to [**[]SimplifiedArtistObject**](SimplifiedArtistObject.md) | The artists who performed the track. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | [optional] 
 **AvailableMarkets** | Pointer to **[]string** | A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.  | [optional] 
-**DiscNumber** | Pointer to **int32** | The disc number (usually &#x60;1&#x60; unless the album consists of more than one disc).  | [optional] 
-**DurationMs** | Pointer to **int32** | The track length in milliseconds.  | [optional] 
+**DiscNumber** | Pointer to **int64** | The disc number (usually &#x60;1&#x60; unless the album consists of more than one disc).  | [optional] 
+**DurationMs** | Pointer to **int64** | The track length in milliseconds.  | [optional] 
 **Explicit** | Pointer to **bool** | Whether or not the track has explicit lyrics ( &#x60;true&#x60; &#x3D; yes it does; &#x60;false&#x60; &#x3D; no it does not OR unknown).  | [optional] 
 **ExternalIds** | Pointer to [**ExternalIdObject**](ExternalIdObject.md) | Known external IDs for the track.  | [optional] 
 **ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this track.  | [optional] 
@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 **LinkedFrom** | Pointer to **map[string]interface{}** | Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied, and the requested track has been replaced with different track. The track in the &#x60;linked_from&#x60; object contains information about the originally requested track.  | [optional] 
 **Restrictions** | Pointer to [**TrackRestrictionObject**](TrackRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 **Name** | Pointer to **string** | The name of the track.  | [optional] 
-**Popularity** | Pointer to **int32** | The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.&lt;br/&gt;The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.&lt;br/&gt;Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._  | [optional] 
+**Popularity** | Pointer to **int64** | The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.&lt;br/&gt;The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.&lt;br/&gt;Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._  | [optional] 
 **PreviewUrl** | Pointer to **NullableString** | A link to a 30 second preview (MP3 format) of the track. Can be &#x60;null&#x60;  | [optional] 
-**TrackNumber** | Pointer to **int32** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
+**TrackNumber** | Pointer to **int64** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;track\&quot;.  | [optional] 
 **Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
 **IsLocal** | Pointer to **bool** | Whether or not the track is from a local file.  | [optional] 
@@ -121,20 +121,20 @@ HasAvailableMarkets returns a boolean if a field has been set.
 
 ### GetDiscNumber
 
-`func (o *TrackObject) GetDiscNumber() int32`
+`func (o *TrackObject) GetDiscNumber() int64`
 
 GetDiscNumber returns the DiscNumber field if non-nil, zero value otherwise.
 
 ### GetDiscNumberOk
 
-`func (o *TrackObject) GetDiscNumberOk() (*int32, bool)`
+`func (o *TrackObject) GetDiscNumberOk() (*int64, bool)`
 
 GetDiscNumberOk returns a tuple with the DiscNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscNumber
 
-`func (o *TrackObject) SetDiscNumber(v int32)`
+`func (o *TrackObject) SetDiscNumber(v int64)`
 
 SetDiscNumber sets DiscNumber field to given value.
 
@@ -146,20 +146,20 @@ HasDiscNumber returns a boolean if a field has been set.
 
 ### GetDurationMs
 
-`func (o *TrackObject) GetDurationMs() int32`
+`func (o *TrackObject) GetDurationMs() int64`
 
 GetDurationMs returns the DurationMs field if non-nil, zero value otherwise.
 
 ### GetDurationMsOk
 
-`func (o *TrackObject) GetDurationMsOk() (*int32, bool)`
+`func (o *TrackObject) GetDurationMsOk() (*int64, bool)`
 
 GetDurationMsOk returns a tuple with the DurationMs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDurationMs
 
-`func (o *TrackObject) SetDurationMs(v int32)`
+`func (o *TrackObject) SetDurationMs(v int64)`
 
 SetDurationMs sets DurationMs field to given value.
 
@@ -396,20 +396,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetPopularity
 
-`func (o *TrackObject) GetPopularity() int32`
+`func (o *TrackObject) GetPopularity() int64`
 
 GetPopularity returns the Popularity field if non-nil, zero value otherwise.
 
 ### GetPopularityOk
 
-`func (o *TrackObject) GetPopularityOk() (*int32, bool)`
+`func (o *TrackObject) GetPopularityOk() (*int64, bool)`
 
 GetPopularityOk returns a tuple with the Popularity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPopularity
 
-`func (o *TrackObject) SetPopularity(v int32)`
+`func (o *TrackObject) SetPopularity(v int64)`
 
 SetPopularity sets Popularity field to given value.
 
@@ -456,20 +456,20 @@ HasPreviewUrl returns a boolean if a field has been set.
 UnsetPreviewUrl ensures that no value is present for PreviewUrl, not even an explicit nil
 ### GetTrackNumber
 
-`func (o *TrackObject) GetTrackNumber() int32`
+`func (o *TrackObject) GetTrackNumber() int64`
 
 GetTrackNumber returns the TrackNumber field if non-nil, zero value otherwise.
 
 ### GetTrackNumberOk
 
-`func (o *TrackObject) GetTrackNumberOk() (*int32, bool)`
+`func (o *TrackObject) GetTrackNumberOk() (*int64, bool)`
 
 GetTrackNumberOk returns a tuple with the TrackNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackNumber
 
-`func (o *TrackObject) SetTrackNumber(v int32)`
+`func (o *TrackObject) SetTrackNumber(v int64)`
 
 SetTrackNumber sets TrackNumber field to given value.
 

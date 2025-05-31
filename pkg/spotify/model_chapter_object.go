@@ -27,13 +27,13 @@ type ChapterObject struct {
 	// A list of the countries in which the chapter can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code. 
 	AvailableMarkets []string `json:"available_markets,omitempty"`
 	// The number of the chapter 
-	ChapterNumber int32 `json:"chapter_number"`
+	ChapterNumber int64 `json:"chapter_number"`
 	// A description of the chapter. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed. 
 	Description string `json:"description"`
 	// A description of the chapter. This field may contain HTML tags. 
 	HtmlDescription string `json:"html_description"`
 	// The chapter length in milliseconds. 
-	DurationMs int32 `json:"duration_ms"`
+	DurationMs int64 `json:"duration_ms"`
 	// Whether or not the chapter has explicit content (true = yes it does; false = no it does not OR unknown). 
 	Explicit bool `json:"explicit"`
 	// External URLs for this chapter. 
@@ -72,7 +72,7 @@ type _ChapterObject ChapterObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChapterObject(audioPreviewUrl NullableString, chapterNumber int32, description string, htmlDescription string, durationMs int32, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, audiobook SimplifiedAudiobookObject) *ChapterObject {
+func NewChapterObject(audioPreviewUrl NullableString, chapterNumber int64, description string, htmlDescription string, durationMs int64, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, audiobook SimplifiedAudiobookObject) *ChapterObject {
 	this := ChapterObject{}
 	this.AudioPreviewUrl = audioPreviewUrl
 	this.ChapterNumber = chapterNumber
@@ -165,9 +165,9 @@ func (o *ChapterObject) SetAvailableMarkets(v []string) {
 }
 
 // GetChapterNumber returns the ChapterNumber field value
-func (o *ChapterObject) GetChapterNumber() int32 {
+func (o *ChapterObject) GetChapterNumber() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -176,7 +176,7 @@ func (o *ChapterObject) GetChapterNumber() int32 {
 
 // GetChapterNumberOk returns a tuple with the ChapterNumber field value
 // and a boolean to check if the value has been set.
-func (o *ChapterObject) GetChapterNumberOk() (*int32, bool) {
+func (o *ChapterObject) GetChapterNumberOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -184,7 +184,7 @@ func (o *ChapterObject) GetChapterNumberOk() (*int32, bool) {
 }
 
 // SetChapterNumber sets field value
-func (o *ChapterObject) SetChapterNumber(v int32) {
+func (o *ChapterObject) SetChapterNumber(v int64) {
 	o.ChapterNumber = v
 }
 
@@ -237,9 +237,9 @@ func (o *ChapterObject) SetHtmlDescription(v string) {
 }
 
 // GetDurationMs returns the DurationMs field value
-func (o *ChapterObject) GetDurationMs() int32 {
+func (o *ChapterObject) GetDurationMs() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -248,7 +248,7 @@ func (o *ChapterObject) GetDurationMs() int32 {
 
 // GetDurationMsOk returns a tuple with the DurationMs field value
 // and a boolean to check if the value has been set.
-func (o *ChapterObject) GetDurationMsOk() (*int32, bool) {
+func (o *ChapterObject) GetDurationMsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -256,7 +256,7 @@ func (o *ChapterObject) GetDurationMsOk() (*int32, bool) {
 }
 
 // SetDurationMs sets field value
-func (o *ChapterObject) SetDurationMs(v int32) {
+func (o *ChapterObject) SetDurationMs(v int64) {
 	o.DurationMs = v
 }
 

@@ -21,11 +21,11 @@ var _ MappedNullable = &ReorderOrReplacePlaylistsTracksRequest{}
 type ReorderOrReplacePlaylistsTracksRequest struct {
 	Uris []string `json:"uris,omitempty"`
 	// The position of the first item to be reordered. 
-	RangeStart *int32 `json:"range_start,omitempty"`
+	RangeStart *int64 `json:"range_start,omitempty"`
 	// The position where the items should be inserted.<br/>To reorder the items to the end of the playlist, simply set _insert_before_ to the position after the last item.<br/>Examples:<br/>To reorder the first item to the last position in a playlist with 10 items, set _range_start_ to 0, and _insert_before_ to 10.<br/>To reorder the last item in a playlist with 10 items to the start of the playlist, set _range_start_ to 9, and _insert_before_ to 0. 
-	InsertBefore *int32 `json:"insert_before,omitempty"`
+	InsertBefore *int64 `json:"insert_before,omitempty"`
 	// The amount of items to be reordered. Defaults to 1 if not set.<br/>The range of items to be reordered begins from the _range_start_ position, and includes the _range_length_ subsequent items.<br/>Example:<br/>To move the items at index 9-10 to the start of the playlist, _range_start_ is set to 9, and _range_length_ is set to 2. 
-	RangeLength *int32 `json:"range_length,omitempty"`
+	RangeLength *int64 `json:"range_length,omitempty"`
 	// The playlist's snapshot ID against which you want to make the changes. 
 	SnapshotId *string `json:"snapshot_id,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -83,9 +83,9 @@ func (o *ReorderOrReplacePlaylistsTracksRequest) SetUris(v []string) {
 }
 
 // GetRangeStart returns the RangeStart field value if set, zero value otherwise.
-func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStart() int32 {
+func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStart() int64 {
 	if o == nil || IsNil(o.RangeStart) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RangeStart
@@ -93,7 +93,7 @@ func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStart() int32 {
 
 // GetRangeStartOk returns a tuple with the RangeStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStartOk() (*int32, bool) {
+func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStartOk() (*int64, bool) {
 	if o == nil || IsNil(o.RangeStart) {
 		return nil, false
 	}
@@ -109,15 +109,15 @@ func (o *ReorderOrReplacePlaylistsTracksRequest) HasRangeStart() bool {
 	return false
 }
 
-// SetRangeStart gets a reference to the given int32 and assigns it to the RangeStart field.
-func (o *ReorderOrReplacePlaylistsTracksRequest) SetRangeStart(v int32) {
+// SetRangeStart gets a reference to the given int64 and assigns it to the RangeStart field.
+func (o *ReorderOrReplacePlaylistsTracksRequest) SetRangeStart(v int64) {
 	o.RangeStart = &v
 }
 
 // GetInsertBefore returns the InsertBefore field value if set, zero value otherwise.
-func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBefore() int32 {
+func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBefore() int64 {
 	if o == nil || IsNil(o.InsertBefore) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.InsertBefore
@@ -125,7 +125,7 @@ func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBefore() int32 {
 
 // GetInsertBeforeOk returns a tuple with the InsertBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBeforeOk() (*int32, bool) {
+func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBeforeOk() (*int64, bool) {
 	if o == nil || IsNil(o.InsertBefore) {
 		return nil, false
 	}
@@ -141,15 +141,15 @@ func (o *ReorderOrReplacePlaylistsTracksRequest) HasInsertBefore() bool {
 	return false
 }
 
-// SetInsertBefore gets a reference to the given int32 and assigns it to the InsertBefore field.
-func (o *ReorderOrReplacePlaylistsTracksRequest) SetInsertBefore(v int32) {
+// SetInsertBefore gets a reference to the given int64 and assigns it to the InsertBefore field.
+func (o *ReorderOrReplacePlaylistsTracksRequest) SetInsertBefore(v int64) {
 	o.InsertBefore = &v
 }
 
 // GetRangeLength returns the RangeLength field value if set, zero value otherwise.
-func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLength() int32 {
+func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLength() int64 {
 	if o == nil || IsNil(o.RangeLength) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RangeLength
@@ -157,7 +157,7 @@ func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLength() int32 {
 
 // GetRangeLengthOk returns a tuple with the RangeLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLengthOk() (*int32, bool) {
+func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLengthOk() (*int64, bool) {
 	if o == nil || IsNil(o.RangeLength) {
 		return nil, false
 	}
@@ -173,8 +173,8 @@ func (o *ReorderOrReplacePlaylistsTracksRequest) HasRangeLength() bool {
 	return false
 }
 
-// SetRangeLength gets a reference to the given int32 and assigns it to the RangeLength field.
-func (o *ReorderOrReplacePlaylistsTracksRequest) SetRangeLength(v int32) {
+// SetRangeLength gets a reference to the given int64 and assigns it to the RangeLength field.
+func (o *ReorderOrReplacePlaylistsTracksRequest) SetRangeLength(v int64) {
 	o.RangeLength = &v
 }
 

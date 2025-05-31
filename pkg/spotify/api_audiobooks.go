@@ -445,8 +445,8 @@ type AudiobooksAPIGetAudiobookChaptersRequest struct {
 	ApiService AudiobooksAPI
 	id string
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r AudiobooksAPIGetAudiobookChaptersRequest) Market(market string) AudiobooksAPIGetAudiobookChaptersRequest {
@@ -454,12 +454,12 @@ func (r AudiobooksAPIGetAudiobookChaptersRequest) Market(market string) Audioboo
 	return r
 }
 
-func (r AudiobooksAPIGetAudiobookChaptersRequest) Limit(limit int32) AudiobooksAPIGetAudiobookChaptersRequest {
+func (r AudiobooksAPIGetAudiobookChaptersRequest) Limit(limit int64) AudiobooksAPIGetAudiobookChaptersRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r AudiobooksAPIGetAudiobookChaptersRequest) Offset(offset int32) AudiobooksAPIGetAudiobookChaptersRequest {
+func (r AudiobooksAPIGetAudiobookChaptersRequest) Offset(offset int64) AudiobooksAPIGetAudiobookChaptersRequest {
 	r.offset = &offset
 	return r
 }
@@ -514,13 +514,13 @@ func (a *AudiobooksAPIService) GetAudiobookChaptersExecute(r AudiobooksAPIGetAud
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -763,16 +763,16 @@ func (a *AudiobooksAPIService) GetMultipleAudiobooksExecute(r AudiobooksAPIGetMu
 type AudiobooksAPIGetUsersSavedAudiobooksRequest struct {
 	ctx context.Context
 	ApiService AudiobooksAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r AudiobooksAPIGetUsersSavedAudiobooksRequest) Limit(limit int32) AudiobooksAPIGetUsersSavedAudiobooksRequest {
+func (r AudiobooksAPIGetUsersSavedAudiobooksRequest) Limit(limit int64) AudiobooksAPIGetUsersSavedAudiobooksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r AudiobooksAPIGetUsersSavedAudiobooksRequest) Offset(offset int32) AudiobooksAPIGetUsersSavedAudiobooksRequest {
+func (r AudiobooksAPIGetUsersSavedAudiobooksRequest) Offset(offset int64) AudiobooksAPIGetUsersSavedAudiobooksRequest {
 	r.offset = &offset
 	return r
 }
@@ -821,13 +821,13 @@ func (a *AudiobooksAPIService) GetUsersSavedAudiobooksExecute(r AudiobooksAPIGet
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header

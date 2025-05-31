@@ -220,7 +220,7 @@ func (sc *SpotifyClient) GetCurrentUserProfile(ctx context.Context) (*spotify.Pr
 }
 
 // SearchItems searches for tracks, artists, albums, etc.
-func (sc *SpotifyClient) SearchItems(ctx context.Context, q string, types []string, limit *int32, offset *int32) (*spotify.Search200Response, *http.Response, error) {
+func (sc *SpotifyClient) SearchItems(ctx context.Context, q string, types []string, limit *int64, offset *int64) (*spotify.Search200Response, *http.Response, error) {
 	authCtx, err := sc.GetAuthenticatedContext(ctx)
 	if err != nil {
 		return nil, nil, err
@@ -245,6 +245,17 @@ func (sc *SpotifyClient) GetQueue(ctx context.Context) (*spotify.QueueObject, *h
 	}
 
 	result, resp, err := sc.client.PlayerAPI.GetQueue(authCtx).Execute()
+	return result, resp, err
+}
+
+// GetCurrentlyPlaying gets the user's currently playing track
+func (sc *SpotifyClient) GetCurrentlyPlaying(ctx context.Context) (*spotify.CurrentlyPlayingContextObject, *http.Response, error) {
+	authCtx, err := sc.GetAuthenticatedContext(ctx)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	result, resp, err := sc.client.PlayerAPI.GetTheUsersCurrentlyPlayingTrack(authCtx).Execute()
 	return result, resp, err
 }
 

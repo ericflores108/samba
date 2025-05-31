@@ -455,8 +455,8 @@ type AlbumsAPIGetAnAlbumsTracksRequest struct {
 	ApiService AlbumsAPI
 	id string
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r AlbumsAPIGetAnAlbumsTracksRequest) Market(market string) AlbumsAPIGetAnAlbumsTracksRequest {
@@ -464,12 +464,12 @@ func (r AlbumsAPIGetAnAlbumsTracksRequest) Market(market string) AlbumsAPIGetAnA
 	return r
 }
 
-func (r AlbumsAPIGetAnAlbumsTracksRequest) Limit(limit int32) AlbumsAPIGetAnAlbumsTracksRequest {
+func (r AlbumsAPIGetAnAlbumsTracksRequest) Limit(limit int64) AlbumsAPIGetAnAlbumsTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r AlbumsAPIGetAnAlbumsTracksRequest) Offset(offset int32) AlbumsAPIGetAnAlbumsTracksRequest {
+func (r AlbumsAPIGetAnAlbumsTracksRequest) Offset(offset int64) AlbumsAPIGetAnAlbumsTracksRequest {
 	r.offset = &offset
 	return r
 }
@@ -525,13 +525,13 @@ func (a *AlbumsAPIService) GetAnAlbumsTracksExecute(r AlbumsAPIGetAnAlbumsTracks
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -626,8 +626,8 @@ type AlbumsAPIGetAnArtistsAlbumsRequest struct {
 	id string
 	includeGroups *string
 	market *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r AlbumsAPIGetAnArtistsAlbumsRequest) IncludeGroups(includeGroups string) AlbumsAPIGetAnArtistsAlbumsRequest {
@@ -640,12 +640,12 @@ func (r AlbumsAPIGetAnArtistsAlbumsRequest) Market(market string) AlbumsAPIGetAn
 	return r
 }
 
-func (r AlbumsAPIGetAnArtistsAlbumsRequest) Limit(limit int32) AlbumsAPIGetAnArtistsAlbumsRequest {
+func (r AlbumsAPIGetAnArtistsAlbumsRequest) Limit(limit int64) AlbumsAPIGetAnArtistsAlbumsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r AlbumsAPIGetAnArtistsAlbumsRequest) Offset(offset int32) AlbumsAPIGetAnArtistsAlbumsRequest {
+func (r AlbumsAPIGetAnArtistsAlbumsRequest) Offset(offset int64) AlbumsAPIGetAnArtistsAlbumsRequest {
 	r.offset = &offset
 	return r
 }
@@ -703,13 +703,13 @@ func (a *AlbumsAPIService) GetAnArtistsAlbumsExecute(r AlbumsAPIGetAnArtistsAlbu
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -952,16 +952,16 @@ func (a *AlbumsAPIService) GetMultipleAlbumsExecute(r AlbumsAPIGetMultipleAlbums
 type AlbumsAPIGetNewReleasesRequest struct {
 	ctx context.Context
 	ApiService AlbumsAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r AlbumsAPIGetNewReleasesRequest) Limit(limit int32) AlbumsAPIGetNewReleasesRequest {
+func (r AlbumsAPIGetNewReleasesRequest) Limit(limit int64) AlbumsAPIGetNewReleasesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r AlbumsAPIGetNewReleasesRequest) Offset(offset int32) AlbumsAPIGetNewReleasesRequest {
+func (r AlbumsAPIGetNewReleasesRequest) Offset(offset int64) AlbumsAPIGetNewReleasesRequest {
 	r.offset = &offset
 	return r
 }
@@ -1010,13 +1010,13 @@ func (a *AlbumsAPIService) GetNewReleasesExecute(r AlbumsAPIGetNewReleasesReques
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1108,17 +1108,17 @@ func (a *AlbumsAPIService) GetNewReleasesExecute(r AlbumsAPIGetNewReleasesReques
 type AlbumsAPIGetUsersSavedAlbumsRequest struct {
 	ctx context.Context
 	ApiService AlbumsAPI
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 	market *string
 }
 
-func (r AlbumsAPIGetUsersSavedAlbumsRequest) Limit(limit int32) AlbumsAPIGetUsersSavedAlbumsRequest {
+func (r AlbumsAPIGetUsersSavedAlbumsRequest) Limit(limit int64) AlbumsAPIGetUsersSavedAlbumsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r AlbumsAPIGetUsersSavedAlbumsRequest) Offset(offset int32) AlbumsAPIGetUsersSavedAlbumsRequest {
+func (r AlbumsAPIGetUsersSavedAlbumsRequest) Offset(offset int64) AlbumsAPIGetUsersSavedAlbumsRequest {
 	r.offset = &offset
 	return r
 }
@@ -1172,13 +1172,13 @@ func (a *AlbumsAPIService) GetUsersSavedAlbumsExecute(r AlbumsAPIGetUsersSavedAl
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	if r.market != nil {

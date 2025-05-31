@@ -246,8 +246,8 @@ func main() {
 	id := "0TnOYISbd1XYRBk9myaseg" // string | 
 	includeGroups := "single,appears_on" // string |  (optional)
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -279,8 +279,8 @@ Name | Type | Description  | Notes
 
  **includeGroups** | **string** |  | 
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -465,7 +465,7 @@ import (
 func main() {
 	type_ := "artist" // string | 
 	after := "0I2XqVXqHScXjHhk6AYYRe" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
+	limit := int64(10) // int64 |  (optional) (default to 20)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -492,7 +492,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type_** | **string** |  | 
  **after** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
+ **limit** | **int64** |  | [default to 20]
 
 ### Return type
 

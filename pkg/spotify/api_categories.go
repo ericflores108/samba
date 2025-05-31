@@ -80,16 +80,16 @@ type CategoriesAPIGetACategoriesPlaylistsRequest struct {
 	ctx context.Context
 	ApiService CategoriesAPI
 	categoryId string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
-func (r CategoriesAPIGetACategoriesPlaylistsRequest) Limit(limit int32) CategoriesAPIGetACategoriesPlaylistsRequest {
+func (r CategoriesAPIGetACategoriesPlaylistsRequest) Limit(limit int64) CategoriesAPIGetACategoriesPlaylistsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r CategoriesAPIGetACategoriesPlaylistsRequest) Offset(offset int32) CategoriesAPIGetACategoriesPlaylistsRequest {
+func (r CategoriesAPIGetACategoriesPlaylistsRequest) Offset(offset int64) CategoriesAPIGetACategoriesPlaylistsRequest {
 	r.offset = &offset
 	return r
 }
@@ -144,13 +144,13 @@ func (a *CategoriesAPIService) GetACategoriesPlaylistsExecute(r CategoriesAPIGet
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -388,8 +388,8 @@ type CategoriesAPIGetCategoriesRequest struct {
 	ctx context.Context
 	ApiService CategoriesAPI
 	locale *string
-	limit *int32
-	offset *int32
+	limit *int64
+	offset *int64
 }
 
 func (r CategoriesAPIGetCategoriesRequest) Locale(locale string) CategoriesAPIGetCategoriesRequest {
@@ -397,12 +397,12 @@ func (r CategoriesAPIGetCategoriesRequest) Locale(locale string) CategoriesAPIGe
 	return r
 }
 
-func (r CategoriesAPIGetCategoriesRequest) Limit(limit int32) CategoriesAPIGetCategoriesRequest {
+func (r CategoriesAPIGetCategoriesRequest) Limit(limit int64) CategoriesAPIGetCategoriesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r CategoriesAPIGetCategoriesRequest) Offset(offset int32) CategoriesAPIGetCategoriesRequest {
+func (r CategoriesAPIGetCategoriesRequest) Offset(offset int64) CategoriesAPIGetCategoriesRequest {
 	r.offset = &offset
 	return r
 }
@@ -454,13 +454,13 @@ func (a *CategoriesAPIService) GetCategoriesExecute(r CategoriesAPIGetCategories
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue int64 = 20
 		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "form", "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header

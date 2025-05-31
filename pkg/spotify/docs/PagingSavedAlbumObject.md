@@ -5,18 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | **string** | A link to the Web API endpoint returning the full result of the request  | 
-**Limit** | **int32** | The maximum number of items in the response (as set in the query or by default).  | 
+**Limit** | **int64** | The maximum number of items in the response (as set in the query or by default).  | 
 **Next** | **NullableString** | URL to the next page of items. ( &#x60;null&#x60; if none)  | 
-**Offset** | **int32** | The offset of the items returned (as set in the query or by default)  | 
+**Offset** | **int64** | The offset of the items returned (as set in the query or by default)  | 
 **Previous** | **NullableString** | URL to the previous page of items. ( &#x60;null&#x60; if none)  | 
-**Total** | **int32** | The total number of items available to return.  | 
+**Total** | **int64** | The total number of items available to return.  | 
 **Items** | [**[]SavedAlbumObject**](SavedAlbumObject.md) |  | 
 
 ## Methods
 
 ### NewPagingSavedAlbumObject
 
-`func NewPagingSavedAlbumObject(href string, limit int32, next NullableString, offset int32, previous NullableString, total int32, items []SavedAlbumObject, ) *PagingSavedAlbumObject`
+`func NewPagingSavedAlbumObject(href string, limit int64, next NullableString, offset int64, previous NullableString, total int64, items []SavedAlbumObject, ) *PagingSavedAlbumObject`
 
 NewPagingSavedAlbumObject instantiates a new PagingSavedAlbumObject object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ SetHref sets Href field to given value.
 
 ### GetLimit
 
-`func (o *PagingSavedAlbumObject) GetLimit() int32`
+`func (o *PagingSavedAlbumObject) GetLimit() int64`
 
 GetLimit returns the Limit field if non-nil, zero value otherwise.
 
 ### GetLimitOk
 
-`func (o *PagingSavedAlbumObject) GetLimitOk() (*int32, bool)`
+`func (o *PagingSavedAlbumObject) GetLimitOk() (*int64, bool)`
 
 GetLimitOk returns a tuple with the Limit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLimit
 
-`func (o *PagingSavedAlbumObject) SetLimit(v int32)`
+`func (o *PagingSavedAlbumObject) SetLimit(v int64)`
 
 SetLimit sets Limit field to given value.
 
@@ -103,20 +103,20 @@ SetNext sets Next field to given value.
 UnsetNext ensures that no value is present for Next, not even an explicit nil
 ### GetOffset
 
-`func (o *PagingSavedAlbumObject) GetOffset() int32`
+`func (o *PagingSavedAlbumObject) GetOffset() int64`
 
 GetOffset returns the Offset field if non-nil, zero value otherwise.
 
 ### GetOffsetOk
 
-`func (o *PagingSavedAlbumObject) GetOffsetOk() (*int32, bool)`
+`func (o *PagingSavedAlbumObject) GetOffsetOk() (*int64, bool)`
 
 GetOffsetOk returns a tuple with the Offset field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOffset
 
-`func (o *PagingSavedAlbumObject) SetOffset(v int32)`
+`func (o *PagingSavedAlbumObject) SetOffset(v int64)`
 
 SetOffset sets Offset field to given value.
 
@@ -153,20 +153,20 @@ SetPrevious sets Previous field to given value.
 UnsetPrevious ensures that no value is present for Previous, not even an explicit nil
 ### GetTotal
 
-`func (o *PagingSavedAlbumObject) GetTotal() int32`
+`func (o *PagingSavedAlbumObject) GetTotal() int64`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *PagingSavedAlbumObject) GetTotalOk() (*int32, bool)`
+`func (o *PagingSavedAlbumObject) GetTotalOk() (*int64, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *PagingSavedAlbumObject) SetTotal(v int32)`
+`func (o *PagingSavedAlbumObject) SetTotal(v int64)`
 
 SetTotal sets Total field to given value.
 

@@ -58,7 +58,7 @@ type AudiobookBase struct {
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook. 
 	Uri string `json:"uri"`
 	// The number of chapters in this audiobook. 
-	TotalChapters int32 `json:"total_chapters"`
+	TotalChapters int64 `json:"total_chapters"`
 }
 
 type _AudiobookBase AudiobookBase
@@ -67,7 +67,7 @@ type _AudiobookBase AudiobookBase
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAudiobookBase(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int32) *AudiobookBase {
+func NewAudiobookBase(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int64) *AudiobookBase {
 	this := AudiobookBase{}
 	this.Authors = authors
 	this.AvailableMarkets = availableMarkets
@@ -539,9 +539,9 @@ func (o *AudiobookBase) SetUri(v string) {
 }
 
 // GetTotalChapters returns the TotalChapters field value
-func (o *AudiobookBase) GetTotalChapters() int32 {
+func (o *AudiobookBase) GetTotalChapters() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -550,7 +550,7 @@ func (o *AudiobookBase) GetTotalChapters() int32 {
 
 // GetTotalChaptersOk returns a tuple with the TotalChapters field value
 // and a boolean to check if the value has been set.
-func (o *AudiobookBase) GetTotalChaptersOk() (*int32, bool) {
+func (o *AudiobookBase) GetTotalChaptersOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -558,7 +558,7 @@ func (o *AudiobookBase) GetTotalChaptersOk() (*int32, bool) {
 }
 
 // SetTotalChapters sets field value
-func (o *AudiobookBase) SetTotalChapters(v int32) {
+func (o *AudiobookBase) SetTotalChapters(v int64) {
 	o.TotalChapters = v
 }
 

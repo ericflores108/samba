@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FullyPlayed** | Pointer to **bool** | Whether or not the episode has been fully played by the user.  | [optional] 
-**ResumePositionMs** | Pointer to **int32** | The user&#39;s most recent position in the episode in milliseconds.  | [optional] 
+**ResumePositionMs** | Pointer to **int64** | The user&#39;s most recent position in the episode in milliseconds.  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasFullyPlayed returns a boolean if a field has been set.
 
 ### GetResumePositionMs
 
-`func (o *ResumePointObject) GetResumePositionMs() int32`
+`func (o *ResumePointObject) GetResumePositionMs() int64`
 
 GetResumePositionMs returns the ResumePositionMs field if non-nil, zero value otherwise.
 
 ### GetResumePositionMsOk
 
-`func (o *ResumePointObject) GetResumePositionMsOk() (*int32, bool)`
+`func (o *ResumePointObject) GetResumePositionMsOk() (*int64, bool)`
 
 GetResumePositionMsOk returns a tuple with the ResumePositionMs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResumePositionMs
 
-`func (o *ResumePointObject) SetResumePositionMs(v int32)`
+`func (o *ResumePointObject) SetResumePositionMs(v int64)`
 
 SetResumePositionMs sets ResumePositionMs field to given value.
 

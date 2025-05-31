@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | **int32** | The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).  | 
+**Status** | **int64** | The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).  | 
 **Message** | **string** | A short description of the cause of the error.  | 
 
 ## Methods
 
 ### NewErrorObject
 
-`func NewErrorObject(status int32, message string, ) *ErrorObject`
+`func NewErrorObject(status int64, message string, ) *ErrorObject`
 
 NewErrorObject instantiates a new ErrorObject object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStatus
 
-`func (o *ErrorObject) GetStatus() int32`
+`func (o *ErrorObject) GetStatus() int64`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ErrorObject) GetStatusOk() (*int32, bool)`
+`func (o *ErrorObject) GetStatusOk() (*int64, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ErrorObject) SetStatus(v int32)`
+`func (o *ErrorObject) SetStatus(v int64)`
 
 SetStatus sets Status field to given value.
 

@@ -46,7 +46,7 @@ import (
 
 func main() {
 	playlistId := "3cEYpjA9oz9GiPac4AsH4n" // string | 
-	position := int32(0) // int32 |  (optional)
+	position := int64(0) // int64 |  (optional)
 	uris := "spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M" // string |  (optional)
 	addTracksToPlaylistRequest := *openapiclient.NewAddTracksToPlaylistRequest() // AddTracksToPlaylistRequest |  (optional)
 
@@ -78,7 +78,7 @@ Other parameters are passed through a pointer to a apiAddTracksToPlaylistRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **position** | **int32** |  | 
+ **position** | **int64** |  | 
  **uris** | **string** |  | 
  **addTracksToPlaylistRequest** | [**AddTracksToPlaylistRequest**](AddTracksToPlaylistRequest.md) |  | 
 
@@ -189,8 +189,8 @@ import (
 func main() {
 	id := "4aawyAB9vmqN3uQ7FjRGTy" // string | 
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -221,8 +221,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -478,8 +478,8 @@ func main() {
 	playlistId := "3cEYpjA9oz9GiPac4AsH4n" // string | 
 	market := "ES" // string |  (optional)
 	fields := "items(added_by.id,track(name,href,album(name,href)))" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 	additionalTypes := "additionalTypes_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -512,8 +512,8 @@ Name | Type | Description  | Notes
 
  **market** | **string** |  | 
  **fields** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
  **additionalTypes** | **string** |  | 
 
 ### Return type
@@ -558,7 +558,7 @@ func main() {
 	seedArtists := "4NHQUGzhtTLFvgF5SZesLK" // string | 
 	seedGenres := "classical,country" // string | 
 	seedTracks := "0c6xIDDpzE81m2q797ordA" // string | 
-	limit := int32(10) // int32 |  (optional) (default to 20)
+	limit := int64(10) // int64 |  (optional) (default to 20)
 	market := "ES" // string |  (optional)
 	minAcousticness := float32(8.14) // float32 |  (optional)
 	maxAcousticness := float32(8.14) // float32 |  (optional)
@@ -566,39 +566,39 @@ func main() {
 	minDanceability := float32(8.14) // float32 |  (optional)
 	maxDanceability := float32(8.14) // float32 |  (optional)
 	targetDanceability := float32(8.14) // float32 |  (optional)
-	minDurationMs := int32(56) // int32 |  (optional)
-	maxDurationMs := int32(56) // int32 |  (optional)
-	targetDurationMs := int32(56) // int32 |  (optional)
+	minDurationMs := int64(56) // int64 |  (optional)
+	maxDurationMs := int64(56) // int64 |  (optional)
+	targetDurationMs := int64(56) // int64 |  (optional)
 	minEnergy := float32(8.14) // float32 |  (optional)
 	maxEnergy := float32(8.14) // float32 |  (optional)
 	targetEnergy := float32(8.14) // float32 |  (optional)
 	minInstrumentalness := float32(8.14) // float32 |  (optional)
 	maxInstrumentalness := float32(8.14) // float32 |  (optional)
 	targetInstrumentalness := float32(8.14) // float32 |  (optional)
-	minKey := int32(56) // int32 |  (optional)
-	maxKey := int32(56) // int32 |  (optional)
-	targetKey := int32(56) // int32 |  (optional)
+	minKey := int64(56) // int64 |  (optional)
+	maxKey := int64(56) // int64 |  (optional)
+	targetKey := int64(56) // int64 |  (optional)
 	minLiveness := float32(8.14) // float32 |  (optional)
 	maxLiveness := float32(8.14) // float32 |  (optional)
 	targetLiveness := float32(8.14) // float32 |  (optional)
 	minLoudness := float32(8.14) // float32 |  (optional)
 	maxLoudness := float32(8.14) // float32 |  (optional)
 	targetLoudness := float32(8.14) // float32 |  (optional)
-	minMode := int32(56) // int32 |  (optional)
-	maxMode := int32(56) // int32 |  (optional)
-	targetMode := int32(56) // int32 |  (optional)
-	minPopularity := int32(56) // int32 |  (optional)
-	maxPopularity := int32(56) // int32 |  (optional)
-	targetPopularity := int32(56) // int32 |  (optional)
+	minMode := int64(56) // int64 |  (optional)
+	maxMode := int64(56) // int64 |  (optional)
+	targetMode := int64(56) // int64 |  (optional)
+	minPopularity := int64(56) // int64 |  (optional)
+	maxPopularity := int64(56) // int64 |  (optional)
+	targetPopularity := int64(56) // int64 |  (optional)
 	minSpeechiness := float32(8.14) // float32 |  (optional)
 	maxSpeechiness := float32(8.14) // float32 |  (optional)
 	targetSpeechiness := float32(8.14) // float32 |  (optional)
 	minTempo := float32(8.14) // float32 |  (optional)
 	maxTempo := float32(8.14) // float32 |  (optional)
 	targetTempo := float32(8.14) // float32 |  (optional)
-	minTimeSignature := int32(56) // int32 |  (optional)
-	maxTimeSignature := int32(56) // int32 |  (optional)
-	targetTimeSignature := int32(56) // int32 |  (optional)
+	minTimeSignature := int64(56) // int64 |  (optional)
+	maxTimeSignature := int64(56) // int64 |  (optional)
+	targetTimeSignature := int64(56) // int64 |  (optional)
 	minValence := float32(8.14) // float32 |  (optional)
 	maxValence := float32(8.14) // float32 |  (optional)
 	targetValence := float32(8.14) // float32 |  (optional)
@@ -629,7 +629,7 @@ Name | Type | Description  | Notes
  **seedArtists** | **string** |  | 
  **seedGenres** | **string** |  | 
  **seedTracks** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
+ **limit** | **int64** |  | [default to 20]
  **market** | **string** |  | 
  **minAcousticness** | **float32** |  | 
  **maxAcousticness** | **float32** |  | 
@@ -637,39 +637,39 @@ Name | Type | Description  | Notes
  **minDanceability** | **float32** |  | 
  **maxDanceability** | **float32** |  | 
  **targetDanceability** | **float32** |  | 
- **minDurationMs** | **int32** |  | 
- **maxDurationMs** | **int32** |  | 
- **targetDurationMs** | **int32** |  | 
+ **minDurationMs** | **int64** |  | 
+ **maxDurationMs** | **int64** |  | 
+ **targetDurationMs** | **int64** |  | 
  **minEnergy** | **float32** |  | 
  **maxEnergy** | **float32** |  | 
  **targetEnergy** | **float32** |  | 
  **minInstrumentalness** | **float32** |  | 
  **maxInstrumentalness** | **float32** |  | 
  **targetInstrumentalness** | **float32** |  | 
- **minKey** | **int32** |  | 
- **maxKey** | **int32** |  | 
- **targetKey** | **int32** |  | 
+ **minKey** | **int64** |  | 
+ **maxKey** | **int64** |  | 
+ **targetKey** | **int64** |  | 
  **minLiveness** | **float32** |  | 
  **maxLiveness** | **float32** |  | 
  **targetLiveness** | **float32** |  | 
  **minLoudness** | **float32** |  | 
  **maxLoudness** | **float32** |  | 
  **targetLoudness** | **float32** |  | 
- **minMode** | **int32** |  | 
- **maxMode** | **int32** |  | 
- **targetMode** | **int32** |  | 
- **minPopularity** | **int32** |  | 
- **maxPopularity** | **int32** |  | 
- **targetPopularity** | **int32** |  | 
+ **minMode** | **int64** |  | 
+ **maxMode** | **int64** |  | 
+ **targetMode** | **int64** |  | 
+ **minPopularity** | **int64** |  | 
+ **maxPopularity** | **int64** |  | 
+ **targetPopularity** | **int64** |  | 
  **minSpeechiness** | **float32** |  | 
  **maxSpeechiness** | **float32** |  | 
  **targetSpeechiness** | **float32** |  | 
  **minTempo** | **float32** |  | 
  **maxTempo** | **float32** |  | 
  **targetTempo** | **float32** |  | 
- **minTimeSignature** | **int32** |  | 
- **maxTimeSignature** | **int32** |  | 
- **targetTimeSignature** | **int32** |  | 
+ **minTimeSignature** | **int64** |  | 
+ **maxTimeSignature** | **int64** |  | 
+ **targetTimeSignature** | **int64** |  | 
  **minValence** | **float32** |  | 
  **maxValence** | **float32** |  | 
  **targetValence** | **float32** |  | 
@@ -920,8 +920,8 @@ import (
 
 func main() {
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -947,8 +947,8 @@ Other parameters are passed through a pointer to a apiGetUsersSavedTracksRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 
@@ -991,8 +991,8 @@ import (
 func main() {
 	type_ := "type__example" // string | 
 	timeRange := "medium_term" // string |  (optional) (default to "medium_term")
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1023,8 +1023,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **timeRange** | **string** |  | [default to &quot;medium_term&quot;]
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
 
 ### Return type
 

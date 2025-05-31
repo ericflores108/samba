@@ -45,19 +45,24 @@ type authErrorMsg struct {
 	Error string
 }
 
+type currentlyPlayingMsg struct {
+	CurrentlyPlaying *spotify.CurrentlyPlayingContextObject
+}
+
 type model struct {
-	state     uint
-	user      *spotify.PrivateUserObject
-	client    *sw.SpotifyClient
-	ctx       context.Context
-	listIndex int
-	textarea  textarea.Model
-	textinput textinput.Model
-	authURL   string
-	authState string
-	authCode  string
-	errorMsg  string
-	server    *http.Server
+	state           uint
+	user            *spotify.PrivateUserObject
+	client          *sw.SpotifyClient
+	ctx             context.Context
+	listIndex       int
+	textarea        textarea.Model
+	textinput       textinput.Model
+	authURL         string
+	authState       string
+	authCode        string
+	errorMsg        string
+	server          *http.Server
+	currentlyPlaying *spotify.CurrentlyPlayingContextObject
 	*spotify.QueueObject
 }
 
@@ -88,14 +93,22 @@ func NewAuthenticatedModel(user *spotify.PrivateUserObject, client *sw.SpotifyCl
 		log.Fatalf("client.PlayerAPI.GetQueueExecute: %d", res.StatusCode)
 	}
 
+	// Get currently playing track
+	currentlyPlaying, _, err := client.GetCurrentlyPlaying(ctx)
+	if err != nil {
+		// Don't fail if no track is currently playing
+		log.Printf("Warning: Could not get currently playing track: %v", err)
+	}
+
 	return model{
-		state:       listView,
-		user:        user,
-		client:      client,
-		ctx:         ctx,
-		textarea:    textarea.New(),
-		textinput:   textinput.New(),
-		QueueObject: q,
+		state:            listView,
+		user:             user,
+		client:           client,
+		ctx:              ctx,
+		textarea:         textarea.New(),
+		textinput:        textinput.New(),
+		currentlyPlaying: currentlyPlaying,
+		QueueObject:      q,
 	}
 }
 
@@ -207,6 +220,15 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, nil
 		}
 		m.QueueObject = q
+		
+		// Get currently playing track
+		currentlyPlaying, _, err := m.client.GetCurrentlyPlaying(m.ctx)
+		if err != nil {
+			// Don't fail if no track is currently playing
+			log.Printf("Warning: Could not get currently playing track: %v", err)
+		}
+		m.currentlyPlaying = currentlyPlaying
+		
 		m.state = listView
 		return m, nil
 

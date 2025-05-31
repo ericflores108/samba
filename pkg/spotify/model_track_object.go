@@ -26,9 +26,9 @@ type TrackObject struct {
 	// A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code. 
 	AvailableMarkets []string `json:"available_markets,omitempty"`
 	// The disc number (usually `1` unless the album consists of more than one disc). 
-	DiscNumber *int32 `json:"disc_number,omitempty"`
+	DiscNumber *int64 `json:"disc_number,omitempty"`
 	// The track length in milliseconds. 
-	DurationMs *int32 `json:"duration_ms,omitempty"`
+	DurationMs *int64 `json:"duration_ms,omitempty"`
 	// Whether or not the track has explicit lyrics ( `true` = yes it does; `false` = no it does not OR unknown). 
 	Explicit *bool `json:"explicit,omitempty"`
 	// Known external IDs for the track. 
@@ -48,12 +48,12 @@ type TrackObject struct {
 	// The name of the track. 
 	Name *string `json:"name,omitempty"`
 	// The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.<br/>The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.<br/>Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._ 
-	Popularity *int32 `json:"popularity,omitempty"`
+	Popularity *int64 `json:"popularity,omitempty"`
 	// A link to a 30 second preview (MP3 format) of the track. Can be `null` 
 	// Deprecated
 	PreviewUrl NullableString `json:"preview_url,omitempty"`
 	// The number of the track. If an album has several discs, the track number is the number on the specified disc. 
-	TrackNumber *int32 `json:"track_number,omitempty"`
+	TrackNumber *int64 `json:"track_number,omitempty"`
 	// The object type: \"track\". 
 	Type *string `json:"type,omitempty"`
 	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
@@ -176,9 +176,9 @@ func (o *TrackObject) SetAvailableMarkets(v []string) {
 }
 
 // GetDiscNumber returns the DiscNumber field value if set, zero value otherwise.
-func (o *TrackObject) GetDiscNumber() int32 {
+func (o *TrackObject) GetDiscNumber() int64 {
 	if o == nil || IsNil(o.DiscNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DiscNumber
@@ -186,7 +186,7 @@ func (o *TrackObject) GetDiscNumber() int32 {
 
 // GetDiscNumberOk returns a tuple with the DiscNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrackObject) GetDiscNumberOk() (*int32, bool) {
+func (o *TrackObject) GetDiscNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.DiscNumber) {
 		return nil, false
 	}
@@ -202,15 +202,15 @@ func (o *TrackObject) HasDiscNumber() bool {
 	return false
 }
 
-// SetDiscNumber gets a reference to the given int32 and assigns it to the DiscNumber field.
-func (o *TrackObject) SetDiscNumber(v int32) {
+// SetDiscNumber gets a reference to the given int64 and assigns it to the DiscNumber field.
+func (o *TrackObject) SetDiscNumber(v int64) {
 	o.DiscNumber = &v
 }
 
 // GetDurationMs returns the DurationMs field value if set, zero value otherwise.
-func (o *TrackObject) GetDurationMs() int32 {
+func (o *TrackObject) GetDurationMs() int64 {
 	if o == nil || IsNil(o.DurationMs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DurationMs
@@ -218,7 +218,7 @@ func (o *TrackObject) GetDurationMs() int32 {
 
 // GetDurationMsOk returns a tuple with the DurationMs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrackObject) GetDurationMsOk() (*int32, bool) {
+func (o *TrackObject) GetDurationMsOk() (*int64, bool) {
 	if o == nil || IsNil(o.DurationMs) {
 		return nil, false
 	}
@@ -234,8 +234,8 @@ func (o *TrackObject) HasDurationMs() bool {
 	return false
 }
 
-// SetDurationMs gets a reference to the given int32 and assigns it to the DurationMs field.
-func (o *TrackObject) SetDurationMs(v int32) {
+// SetDurationMs gets a reference to the given int64 and assigns it to the DurationMs field.
+func (o *TrackObject) SetDurationMs(v int64) {
 	o.DurationMs = &v
 }
 
@@ -528,9 +528,9 @@ func (o *TrackObject) SetName(v string) {
 }
 
 // GetPopularity returns the Popularity field value if set, zero value otherwise.
-func (o *TrackObject) GetPopularity() int32 {
+func (o *TrackObject) GetPopularity() int64 {
 	if o == nil || IsNil(o.Popularity) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Popularity
@@ -538,7 +538,7 @@ func (o *TrackObject) GetPopularity() int32 {
 
 // GetPopularityOk returns a tuple with the Popularity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrackObject) GetPopularityOk() (*int32, bool) {
+func (o *TrackObject) GetPopularityOk() (*int64, bool) {
 	if o == nil || IsNil(o.Popularity) {
 		return nil, false
 	}
@@ -554,8 +554,8 @@ func (o *TrackObject) HasPopularity() bool {
 	return false
 }
 
-// SetPopularity gets a reference to the given int32 and assigns it to the Popularity field.
-func (o *TrackObject) SetPopularity(v int32) {
+// SetPopularity gets a reference to the given int64 and assigns it to the Popularity field.
+func (o *TrackObject) SetPopularity(v int64) {
 	o.Popularity = &v
 }
 
@@ -605,9 +605,9 @@ func (o *TrackObject) UnsetPreviewUrl() {
 }
 
 // GetTrackNumber returns the TrackNumber field value if set, zero value otherwise.
-func (o *TrackObject) GetTrackNumber() int32 {
+func (o *TrackObject) GetTrackNumber() int64 {
 	if o == nil || IsNil(o.TrackNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TrackNumber
@@ -615,7 +615,7 @@ func (o *TrackObject) GetTrackNumber() int32 {
 
 // GetTrackNumberOk returns a tuple with the TrackNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrackObject) GetTrackNumberOk() (*int32, bool) {
+func (o *TrackObject) GetTrackNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.TrackNumber) {
 		return nil, false
 	}
@@ -631,8 +631,8 @@ func (o *TrackObject) HasTrackNumber() bool {
 	return false
 }
 
-// SetTrackNumber gets a reference to the given int32 and assigns it to the TrackNumber field.
-func (o *TrackObject) SetTrackNumber(v int32) {
+// SetTrackNumber gets a reference to the given int64 and assigns it to the TrackNumber field.
+func (o *TrackObject) SetTrackNumber(v int64) {
 	o.TrackNumber = &v
 }
 

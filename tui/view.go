@@ -63,6 +63,30 @@ func (m model) View() string {
 			s += "Welcome, " + m.user.GetDisplayName() + "!\n\n"
 		}
 
+		// Display currently playing track
+		if m.currentlyPlaying != nil && m.currentlyPlaying.Item != nil {
+			var trackName, artistName string
+			if m.currentlyPlaying.Item.TrackObject != nil {
+				trackName = m.currentlyPlaying.Item.TrackObject.GetName()
+				if len(m.currentlyPlaying.Item.TrackObject.Artists) > 0 {
+					artistName = m.currentlyPlaying.Item.TrackObject.Artists[0].GetName()
+				}
+			} else if m.currentlyPlaying.Item.EpisodeObject != nil {
+				trackName = m.currentlyPlaying.Item.EpisodeObject.GetName()
+				artistName = m.currentlyPlaying.Item.EpisodeObject.Show.GetName()
+			}
+			
+			if trackName != "" {
+				isPlaying := m.currentlyPlaying.GetIsPlaying()
+				playingStatus := "⏸️"
+				if isPlaying {
+					playingStatus = "▶️"
+				}
+				
+				s += fmt.Sprintf("🎵 Now Playing: %s %s - %s\n\n", playingStatus, trackName, faint.Render(artistName))
+			}
+		}
+
 		queue := m.GetQueue()
 		totalItems := len(queue)
 		currentPage := m.listIndex / itemsPerPage

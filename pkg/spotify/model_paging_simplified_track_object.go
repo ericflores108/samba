@@ -24,15 +24,15 @@ type PagingSimplifiedTrackObject struct {
 	// A link to the Web API endpoint returning the full result of the request 
 	Href string `json:"href"`
 	// The maximum number of items in the response (as set in the query or by default). 
-	Limit int32 `json:"limit"`
+	Limit int64 `json:"limit"`
 	// URL to the next page of items. ( `null` if none) 
 	Next NullableString `json:"next"`
 	// The offset of the items returned (as set in the query or by default) 
-	Offset int32 `json:"offset"`
+	Offset int64 `json:"offset"`
 	// URL to the previous page of items. ( `null` if none) 
 	Previous NullableString `json:"previous"`
 	// The total number of items available to return. 
-	Total int32 `json:"total"`
+	Total int64 `json:"total"`
 	Items []SimplifiedTrackObject `json:"items"`
 }
 
@@ -42,7 +42,7 @@ type _PagingSimplifiedTrackObject PagingSimplifiedTrackObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPagingSimplifiedTrackObject(href string, limit int32, next NullableString, offset int32, previous NullableString, total int32, items []SimplifiedTrackObject) *PagingSimplifiedTrackObject {
+func NewPagingSimplifiedTrackObject(href string, limit int64, next NullableString, offset int64, previous NullableString, total int64, items []SimplifiedTrackObject) *PagingSimplifiedTrackObject {
 	this := PagingSimplifiedTrackObject{}
 	this.Href = href
 	this.Limit = limit
@@ -87,9 +87,9 @@ func (o *PagingSimplifiedTrackObject) SetHref(v string) {
 }
 
 // GetLimit returns the Limit field value
-func (o *PagingSimplifiedTrackObject) GetLimit() int32 {
+func (o *PagingSimplifiedTrackObject) GetLimit() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -98,7 +98,7 @@ func (o *PagingSimplifiedTrackObject) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *PagingSimplifiedTrackObject) GetLimitOk() (*int32, bool) {
+func (o *PagingSimplifiedTrackObject) GetLimitOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -106,7 +106,7 @@ func (o *PagingSimplifiedTrackObject) GetLimitOk() (*int32, bool) {
 }
 
 // SetLimit sets field value
-func (o *PagingSimplifiedTrackObject) SetLimit(v int32) {
+func (o *PagingSimplifiedTrackObject) SetLimit(v int64) {
 	o.Limit = v
 }
 
@@ -137,9 +137,9 @@ func (o *PagingSimplifiedTrackObject) SetNext(v string) {
 }
 
 // GetOffset returns the Offset field value
-func (o *PagingSimplifiedTrackObject) GetOffset() int32 {
+func (o *PagingSimplifiedTrackObject) GetOffset() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -148,7 +148,7 @@ func (o *PagingSimplifiedTrackObject) GetOffset() int32 {
 
 // GetOffsetOk returns a tuple with the Offset field value
 // and a boolean to check if the value has been set.
-func (o *PagingSimplifiedTrackObject) GetOffsetOk() (*int32, bool) {
+func (o *PagingSimplifiedTrackObject) GetOffsetOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *PagingSimplifiedTrackObject) GetOffsetOk() (*int32, bool) {
 }
 
 // SetOffset sets field value
-func (o *PagingSimplifiedTrackObject) SetOffset(v int32) {
+func (o *PagingSimplifiedTrackObject) SetOffset(v int64) {
 	o.Offset = v
 }
 
@@ -187,9 +187,9 @@ func (o *PagingSimplifiedTrackObject) SetPrevious(v string) {
 }
 
 // GetTotal returns the Total field value
-func (o *PagingSimplifiedTrackObject) GetTotal() int32 {
+func (o *PagingSimplifiedTrackObject) GetTotal() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -198,7 +198,7 @@ func (o *PagingSimplifiedTrackObject) GetTotal() int32 {
 
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
-func (o *PagingSimplifiedTrackObject) GetTotalOk() (*int32, bool) {
+func (o *PagingSimplifiedTrackObject) GetTotalOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -206,7 +206,7 @@ func (o *PagingSimplifiedTrackObject) GetTotalOk() (*int32, bool) {
 }
 
 // SetTotal sets field value
-func (o *PagingSimplifiedTrackObject) SetTotal(v int32) {
+func (o *PagingSimplifiedTrackObject) SetTotal(v int64) {
 	o.Total = v
 }
 

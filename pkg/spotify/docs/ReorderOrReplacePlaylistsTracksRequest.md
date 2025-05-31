@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uris** | Pointer to **[]string** |  | [optional] 
-**RangeStart** | Pointer to **int32** | The position of the first item to be reordered.  | [optional] 
-**InsertBefore** | Pointer to **int32** | The position where the items should be inserted.&lt;br/&gt;To reorder the items to the end of the playlist, simply set _insert_before_ to the position after the last item.&lt;br/&gt;Examples:&lt;br/&gt;To reorder the first item to the last position in a playlist with 10 items, set _range_start_ to 0, and _insert_before_ to 10.&lt;br/&gt;To reorder the last item in a playlist with 10 items to the start of the playlist, set _range_start_ to 9, and _insert_before_ to 0.  | [optional] 
-**RangeLength** | Pointer to **int32** | The amount of items to be reordered. Defaults to 1 if not set.&lt;br/&gt;The range of items to be reordered begins from the _range_start_ position, and includes the _range_length_ subsequent items.&lt;br/&gt;Example:&lt;br/&gt;To move the items at index 9-10 to the start of the playlist, _range_start_ is set to 9, and _range_length_ is set to 2.  | [optional] 
+**RangeStart** | Pointer to **int64** | The position of the first item to be reordered.  | [optional] 
+**InsertBefore** | Pointer to **int64** | The position where the items should be inserted.&lt;br/&gt;To reorder the items to the end of the playlist, simply set _insert_before_ to the position after the last item.&lt;br/&gt;Examples:&lt;br/&gt;To reorder the first item to the last position in a playlist with 10 items, set _range_start_ to 0, and _insert_before_ to 10.&lt;br/&gt;To reorder the last item in a playlist with 10 items to the start of the playlist, set _range_start_ to 9, and _insert_before_ to 0.  | [optional] 
+**RangeLength** | Pointer to **int64** | The amount of items to be reordered. Defaults to 1 if not set.&lt;br/&gt;The range of items to be reordered begins from the _range_start_ position, and includes the _range_length_ subsequent items.&lt;br/&gt;Example:&lt;br/&gt;To move the items at index 9-10 to the start of the playlist, _range_start_ is set to 9, and _range_length_ is set to 2.  | [optional] 
 **SnapshotId** | Pointer to **string** | The playlist&#39;s snapshot ID against which you want to make the changes.  | [optional] 
 
 ## Methods
@@ -56,20 +56,20 @@ HasUris returns a boolean if a field has been set.
 
 ### GetRangeStart
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStart() int32`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStart() int64`
 
 GetRangeStart returns the RangeStart field if non-nil, zero value otherwise.
 
 ### GetRangeStartOk
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStartOk() (*int32, bool)`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeStartOk() (*int64, bool)`
 
 GetRangeStartOk returns a tuple with the RangeStart field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRangeStart
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) SetRangeStart(v int32)`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) SetRangeStart(v int64)`
 
 SetRangeStart sets RangeStart field to given value.
 
@@ -81,20 +81,20 @@ HasRangeStart returns a boolean if a field has been set.
 
 ### GetInsertBefore
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBefore() int32`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBefore() int64`
 
 GetInsertBefore returns the InsertBefore field if non-nil, zero value otherwise.
 
 ### GetInsertBeforeOk
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBeforeOk() (*int32, bool)`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) GetInsertBeforeOk() (*int64, bool)`
 
 GetInsertBeforeOk returns a tuple with the InsertBefore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInsertBefore
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) SetInsertBefore(v int32)`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) SetInsertBefore(v int64)`
 
 SetInsertBefore sets InsertBefore field to given value.
 
@@ -106,20 +106,20 @@ HasInsertBefore returns a boolean if a field has been set.
 
 ### GetRangeLength
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLength() int32`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLength() int64`
 
 GetRangeLength returns the RangeLength field if non-nil, zero value otherwise.
 
 ### GetRangeLengthOk
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLengthOk() (*int32, bool)`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) GetRangeLengthOk() (*int64, bool)`
 
 GetRangeLengthOk returns a tuple with the RangeLength field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRangeLength
 
-`func (o *ReorderOrReplacePlaylistsTracksRequest) SetRangeLength(v int32)`
+`func (o *ReorderOrReplacePlaylistsTracksRequest) SetRangeLength(v int64)`
 
 SetRangeLength sets RangeLength field to given value.
 

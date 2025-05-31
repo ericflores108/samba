@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.  | [optional] 
 **Images** | Pointer to [**[]ImageObject**](ImageObject.md) | Images of the artist in various sizes, widest first.  | [optional] 
 **Name** | Pointer to **string** | The name of the artist.  | [optional] 
-**Popularity** | Pointer to **int32** | The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist&#39;s popularity is calculated from the popularity of all the artist&#39;s tracks.  | [optional] 
+**Popularity** | Pointer to **int64** | The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist&#39;s popularity is calculated from the popularity of all the artist&#39;s tracks.  | [optional] 
 **Type** | Pointer to **string** | The object type.  | [optional] 
 **Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.  | [optional] 
 
@@ -211,20 +211,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetPopularity
 
-`func (o *ArtistObject) GetPopularity() int32`
+`func (o *ArtistObject) GetPopularity() int64`
 
 GetPopularity returns the Popularity field if non-nil, zero value otherwise.
 
 ### GetPopularityOk
 
-`func (o *ArtistObject) GetPopularityOk() (*int32, bool)`
+`func (o *ArtistObject) GetPopularityOk() (*int64, bool)`
 
 GetPopularityOk returns a tuple with the Popularity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPopularity
 
-`func (o *ArtistObject) SetPopularity(v int32)`
+`func (o *ArtistObject) SetPopularity(v int64)`
 
 SetPopularity sets Popularity field to given value.
 

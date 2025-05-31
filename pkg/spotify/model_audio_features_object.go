@@ -26,7 +26,7 @@ type AudioFeaturesObject struct {
 	// Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable. 
 	Danceability *float32 `json:"danceability,omitempty"`
 	// The duration of the track in milliseconds. 
-	DurationMs *int32 `json:"duration_ms,omitempty"`
+	DurationMs *int64 `json:"duration_ms,omitempty"`
 	// Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy. 
 	Energy *float32 `json:"energy,omitempty"`
 	// The Spotify ID for the track. 
@@ -34,19 +34,19 @@ type AudioFeaturesObject struct {
 	// Predicts whether a track contains no vocals. \"Ooh\" and \"aah\" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly \"vocal\". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0. 
 	Instrumentalness *float32 `json:"instrumentalness,omitempty"`
 	// The key the track is in. Integers map to pitches using standard [Pitch Class notation](https://en.wikipedia.org/wiki/Pitch_class). E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on. If no key was detected, the value is -1. 
-	Key *int32 `json:"key,omitempty"`
+	Key *int64 `json:"key,omitempty"`
 	// Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live. 
 	Liveness *float32 `json:"liveness,omitempty"`
 	// The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typically range between -60 and 0 db. 
 	Loudness *float32 `json:"loudness,omitempty"`
 	// Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0. 
-	Mode *int32 `json:"mode,omitempty"`
+	Mode *int64 `json:"mode,omitempty"`
 	// Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks. 
 	Speechiness *float32 `json:"speechiness,omitempty"`
 	// The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration. 
 	Tempo *float32 `json:"tempo,omitempty"`
 	// An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \"3/4\", to \"7/4\".
-	TimeSignature *int32 `json:"time_signature,omitempty"`
+	TimeSignature *int64 `json:"time_signature,omitempty"`
 	// A link to the Web API endpoint providing full details of the track. 
 	TrackHref *string `json:"track_href,omitempty"`
 	// The object type. 
@@ -171,9 +171,9 @@ func (o *AudioFeaturesObject) SetDanceability(v float32) {
 }
 
 // GetDurationMs returns the DurationMs field value if set, zero value otherwise.
-func (o *AudioFeaturesObject) GetDurationMs() int32 {
+func (o *AudioFeaturesObject) GetDurationMs() int64 {
 	if o == nil || IsNil(o.DurationMs) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DurationMs
@@ -181,7 +181,7 @@ func (o *AudioFeaturesObject) GetDurationMs() int32 {
 
 // GetDurationMsOk returns a tuple with the DurationMs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioFeaturesObject) GetDurationMsOk() (*int32, bool) {
+func (o *AudioFeaturesObject) GetDurationMsOk() (*int64, bool) {
 	if o == nil || IsNil(o.DurationMs) {
 		return nil, false
 	}
@@ -197,8 +197,8 @@ func (o *AudioFeaturesObject) HasDurationMs() bool {
 	return false
 }
 
-// SetDurationMs gets a reference to the given int32 and assigns it to the DurationMs field.
-func (o *AudioFeaturesObject) SetDurationMs(v int32) {
+// SetDurationMs gets a reference to the given int64 and assigns it to the DurationMs field.
+func (o *AudioFeaturesObject) SetDurationMs(v int64) {
 	o.DurationMs = &v
 }
 
@@ -299,9 +299,9 @@ func (o *AudioFeaturesObject) SetInstrumentalness(v float32) {
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
-func (o *AudioFeaturesObject) GetKey() int32 {
+func (o *AudioFeaturesObject) GetKey() int64 {
 	if o == nil || IsNil(o.Key) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Key
@@ -309,7 +309,7 @@ func (o *AudioFeaturesObject) GetKey() int32 {
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioFeaturesObject) GetKeyOk() (*int32, bool) {
+func (o *AudioFeaturesObject) GetKeyOk() (*int64, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
@@ -325,8 +325,8 @@ func (o *AudioFeaturesObject) HasKey() bool {
 	return false
 }
 
-// SetKey gets a reference to the given int32 and assigns it to the Key field.
-func (o *AudioFeaturesObject) SetKey(v int32) {
+// SetKey gets a reference to the given int64 and assigns it to the Key field.
+func (o *AudioFeaturesObject) SetKey(v int64) {
 	o.Key = &v
 }
 
@@ -395,9 +395,9 @@ func (o *AudioFeaturesObject) SetLoudness(v float32) {
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *AudioFeaturesObject) GetMode() int32 {
+func (o *AudioFeaturesObject) GetMode() int64 {
 	if o == nil || IsNil(o.Mode) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Mode
@@ -405,7 +405,7 @@ func (o *AudioFeaturesObject) GetMode() int32 {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioFeaturesObject) GetModeOk() (*int32, bool) {
+func (o *AudioFeaturesObject) GetModeOk() (*int64, bool) {
 	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
@@ -421,8 +421,8 @@ func (o *AudioFeaturesObject) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given int32 and assigns it to the Mode field.
-func (o *AudioFeaturesObject) SetMode(v int32) {
+// SetMode gets a reference to the given int64 and assigns it to the Mode field.
+func (o *AudioFeaturesObject) SetMode(v int64) {
 	o.Mode = &v
 }
 
@@ -491,9 +491,9 @@ func (o *AudioFeaturesObject) SetTempo(v float32) {
 }
 
 // GetTimeSignature returns the TimeSignature field value if set, zero value otherwise.
-func (o *AudioFeaturesObject) GetTimeSignature() int32 {
+func (o *AudioFeaturesObject) GetTimeSignature() int64 {
 	if o == nil || IsNil(o.TimeSignature) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TimeSignature
@@ -501,7 +501,7 @@ func (o *AudioFeaturesObject) GetTimeSignature() int32 {
 
 // GetTimeSignatureOk returns a tuple with the TimeSignature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AudioFeaturesObject) GetTimeSignatureOk() (*int32, bool) {
+func (o *AudioFeaturesObject) GetTimeSignatureOk() (*int64, bool) {
 	if o == nil || IsNil(o.TimeSignature) {
 		return nil, false
 	}
@@ -517,8 +517,8 @@ func (o *AudioFeaturesObject) HasTimeSignature() bool {
 	return false
 }
 
-// SetTimeSignature gets a reference to the given int32 and assigns it to the TimeSignature field.
-func (o *AudioFeaturesObject) SetTimeSignature(v int32) {
+// SetTimeSignature gets a reference to the given int64 and assigns it to the TimeSignature field.
+func (o *AudioFeaturesObject) SetTimeSignature(v int64) {
 	o.TimeSignature = &v
 }
 

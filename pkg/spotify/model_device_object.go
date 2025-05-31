@@ -32,7 +32,7 @@ type DeviceObject struct {
 	// Device type, such as \"computer\", \"smartphone\" or \"speaker\".
 	Type *string `json:"type,omitempty"`
 	// The current volume in percent.
-	VolumePercent NullableInt32 `json:"volume_percent,omitempty"`
+	VolumePercent NullableInt64 `json:"volume_percent,omitempty"`
 	// If this device can be used to set the volume.
 	SupportsVolume *bool `json:"supports_volume,omitempty"`
 }
@@ -257,9 +257,9 @@ func (o *DeviceObject) SetType(v string) {
 }
 
 // GetVolumePercent returns the VolumePercent field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeviceObject) GetVolumePercent() int32 {
+func (o *DeviceObject) GetVolumePercent() int64 {
 	if o == nil || IsNil(o.VolumePercent.Get()) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.VolumePercent.Get()
@@ -268,7 +268,7 @@ func (o *DeviceObject) GetVolumePercent() int32 {
 // GetVolumePercentOk returns a tuple with the VolumePercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeviceObject) GetVolumePercentOk() (*int32, bool) {
+func (o *DeviceObject) GetVolumePercentOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -284,8 +284,8 @@ func (o *DeviceObject) HasVolumePercent() bool {
 	return false
 }
 
-// SetVolumePercent gets a reference to the given NullableInt32 and assigns it to the VolumePercent field.
-func (o *DeviceObject) SetVolumePercent(v int32) {
+// SetVolumePercent gets a reference to the given NullableInt64 and assigns it to the VolumePercent field.
+func (o *DeviceObject) SetVolumePercent(v int64) {
 	o.VolumePercent.Set(&v)
 }
 // SetVolumePercentNil sets the value for VolumePercent to be an explicit nil

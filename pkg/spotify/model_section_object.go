@@ -32,7 +32,7 @@ type SectionObject struct {
 	// The confidence, from 0.0 to 1.0, of the reliability of the tempo. Some tracks contain tempo changes or sounds which don't contain tempo (like pure speech) which would correspond to a low value in this field.
 	TempoConfidence *float32 `json:"tempo_confidence,omitempty"`
 	// The estimated overall key of the section. The values in this field ranging from 0 to 11 mapping to pitches using standard Pitch Class notation (E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on). If no key was detected, the value is -1.
-	Key *int32 `json:"key,omitempty"`
+	Key *int64 `json:"key,omitempty"`
 	// The confidence, from 0.0 to 1.0, of the reliability of the key. Songs with many key changes may correspond to low values in this field.
 	KeyConfidence *float32 `json:"key_confidence,omitempty"`
 	// Indicates the modality (major or minor) of a section, the type of scale from which its melodic content is derived. This field will contain a 0 for \"minor\", a 1 for \"major\", or a -1 for no result. Note that the major key (e.g. C major) could more likely be confused with the minor key at 3 semitones lower (e.g. A minor) as both keys carry the same pitches.
@@ -40,7 +40,7 @@ type SectionObject struct {
 	// The confidence, from 0.0 to 1.0, of the reliability of the `mode`.
 	ModeConfidence *float32 `json:"mode_confidence,omitempty"`
 	// An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \"3/4\", to \"7/4\".
-	TimeSignature *int32 `json:"time_signature,omitempty"`
+	TimeSignature *int64 `json:"time_signature,omitempty"`
 	// The confidence, from 0.0 to 1.0, of the reliability of the `time_signature`. Sections with time signature changes may correspond to low values in this field.
 	TimeSignatureConfidence *float32 `json:"time_signature_confidence,omitempty"`
 }
@@ -255,9 +255,9 @@ func (o *SectionObject) SetTempoConfidence(v float32) {
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
-func (o *SectionObject) GetKey() int32 {
+func (o *SectionObject) GetKey() int64 {
 	if o == nil || IsNil(o.Key) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Key
@@ -265,7 +265,7 @@ func (o *SectionObject) GetKey() int32 {
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SectionObject) GetKeyOk() (*int32, bool) {
+func (o *SectionObject) GetKeyOk() (*int64, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
@@ -281,8 +281,8 @@ func (o *SectionObject) HasKey() bool {
 	return false
 }
 
-// SetKey gets a reference to the given int32 and assigns it to the Key field.
-func (o *SectionObject) SetKey(v int32) {
+// SetKey gets a reference to the given int64 and assigns it to the Key field.
+func (o *SectionObject) SetKey(v int64) {
 	o.Key = &v
 }
 
@@ -383,9 +383,9 @@ func (o *SectionObject) SetModeConfidence(v float32) {
 }
 
 // GetTimeSignature returns the TimeSignature field value if set, zero value otherwise.
-func (o *SectionObject) GetTimeSignature() int32 {
+func (o *SectionObject) GetTimeSignature() int64 {
 	if o == nil || IsNil(o.TimeSignature) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TimeSignature
@@ -393,7 +393,7 @@ func (o *SectionObject) GetTimeSignature() int32 {
 
 // GetTimeSignatureOk returns a tuple with the TimeSignature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SectionObject) GetTimeSignatureOk() (*int32, bool) {
+func (o *SectionObject) GetTimeSignatureOk() (*int64, bool) {
 	if o == nil || IsNil(o.TimeSignature) {
 		return nil, false
 	}
@@ -409,8 +409,8 @@ func (o *SectionObject) HasTimeSignature() bool {
 	return false
 }
 
-// SetTimeSignature gets a reference to the given int32 and assigns it to the TimeSignature field.
-func (o *SectionObject) SetTimeSignature(v int32) {
+// SetTimeSignature gets a reference to the given int64 and assigns it to the TimeSignature field.
+func (o *SectionObject) SetTimeSignature(v int64) {
 	o.TimeSignature = &v
 }
 

@@ -32,8 +32,8 @@ func main() {
 	q := "remaster%20track:Doxy%20artist:Miles%20Davis" // string | 
 	type_ := []string{"Type_example"} // []string | 
 	market := "ES" // string |  (optional)
-	limit := int32(10) // int32 |  (optional) (default to 20)
-	offset := int32(5) // int32 |  (optional) (default to 0)
+	limit := int64(10) // int64 |  (optional) (default to 20)
+	offset := int64(5) // int64 |  (optional) (default to 0)
 	includeExternal := "includeExternal_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -62,8 +62,8 @@ Name | Type | Description  | Notes
  **q** | **string** |  | 
  **type_** | **[]string** |  | 
  **market** | **string** |  | 
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
+ **limit** | **int64** |  | [default to 20]
+ **offset** | **int64** |  | [default to 0]
  **includeExternal** | **string** |  | 
 
 ### Return type

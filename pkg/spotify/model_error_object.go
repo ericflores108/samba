@@ -22,7 +22,7 @@ var _ MappedNullable = &ErrorObject{}
 // ErrorObject struct for ErrorObject
 type ErrorObject struct {
 	// The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information). 
-	Status int32 `json:"status"`
+	Status int64 `json:"status"`
 	// A short description of the cause of the error. 
 	Message string `json:"message"`
 }
@@ -33,7 +33,7 @@ type _ErrorObject ErrorObject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewErrorObject(status int32, message string) *ErrorObject {
+func NewErrorObject(status int64, message string) *ErrorObject {
 	this := ErrorObject{}
 	this.Status = status
 	this.Message = message
@@ -49,9 +49,9 @@ func NewErrorObjectWithDefaults() *ErrorObject {
 }
 
 // GetStatus returns the Status field value
-func (o *ErrorObject) GetStatus() int32 {
+func (o *ErrorObject) GetStatus() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -60,7 +60,7 @@ func (o *ErrorObject) GetStatus() int32 {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *ErrorObject) GetStatusOk() (*int32, bool) {
+func (o *ErrorObject) GetStatusOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *ErrorObject) GetStatusOk() (*int32, bool) {
 }
 
 // SetStatus sets field value
-func (o *ErrorObject) SetStatus(v int32) {
+func (o *ErrorObject) SetStatus(v int64) {
 	o.Status = v
 }
 

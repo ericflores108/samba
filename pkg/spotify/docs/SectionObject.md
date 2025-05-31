@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **Loudness** | Pointer to **float32** | The overall loudness of the section in decibels (dB). Loudness values are useful for comparing relative loudness of sections within tracks. | [optional] 
 **Tempo** | Pointer to **float32** | The overall estimated tempo of the section in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration. | [optional] 
 **TempoConfidence** | Pointer to **float32** | The confidence, from 0.0 to 1.0, of the reliability of the tempo. Some tracks contain tempo changes or sounds which don&#39;t contain tempo (like pure speech) which would correspond to a low value in this field. | [optional] 
-**Key** | Pointer to **int32** | The estimated overall key of the section. The values in this field ranging from 0 to 11 mapping to pitches using standard Pitch Class notation (E.g. 0 &#x3D; C, 1 &#x3D; C♯/D♭, 2 &#x3D; D, and so on). If no key was detected, the value is -1. | [optional] 
+**Key** | Pointer to **int64** | The estimated overall key of the section. The values in this field ranging from 0 to 11 mapping to pitches using standard Pitch Class notation (E.g. 0 &#x3D; C, 1 &#x3D; C♯/D♭, 2 &#x3D; D, and so on). If no key was detected, the value is -1. | [optional] 
 **KeyConfidence** | Pointer to **float32** | The confidence, from 0.0 to 1.0, of the reliability of the key. Songs with many key changes may correspond to low values in this field. | [optional] 
 **Mode** | Pointer to **float32** | Indicates the modality (major or minor) of a section, the type of scale from which its melodic content is derived. This field will contain a 0 for \&quot;minor\&quot;, a 1 for \&quot;major\&quot;, or a -1 for no result. Note that the major key (e.g. C major) could more likely be confused with the minor key at 3 semitones lower (e.g. A minor) as both keys carry the same pitches. | [optional] 
 **ModeConfidence** | Pointer to **float32** | The confidence, from 0.0 to 1.0, of the reliability of the &#x60;mode&#x60;. | [optional] 
-**TimeSignature** | Pointer to **int32** | An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \&quot;3/4\&quot;, to \&quot;7/4\&quot;. | [optional] 
+**TimeSignature** | Pointer to **int64** | An estimated time signature. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure). The time signature ranges from 3 to 7 indicating time signatures of \&quot;3/4\&quot;, to \&quot;7/4\&quot;. | [optional] 
 **TimeSignatureConfidence** | Pointer to **float32** | The confidence, from 0.0 to 1.0, of the reliability of the &#x60;time_signature&#x60;. Sections with time signature changes may correspond to low values in this field. | [optional] 
 
 ## Methods
@@ -188,20 +188,20 @@ HasTempoConfidence returns a boolean if a field has been set.
 
 ### GetKey
 
-`func (o *SectionObject) GetKey() int32`
+`func (o *SectionObject) GetKey() int64`
 
 GetKey returns the Key field if non-nil, zero value otherwise.
 
 ### GetKeyOk
 
-`func (o *SectionObject) GetKeyOk() (*int32, bool)`
+`func (o *SectionObject) GetKeyOk() (*int64, bool)`
 
 GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKey
 
-`func (o *SectionObject) SetKey(v int32)`
+`func (o *SectionObject) SetKey(v int64)`
 
 SetKey sets Key field to given value.
 
@@ -288,20 +288,20 @@ HasModeConfidence returns a boolean if a field has been set.
 
 ### GetTimeSignature
 
-`func (o *SectionObject) GetTimeSignature() int32`
+`func (o *SectionObject) GetTimeSignature() int64`
 
 GetTimeSignature returns the TimeSignature field if non-nil, zero value otherwise.
 
 ### GetTimeSignatureOk
 
-`func (o *SectionObject) GetTimeSignatureOk() (*int32, bool)`
+`func (o *SectionObject) GetTimeSignatureOk() (*int64, bool)`
 
 GetTimeSignatureOk returns a tuple with the TimeSignature field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeSignature
 
-`func (o *SectionObject) SetTimeSignature(v int32)`
+`func (o *SectionObject) SetTimeSignature(v int64)`
 
 SetTimeSignature sets TimeSignature field to given value.
 

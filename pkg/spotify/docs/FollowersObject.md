@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **NullableString** | This will always be set to null, as the Web API does not support it at the moment.  | [optional] 
-**Total** | Pointer to **int32** | The total number of followers.  | [optional] 
+**Total** | Pointer to **int64** | The total number of followers.  | [optional] 
 
 ## Methods
 
@@ -63,20 +63,20 @@ HasHref returns a boolean if a field has been set.
 UnsetHref ensures that no value is present for Href, not even an explicit nil
 ### GetTotal
 
-`func (o *FollowersObject) GetTotal() int32`
+`func (o *FollowersObject) GetTotal() int64`
 
 GetTotal returns the Total field if non-nil, zero value otherwise.
 
 ### GetTotalOk
 
-`func (o *FollowersObject) GetTotalOk() (*int32, bool)`
+`func (o *FollowersObject) GetTotalOk() (*int64, bool)`
 
 GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotal
 
-`func (o *FollowersObject) SetTotal(v int32)`
+`func (o *FollowersObject) SetTotal(v int64)`
 
 SetTotal sets Total field to given value.
 

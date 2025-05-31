@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AlbumType** | **string** | The type of the album.  | 
-**TotalTracks** | **int32** | The number of tracks in the album. | 
+**TotalTracks** | **int64** | The number of tracks in the album. | 
 **AvailableMarkets** | **[]string** | The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._  | 
 **ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this album.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the album.  | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewAlbumBase
 
-`func NewAlbumBase(albumType string, totalTracks int32, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *AlbumBase`
+`func NewAlbumBase(albumType string, totalTracks int64, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *AlbumBase`
 
 NewAlbumBase instantiates a new AlbumBase object
 This constructor will assign default values to properties that have it defined,
@@ -59,20 +59,20 @@ SetAlbumType sets AlbumType field to given value.
 
 ### GetTotalTracks
 
-`func (o *AlbumBase) GetTotalTracks() int32`
+`func (o *AlbumBase) GetTotalTracks() int64`
 
 GetTotalTracks returns the TotalTracks field if non-nil, zero value otherwise.
 
 ### GetTotalTracksOk
 
-`func (o *AlbumBase) GetTotalTracksOk() (*int32, bool)`
+`func (o *AlbumBase) GetTotalTracksOk() (*int64, bool)`
 
 GetTotalTracksOk returns a tuple with the TotalTracks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalTracks
 
-`func (o *AlbumBase) SetTotalTracks(v int32)`
+`func (o *AlbumBase) SetTotalTracks(v int64)`
 
 SetTotalTracks sets TotalTracks field to given value.
 
