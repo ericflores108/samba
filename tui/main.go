@@ -9,7 +9,7 @@ import (
 	"github.com/joho/godotenv"
 	"golang.org/x/oauth2"
 
-	spotify "github.com/ericflores108/samba/pkg/spotifywrapper"
+	sw "github.com/ericflores108/samba/pkg/spotifywrapper"
 )
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 	}
 
 	// Create Spotify client with OAuth wrapper
-	spotifyClient, err := spotify.NewClient(clientID, clientSecret, redirectURL, scopes)
+	spotifyClient, err := sw.NewClient(clientID, clientSecret, redirectURL, scopes)
 	if err != nil {
 		log.Fatalf("Failed to create Spotify client: %v", err)
 	}
