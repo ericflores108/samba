@@ -20,49 +20,49 @@ var (
 
 	// Now Playing styles
 	nowPlayingBoxStyle = lipgloss.NewStyle().
-		Border(lipgloss.RoundedBorder()).
-		BorderForeground(lipgloss.Color("99")).
-		Padding(1, 2).
-		MarginBottom(1).
-		Background(lipgloss.Color("235"))
+				Border(lipgloss.RoundedBorder()).
+				BorderForeground(lipgloss.Color("99")).
+				Padding(1, 2).
+				MarginBottom(1).
+				Background(lipgloss.Color("235"))
 
 	nowPlayingTitleStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("198")).
-		Bold(true)
+				Foreground(lipgloss.Color("198")).
+				Bold(true)
 
 	nowPlayingArtistStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("99")).
-		Italic(true)
+				Foreground(lipgloss.Color("99")).
+				Italic(true)
 
 	// Enhanced queue styles
 	queueHeaderStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("226")).
-		Bold(true).
-		MarginTop(1).
-		MarginBottom(1)
+				Foreground(lipgloss.Color("226")).
+				Bold(true).
+				MarginTop(1).
+				MarginBottom(1)
 
 	queueItemStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("255")).
-		Background(lipgloss.Color("238")).
-		Padding(0, 1).
-		MarginBottom(0)
+			Foreground(lipgloss.Color("255")).
+			Background(lipgloss.Color("238")).
+			Padding(0, 1).
+			MarginBottom(0)
 
 	queueItemSelectedStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("226")).
-		Background(lipgloss.Color("240")).
-		Padding(0, 1).
-		MarginBottom(0).
-		Bold(true)
+				Foreground(lipgloss.Color("226")).
+				Background(lipgloss.Color("240")).
+				Padding(0, 1).
+				MarginBottom(0).
+				Bold(true)
 
 	queueEnumeratorStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("99")).
-		MarginRight(1).
-		Bold(true)
+				Foreground(lipgloss.Color("99")).
+				MarginRight(1).
+				Bold(true)
 
 	queueEnumeratorSelectedStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("226")).
-		MarginRight(1).
-		Bold(true)
+					Foreground(lipgloss.Color("226")).
+					MarginRight(1).
+					Bold(true)
 )
 
 // wrapText wraps text to fit within the given width
@@ -181,11 +181,11 @@ func (m model) View() string {
 				}
 
 				// Create the now playing content
-				nowPlayingContent := fmt.Sprintf("%s NOW %s\n\n%s %s\n%s %s", 
+				nowPlayingContent := fmt.Sprintf("%s NOW %s\n\n%s %s\n%s %s",
 					musicNote, playingStatus,
 					"♪", nowPlayingTitleStyle.Render(trackName),
 					"♫", nowPlayingArtistStyle.Render(artistName))
-				
+
 				nowPlayingBox := nowPlayingBoxStyle.Render(nowPlayingContent)
 				s += nowPlayingBox + "\n"
 			} else {
@@ -195,7 +195,7 @@ func (m model) View() string {
 			s += faint.Render("No track currently playing") + "\n\n"
 		}
 
-		s += faint.Render("q - view queue • r - refresh • ctrl+c - quit")
+		s += faint.Render("l - list queue • r - refresh • q / ctrl+c - quit")
 		return s
 
 	case listView:
@@ -226,11 +226,11 @@ func (m model) View() string {
 				}
 
 				// Create the now playing content
-				nowPlayingContent := fmt.Sprintf("%s NOW %s\n\n%s %s\n%s %s", 
+				nowPlayingContent := fmt.Sprintf("%s NOW %s\n\n%s %s\n%s %s",
 					musicNote, playingStatus,
 					"♪", nowPlayingTitleStyle.Render(trackName),
 					"♫", nowPlayingArtistStyle.Render(artistName))
-				
+
 				nowPlayingBox := nowPlayingBoxStyle.Render(nowPlayingContent)
 				s += nowPlayingBox + "\n"
 			}

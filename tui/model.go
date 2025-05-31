@@ -51,18 +51,18 @@ type currentlyPlayingMsg struct {
 }
 
 type model struct {
-	state           uint
-	user            *spotify.PrivateUserObject
-	client          *sw.SpotifyClient
-	ctx             context.Context
-	listIndex       int
-	textarea        textarea.Model
-	textinput       textinput.Model
-	authURL         string
-	authState       string
-	authCode        string
-	errorMsg        string
-	server          *http.Server
+	state            uint
+	user             *spotify.PrivateUserObject
+	client           *sw.SpotifyClient
+	ctx              context.Context
+	listIndex        int
+	textarea         textarea.Model
+	textinput        textinput.Model
+	authURL          string
+	authState        string
+	authCode         string
+	errorMsg         string
+	server           *http.Server
 	currentlyPlaying *spotify.CurrentlyPlayingContextObject
 	*spotify.QueueObject
 }
@@ -221,7 +221,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, nil
 		}
 		m.QueueObject = q
-		
+
 		// Get currently playing track
 		currentlyPlaying, _, err := m.client.GetCurrentlyPlaying(m.ctx)
 		if err != nil {
@@ -229,7 +229,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			log.Printf("Warning: Could not get currently playing track: %v", err)
 		}
 		m.currentlyPlaying = currentlyPlaying
-		
+
 		m.state = nowPlayingView
 		return m, nil
 
@@ -279,7 +279,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		// Now Playing View key bindings
 		case nowPlayingView:
 			switch key {
-			case "q":
+			case "l":
 				m.state = listView
 			case "r":
 				// Refresh currently playing info
@@ -289,7 +289,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				} else {
 					m.currentlyPlaying = currentlyPlaying
 				}
-			case "ctrl+c":
+			case "q", "ctrl+c":
 				return m, tea.Quit
 			}
 
